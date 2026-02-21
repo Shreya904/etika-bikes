@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "home": "Home",
+    "ourCreations": "Our Creations",
+    "bicycles": "Bicycles",
+    "ebikes": "E-Bikes",
+    "ebikesMtb": "Electric Mountain Bike",
+    "ebikesUrban": "Urban E-Bike",
+    "ebikesGravel": "E-Bike Gravel",
+    "classic": "Classic Bicycles",
+    "classicPushBike": "Balance Bike",
+    "classicUrban": "Classic Urban",
+    "classicGravel": "Classic Gravel",
+    "prototypes": "Prototypes",
+    "prototypesBmx": "BMX",
+    "prototypesTricycle": "Tricycle",
+    "prototypesCargoBike": "Cargo Bike",
+    "frames": "Frames",
+    "selfBuildKits": "Self-Build Kits",
+    "accessories": "Accessories",
+    "workshop": "Etika Workshop",
+    "workshopSelfBuild": "Self-Build Workshop",
+    "workshopCustom": "Custom Bicycles",
+    "workshopCarbon": "Carbon Frame Repair",
+    "about": "About Us",
+    "aboutStory": "Our Story",
+    "aboutPhilosophy": "Philosophy & Values",
+    "aboutBamboo": "Bamboo & Materials",
+    "aboutFaq": "FAQ",
+    "collaborations": "Collaborations",
+    "blog": "Blog",
+    "contact": "Contact",
+    "underConstruction": "Under construction"
+  },
+  "common": {
+    "readMore": "Read more",
+    "learnMore": "Learn more",
+    "contactUs": "Contact us",
+    "viewAll": "View all",
+    "menu": "Menu",
+    "close": "Close"
+  },
+  "footer": {
+    "workshop": "Our Workshop",
+    "shop": "Our Shop",
+    "followUs": "Follow Us",
+    "rights": "All rights reserved",
+    "openingHours": "Opening hours",
+    "mondayToSaturday": "Monday to Saturday"
+  }
+}

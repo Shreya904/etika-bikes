@@ -1,26 +1,92 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Base Colors */
+  --white: #ffffff;
+  --off-white: #fafaf8;
+  --black: #1a1a1a;
+  --charcoal: #2c2c2c;
+  --gray: #6b6b6b;
+  --light-gray: #e5e5e5;
+
+  /* Brand - Dark Green */
+  --primary: #1a4d2e;
+  --primary-dark: #2d5f3f;
+  --primary-light: #4f7942;
+
+  /* Bamboo Accents */
+  --bamboo: #d4c5a9;
+  --bamboo-light: #e8dcc4;
+  --bamboo-golden: #c9b88a;
+  --bamboo-warm: #b5a082;
+
+  /* Semantic */
+  --background: var(--white);
+  --foreground: var(--black);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Colors */
+  --color-primary-*: initial;
+  --color-primary-50: #f0f7f3;
+  --color-primary-100: #d9ebe0;
+  --color-primary-200: #b3d7c2;
+  --color-primary-300: #8cc3a3;
+  --color-primary-400: #66af85;
+  --color-primary-500: #4f7942;
+  --color-primary-600: #2d5f3f;
+  --color-primary-700: #1a4d2e;
+  --color-primary-800: #153d24;
+  --color-primary-900: #102d1a;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-bamboo-*: initial;
+  --color-bamboo-50: #faf8f4;
+  --color-bamboo-100: #e8dcc4;
+  --color-bamboo-200: #d4c5a9;
+  --color-bamboo-300: #c9b88a;
+  --color-bamboo-400: #b5a082;
+  --color-bamboo-500: #a08968;
+  --color-bamboo-600: #8b7254;
+  --color-bamboo-700: #6d5940;
+  --color-bamboo-800: #4f402d;
+  --color-bamboo-900: #31271a;
+
+  /* Base palette */
+  --color-white: #ffffff;
+  --color-black: #1a1a1a;
+  --color-gray-*: initial;
+  --color-gray-50: #fafaf8;
+  --color-gray-100: #f5f5f5;
+  --color-gray-200: #e5e5e5;
+  --color-gray-300: #d4d4d4;
+  --color-gray-400: #a3a3a3;
+  --color-gray-500: #6b6b6b;
+  --color-gray-600: #525252;
+  --color-gray-700: #404040;
+  --color-gray-800: #2c2c2c;
+  --color-gray-900: #1a1a1a;
+
+  /* Semantic colors */
+  --color-background: var(--white);
+  --color-foreground: var(--black);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+  font-feature-settings: "kern";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 }

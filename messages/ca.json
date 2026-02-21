@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "home": "Inici",
+    "ourCreations": "Les Nostres Creacions",
+    "bicycles": "Bicicletes",
+    "ebikes": "Bicicletes Elèctriques",
+    "ebikesMtb": "E-Bike Muntanya",
+    "ebikesUrban": "E-Bike Urbana",
+    "ebikesGravel": "E-Bike Gravel",
+    "classic": "Bicicletes Clàssiques",
+    "classicPushBike": "Bicicleta d'Equilibri",
+    "classicUrban": "Urbana Clàssica",
+    "classicGravel": "Gravel Clàssica",
+    "prototypes": "Prototips",
+    "prototypesBmx": "BMX",
+    "prototypesTricycle": "Tricicle",
+    "prototypesCargoBike": "Cargo Bike",
+    "frames": "Quadres",
+    "selfBuildKits": "Kits d'Autoconstrucció",
+    "accessories": "Accessoris",
+    "workshop": "Taller Etika",
+    "workshopSelfBuild": "Taller d'Autoconstrucció",
+    "workshopCustom": "Bicicletes a Mida",
+    "workshopCarbon": "Reparació de Quadres de Carboni",
+    "about": "Sobre Nosaltres",
+    "aboutStory": "La Nostra Història",
+    "aboutPhilosophy": "Filosofia i Valors",
+    "aboutBamboo": "Bambú i Materials",
+    "aboutFaq": "Preguntes Freqüents",
+    "collaborations": "Col·laboracions",
+    "blog": "Blog",
+    "contact": "Contacte",
+    "underConstruction": "En construcció"
+  },
+  "common": {
+    "readMore": "Llegir més",
+    "learnMore": "Saber més",
+    "contactUs": "Contacta'ns",
+    "viewAll": "Veure tot",
+    "menu": "Menú",
+    "close": "Tancar"
+  },
+  "footer": {
+    "workshop": "El Nostre Taller",
+    "shop": "La Nostra Botiga",
+    "followUs": "Segueix-nos",
+    "rights": "Tots els drets reservats",
+    "openingHours": "Horari",
+    "mondayToSaturday": "Dilluns a Dissabte"
+  }
+}

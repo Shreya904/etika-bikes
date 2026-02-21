@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "ourCreations": "Nuestras Creaciones",
+    "bicycles": "Bicicletas",
+    "ebikes": "Bicicletas Eléctricas",
+    "ebikesMtb": "E-Bike Montaña",
+    "ebikesUrban": "E-Bike Urbana",
+    "ebikesGravel": "E-Bike Gravel",
+    "classic": "Bicicletas Clásicas",
+    "classicPushBike": "Bicicleta Sin Pedales",
+    "classicUrban": "Urbana Clásica",
+    "classicGravel": "Gravel Clásica",
+    "prototypes": "Prototipos",
+    "prototypesBmx": "BMX",
+    "prototypesTricycle": "Triciclo",
+    "prototypesCargoBike": "Cargo Bike",
+    "frames": "Cuadros",
+    "selfBuildKits": "Kits de Autoconstrucción",
+    "accessories": "Accesorios",
+    "workshop": "Taller Etika",
+    "workshopSelfBuild": "Taller de Autoconstrucción",
+    "workshopCustom": "Bicicletas a Medida",
+    "workshopCarbon": "Reparación de Cuadros de Carbono",
+    "about": "Sobre Nosotros",
+    "aboutStory": "Nuestra Historia",
+    "aboutPhilosophy": "Filosofía y Valores",
+    "aboutBamboo": "Bambú y Materiales",
+    "aboutFaq": "Preguntas Frecuentes",
+    "collaborations": "Colaboraciones",
+    "blog": "Blog",
+    "contact": "Contacto",
+    "underConstruction": "En construcción"
+  },
+  "common": {
+    "readMore": "Leer más",
+    "learnMore": "Saber más",
+    "contactUs": "Contáctanos",
+    "viewAll": "Ver todo",
+    "menu": "Menú",
+    "close": "Cerrar"
+  },
+  "footer": {
+    "workshop": "Nuestro Taller",
+    "shop": "Nuestra Tienda",
+    "followUs": "Síguenos",
+    "rights": "Todos los derechos reservados",
+    "openingHours": "Horario de apertura",
+    "mondayToSaturday": "Lunes a Sábado"
+  }
+}
