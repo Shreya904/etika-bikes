@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useParams } from "next/navigation";
 import { type Locale } from "@/i18n";
 import { getFullPath } from "@/lib/routes";
@@ -20,9 +21,16 @@ export function Header() {
           {/* Logo */}
           <Link
             href={getFullPath("home", locale)}
-            className="text-2xl font-bold tracking-tight text-primary-700 transition-colors hover:text-primary-600 lg:text-3xl"
+            className="flex items-center transition-opacity hover:opacity-80"
           >
-            Etika Bikes
+            <Image
+              src="/logos/etika_main_logo.png"
+              alt="Etika Bikes"
+              width={160}
+              height={48}
+              className="h-12 w-auto object-contain"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}

@@ -3,6 +3,7 @@
 import { useState, Fragment } from "react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
+import Image from "next/image";
 import { useParams } from "next/navigation";
 import { type Locale } from "@/i18n";
 import { mainNavigation, type NavItem } from "@/lib/navigation";
@@ -140,9 +141,16 @@ export function MobileMenu() {
             <div className="flex h-20 items-center justify-between border-b border-bamboo-200/40 bg-bamboo-50/30 px-5">
               <Link
                 href={getFullPath("home", locale)}
-                className="text-2xl font-bold text-primary-700"
+                className="flex items-center transition-opacity hover:opacity-80"
               >
-                Etika Bikes
+                <Image
+                  src="/logos/etika_main_logo.png"
+                  alt="Etika Bikes"
+                  width={140}
+                  height={40}
+                  className="h-10 w-auto object-contain"
+                  priority
+                />
               </Link>
               <button
                 onClick={() => setIsOpen(false)}

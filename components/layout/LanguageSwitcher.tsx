@@ -4,19 +4,40 @@ import { useParams, usePathname } from "next/navigation";
 import Link from "next/link";
 import { locales, type Locale } from "@/i18n";
 import { cn } from "@/lib/utils";
+import { resolveSlug } from "@/lib/slugResolver";
+import { getFullPath } from "@/lib/routes";
 
 export function LanguageSwitcher() {
   const pathname = usePathname();
   const params = useParams();
   const currentLocale = params.lang as Locale;
 
-  const getLocalizedPath = (locale: Locale) => {
-    if (!pathname) return `/${locale}`;
+  const getLocalizedPath = (targetLocale: Locale) => {
+    if (!pathname) return `/${targetLocale}`;
 
-    // Remove current locale from path and add new locale
+    // Parse the current path
     const segments = pathname.split("/").filter(Boolean);
-    segments[0] = locale;
-    return `/${segments.join("/")}`;
+
+    // Handle homepage
+    if (segments.length <= 1) {
+      return `/${targetLocale}`;
+    }
+
+    // Extract current locale and slug
+    const currentSlug = segments[1];
+
+    // Resolve the route key from current slug and locale
+    const routeKey = resolveSlug(currentSlug, currentLocale);
+
+    if (routeKey) {
+      // Generate proper localized path using the route key
+      return getFullPath(routeKey, targetLocale);
+    }
+
+    // Fallback: simple replacement (for any edge cases)
+    const newSegments = [...segments];
+    newSegments[0] = targetLocale;
+    return `/${newSegments.join("/")}`;
   };
 
   return (
