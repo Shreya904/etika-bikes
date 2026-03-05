@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { locales, type Locale } from "@/i18n";
@@ -17,265 +18,1330 @@ export const dynamicParams = true;
 // ─── Philosophy Page Component ───────────────────────────────────────────────
 function PhilosophyPage({ locale }: { locale: Locale }) {
   return (
-    <div className="bg-gray-50">
-      {/* Hero Section */}
-      <section className="bg-primary-800 py-20 lg:py-32">
+    <div className="overflow-hidden">
+      {/* ── Hero ── */}
+      <section className="relative overflow-hidden bg-primary-800 py-24 lg:py-40">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -right-48 -top-48 h-175 w-175 rounded-full border-2 border-white/5" />
+          <div className="absolute -right-24 -top-24 h-125 w-125 rounded-full border border-white/5" />
+          <div className="absolute bottom-0 left-1/4 h-75 w-75 rounded-full bg-primary-700/40" />
+        </div>
         <Container maxWidth="2xl">
-          <div className="text-center text-white">
-            <h1 className="text-4xl font-bold lg:text-6xl">
+          <div className="relative z-10 text-center text-white">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.25em] text-primary-300">
+              {locale === "es" && "Nuestros principios"}
+              {locale === "en" && "Our principles"}
+              {locale === "ca" && "Els nostres principis"}
+            </p>
+            <h1 className="text-5xl font-black tracking-tight lg:text-7xl">
               {locale === "es" && "Nuestra Filosofía"}
               {locale === "en" && "Our Philosophy"}
               {locale === "ca" && "La Nostra Filosofia"}
             </h1>
-            <p className="mx-auto mt-6 max-w-3xl text-xl text-primary-200">
+            <p className="mx-auto mt-6 max-w-2xl text-xl text-primary-200">
               {locale === "es" &&
-                "Bicicletas artesanales de bambú sostenibles desde Barcelona"}
-              {locale === "en" &&
-                "Sustainable handmade bamboo bicycles from Barcelona"}
+                "Bicicletas artesanales de bambú. Una forma de vida."}
+              {locale === "en" && "Handmade bamboo bicycles. A way of life."}
               {locale === "ca" &&
-                "Bicicletes artesanals de bambú sostenibles des de Barcelona"}
+                "Bicicletes artesanals de bambú. Una forma de vida."}
             </p>
+            <div className="mx-auto mt-10 flex items-center justify-center gap-3">
+              <div className="h-px w-16 bg-primary-500" />
+              <div className="h-2 w-2 rounded-full bg-primary-400" />
+              <div className="h-px w-16 bg-primary-500" />
+            </div>
           </div>
         </Container>
       </section>
 
-      {/* Introduction */}
-      <section className="bg-white py-16 lg:py-24">
+      {/* ── Manifesto Intro ── */}
+      <section className="bg-white py-20 lg:py-28">
         <Container maxWidth="2xl">
           <div className="mx-auto max-w-4xl">
-            <p className="text-lg leading-relaxed text-gray-700 lg:text-xl">
+            {/* Eyebrow */}
+            <p className="mb-8 text-center text-sm font-bold uppercase tracking-[0.25em] text-primary-500">
               {locale === "es" &&
-                "El nombre Etika Bikes no es casualidad. Lo hemos elegido porque refleja quiénes somos y cómo hacemos las cosas: con valores, compromiso y ética. Etika es, sobre todo, una forma de vida que aplicamos cada día — en cómo diseñamos, producimos y nos relacionamos con las personas y con nuestro entorno. Cada bicicleta artesanal de bambú que construimos nace de una convicción profunda: otra forma de crear, consumir y moverse es posible."}
+                "Bicicletas sostenibles de bambú hechas a mano en Barcelona"}
               {locale === "en" &&
-                "The name Etika Bikes is no coincidence. We chose it because it reflects who we are and how we do things: with values, commitment and ethics. Etika is, above all, a way of life that we apply every day — in how we design, produce and relate to people and to our environment. Every handmade bamboo bicycle we build is born from a deep conviction: another way of creating, consuming and moving is possible."}
+                "Sustainable bamboo bicycles handmade in Barcelona"}
               {locale === "ca" &&
-                "El nom Etika Bikes no és casualitat. L'hem triat perquè reflecteix qui som i com fem les coses: amb valors, compromís i ètica. Etika és, sobretot, una forma de vida que apliquem cada dia — en com dissenyem, produïm i ens relacionem amb les persones i amb el nostre entorn. Cada bicicleta artesanal de bambú que construïm neix d'una convicció profunda: una altra forma de crear, consumir i moure's és possible."}
+                "Bicicletes sostenibles de bambú fetes a mà a Barcelona"}
             </p>
-            <p className="mt-6 text-lg leading-relaxed text-gray-700 lg:text-xl">
+            {/* Para 1 */}
+            <p className="text-2xl font-light leading-relaxed text-gray-800 lg:text-3xl">
               {locale === "es" &&
-                "Aspiramos a ofrecer una solución real para la movilidad urbana sostenible: accesible, funcional y en armonía con el entorno. Nuestras bicicletas no solo son hermosas y responsables, sino útiles y transformadoras en la vida cotidiana. Nuestros valores están alineados con los Objetivos de Desarrollo Sostenible (ODS) de las Naciones Unidas."}
+                "Etika Bikes no es casualidad. Lo elegimos porque refleja quiénes somos y cómo hacemos las cosas: con valores, con compromiso, con ética."}
               {locale === "en" &&
-                "We aim to offer a real solution for sustainable urban mobility: accessible, functional and in harmony with the environment. Our bicycles are not only beautiful and responsible, but useful and transformative in everyday life. Our values are aligned with the United Nations Sustainable Development Goals (SDGs)."}
+                "Etika Bikes is no coincidence. We chose it because it reflects who we are and how we do things: with values, with commitment, with ethics."}
               {locale === "ca" &&
-                "Aspirem a oferir una solució real per a la mobilitat urbana sostenible: accessible, funcional i en harmonia amb l'entorn. Les nostres bicicletes no només són boniques i responsables, sinó útils i transformadores en la vida quotidiana. Els nostres valors estan alineats amb els Objectius de Desenvolupament Sostenible (ODS) de les Nacions Unides."}
+                "Etika Bikes no és casualitat. L'hem triat perquè reflecteix qui som i com fem les coses: amb valors, amb compromís, amb ètica."}
+            </p>
+            {/* Thin rule */}
+            <div className="my-8 h-px w-24 bg-primary-300" />
+            {/* Para 2 */}
+            <p className="text-lg leading-relaxed text-gray-600">
+              {locale === "es" &&
+                "Etika es, sobre todo, una forma de vida que intentamos aplicar cada día — en cómo diseñamos, producimos y nos relacionamos con las personas y el entorno."}
+              {locale === "en" &&
+                "Etika is, above all, a way of life that we try to apply every day — in how we design, produce, and interact with people and the environment."}
+              {locale === "ca" &&
+                "Etika és, sobretot, una forma de vida que intentem aplicar cada dia — en com dissenyem, produïm i ens relacionem amb les persones i l'entorn."}
+            </p>
+            {/* Para 3 */}
+            <p className="mt-6 text-lg leading-relaxed text-gray-600">
+              {locale === "es" &&
+                "Ofrecemos una solución real para la movilidad urbana sostenible: accesible, funcional y en armonía con el entorno. Queremos que nuestras bicicletas no solo sean bonitas y responsables, sino también útiles y transformadoras en la vida cotidiana."}
+              {locale === "en" &&
+                "We offer a real solution for sustainable urban mobility: accessible, functional, and in harmony with the surroundings. We want our bicycles to be not only beautiful and responsible, but also useful and transformative in daily life."}
+              {locale === "ca" &&
+                "Oferim una solució real per a la mobilitat urbana sostenible: accessible, funcional i en harmonia amb l'entorn. Volem que les nostres bicicletes no siguin només boniques i responsables, sinó també útils i transformadores en la vida quotidiana."}
+            </p>
+            {/* Para 4 — pull quote style */}
+            <blockquote className="my-10 border-l-4 border-primary-400 pl-6">
+              <p className="text-lg leading-relaxed text-gray-700 italic">
+                {locale === "es" &&
+                  "Fabricamos cada bicicleta bajo pedido, sin stock ni producción en masa, porque creemos en un modelo más consciente, responsable y respetuoso con los recursos. Cada bicicleta artesanal de bambú que hacemos nace de la convicción profunda de que otra forma de crear, consumir y moverse es posible."}
+                {locale === "en" &&
+                  "We manufacture each bicycle on demand, with no stock or mass production, because we believe in a more conscious, responsible, and resource-respectful model. Every handcrafted bamboo bicycle we make is born from the deep conviction that another way of creating, consuming, and moving is possible."}
+                {locale === "ca" &&
+                  "Fabricant cada bicicleta sota comanda, sense estoc ni producció en massa, perquè creiem en un model més conscient, responsable i respectuós amb els recursos. Cada bicicleta artesanal de bambú que fem neix de la convicció profunda que una altra manera de crear, consumir i moure's és possible."}
+              </p>
+            </blockquote>
+            {/* Para 5 */}
+            <p className="text-lg leading-relaxed text-gray-600">
+              {locale === "es" &&
+                "Además, nuestros valores están alineados con los Objetivos de Desarrollo Sostenible (ODS) definidos por la ONU. Con cada decisión, nos esforzamos por contribuir a un futuro más justo, más saludable y más sostenible para todas las personas y el planeta."}
+              {locale === "en" &&
+                "Furthermore, our values are aligned with the Sustainable Development Goals (SDGs) defined by the UN. With every decision, we strive to contribute to a fairer, healthier, and more sustainable future for all people and the planet."}
+              {locale === "ca" &&
+                "A més, els nostres valors estan alineats amb els Objectius de Desenvolupament Sostenible (ODS) definits per l'ONU. Amb cada decisió, ens esforcem per contribuir a un futur més just, més saludable i més sostenible per a totes les persones i el planeta."}
             </p>
           </div>
         </Container>
       </section>
 
-      {/* Values Grid */}
-      <section className="bg-primary-50 py-16 lg:py-24">
+      {/* ── 01 Sustainability ── */}
+      <section className="bg-primary-50 py-20 lg:py-32">
         <Container maxWidth="2xl">
-          <div className="grid gap-12 md:grid-cols-2 lg:gap-16">
-            {/* Sustainability */}
-            <div className="space-y-4">
-              <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary-600">
-                <svg
-                  className="h-6 w-6 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                  />
-                </svg>
-              </div>
-              <h2 className="text-xl font-bold text-primary-800">
-                {locale === "es" &&
-                  "Sostenibilidad – Bicicletas ecológicas de bambú para cuidar el planeta"}
-                {locale === "en" &&
-                  "Sustainability – Eco-friendly bamboo bicycles to care for the planet"}
-                {locale === "ca" &&
-                  "Sostenibilitat – Bicicletes ecològiques de bambú per cuidar el planeta"}
-              </h2>
-              <p className="text-gray-700">
-                {locale === "es" &&
-                  "Desde el cultivo del bambú hasta el montaje final, cada decisión que tomamos busca reducir nuestra huella ambiental sin comprometer la calidad ni el diseño."}
-                {locale === "en" &&
-                  "From bamboo cultivation to final assembly, every decision we make seeks to reduce our environmental footprint without compromising quality or design."}
-                {locale === "ca" &&
-                  "Des del cultiu del bambú fins al muntatge final, cada decisió que prenem busca reduir la nostra petjada ambiental sense comprometre la qualitat ni el disseny."}
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+            {/* Text */}
+            <div>
+              <p className="mb-3 text-xs font-bold uppercase tracking-widest text-primary-400">
+                01
               </p>
+              <h2 className="text-4xl font-black tracking-tight text-primary-900 lg:text-5xl">
+                {locale === "es" && "Sostenibilidad"}
+                {locale === "en" && "Sustainability"}
+                {locale === "ca" && "Sostenibilitat"}
+              </h2>
+              <p className="mt-2 text-xl font-semibold italic text-secondary-700">
+                {locale === "es" &&
+                  "Reducimos la huella ecológica utilizando materiales biodegradables, promoviendo cultivos no extractivos y respetando los ciclos naturales."}
+                {locale === "en" &&
+                  "We reduce the ecological footprint by using biodegradable materials, promoting non-extractive crops, and respecting natural cycles."}
+                {locale === "ca" &&
+                  "Reduïm la petjada ecològica utilitzant materials biodegradables, promovent cultius no extractius i respectant els cicles naturals."}
+              </p>
+              <p className="mt-6 text-lg leading-relaxed text-gray-700">
+                {locale === "es" &&
+                  "Desde el cultivo del bambú hasta el montaje final de cada bicicleta, cada decisión que tomamos tiene como objetivo reducir nuestra huella ambiental sin comprometer la calidad ni el diseño."}
+                {locale === "en" &&
+                  "From the cultivation of bamboo to the final assembly of each bicycle, every decision we make aims to reduce our environmental footprint without compromising on quality or design."}
+                {locale === "ca" &&
+                  "Des del cultiu del bambú fins al muntatge final de cada bicicleta, cada decisió que prenem té com a objectiu reduir la nostra petjada ambiental sense comprometre la qualitat ni el disseny."}
+              </p>
+              <p className="mt-4 text-lg leading-relaxed text-gray-700">
+                {locale === "es" &&
+                  "Elegimos el bambú porque es un material que respeta el planeta desde el principio: crece rápido, es muy resistente y absorbe grandes cantidades de CO₂. A diferencia del aluminio o el acero, su cultivo no depende de procesos extractivos contaminantes y genera un impacto positivo en el medio ambiente. Al final de su vida útil, también se biodegrada de forma natural, reduciendo su huella como residuo. Montar una bicicleta de bambú hecha a mano en Barcelona es también una forma de cuidar los ecosistemas."}
+                {locale === "en" &&
+                  "We choose bamboo because it is a material that respects the planet from the start: it grows quickly, is highly resistant, and absorbs large amounts of CO₂. Unlike aluminum or steel, its cultivation does not rely on polluting extractive processes and generates a positive impact on the environment. At the end of its useful life, it also biodegrades naturally, reducing its footprint as waste. Riding a bamboo bicycle handmade in Barcelona is also a way of caring for ecosystems."}
+                {locale === "ca" &&
+                  "Triem el bambú perquè és un material que respecta el planeta des del principi: creix ràpidament, és molt resistent i absorbeix grans quantitats de CO₂. A diferència de l'alumini o l'acer, el seu cultiu no depèn de processos extractius contaminants i genera un impacte positiu en el medi ambient. Al final de la seva vida útil, també es biodegrada de manera natural, reduint la seva petjada com a residu. Pedalar en una bicicleta de bambú feta a mà a Barcelona és també una manera de cuidar els ecosistemes."}
+              </p>
+              {/* SDG Badges */}
+              <div className="mt-6 flex flex-wrap items-end gap-3">
+                <Image
+                  src={
+                    locale === "es"
+                      ? "/SDG%20Spanish/ods12_es_consumo-responsable.png"
+                      : locale === "ca"
+                        ? "/SDG%20Catalan/ods12_ca_consum-responsable.png"
+                        : "/SDG%20English/ods12_en_responsible-consumption.png"
+                  }
+                  alt="SDG 12"
+                  width={80}
+                  height={80}
+                  className="h-20 w-20 object-contain"
+                />
+                <Image
+                  src={
+                    locale === "es"
+                      ? "/SDG%20Spanish/ods13_es_accion-climatica.png"
+                      : locale === "ca"
+                        ? "/SDG%20Catalan/ods13_ca_accio-climatica.png"
+                        : "/SDG%20English/ods13_en_climate-action.png"
+                  }
+                  alt="SDG 13"
+                  width={80}
+                  height={80}
+                  className="h-20 w-20 object-contain"
+                />
+                <Image
+                  src={
+                    locale === "es"
+                      ? "/SDG%20Spanish/ods15_es_ecosistemas-terrestres.png"
+                      : locale === "ca"
+                        ? "/SDG%20Catalan/ods15_ca_ecosistemes-terrestres.png"
+                        : "/SDG%20English/ods15_en_life-on-land.png"
+                  }
+                  alt="SDG 15"
+                  width={80}
+                  height={80}
+                  className="h-20 w-20 object-contain"
+                />
+              </div>
             </div>
+            {/* Illustration */}
+            <div className="flex items-center justify-center">
+              <div className="relative">
+                <div className="h-72 w-72 rounded-full bg-primary-100 lg:h-80 lg:w-80" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <svg
+                    className="h-40 w-40 text-primary-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 100 100"
+                  >
+                    <line
+                      x1="50"
+                      y1="88"
+                      x2="50"
+                      y2="12"
+                      strokeWidth="5"
+                      strokeLinecap="round"
+                    />
+                    <ellipse
+                      cx="50"
+                      cy="68"
+                      rx="2"
+                      ry="2"
+                      fill="currentColor"
+                    />
+                    <ellipse
+                      cx="50"
+                      cy="48"
+                      rx="2"
+                      ry="2"
+                      fill="currentColor"
+                    />
+                    <ellipse
+                      cx="50"
+                      cy="28"
+                      rx="2"
+                      ry="2"
+                      fill="currentColor"
+                    />
+                    <path
+                      d="M50 63 Q67 52 74 38 Q61 45 50 63"
+                      fill="currentColor"
+                      opacity="0.8"
+                    />
+                    <path
+                      d="M50 43 Q33 32 26 18 Q39 25 50 43"
+                      fill="currentColor"
+                      opacity="0.7"
+                    />
+                    <path
+                      d="M50 53 Q63 37 73 26 Q60 41 50 53"
+                      fill="currentColor"
+                      opacity="0.6"
+                    />
+                    <ellipse
+                      cx="50"
+                      cy="88"
+                      rx="18"
+                      ry="4"
+                      fill="currentColor"
+                      opacity="0.15"
+                    />
+                  </svg>
+                </div>
+                <div className="absolute -inset-4 rounded-full border-2 border-dashed border-primary-300 opacity-50" />
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
 
-            {/* Local Production */}
-            <div className="space-y-4">
-              <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary-600">
-                <svg
-                  className="h-6 w-6 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-                  />
-                </svg>
+      {/* ── 02 Local Production ── */}
+      <section className="bg-white py-20 lg:py-32">
+        <Container maxWidth="2xl">
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+            {/* Illustration (left on desktop) */}
+            <div className="flex items-center justify-center lg:order-first order-last">
+              <div className="relative">
+                <div className="h-72 w-72 rounded-3xl bg-[#f5efe6] lg:h-80 lg:w-80" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <svg
+                    className="h-40 w-40 text-secondary-700"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 100 100"
+                  >
+                    <rect
+                      x="15"
+                      y="50"
+                      width="20"
+                      height="40"
+                      strokeWidth="3"
+                      rx="2"
+                    />
+                    <rect
+                      x="40"
+                      y="35"
+                      width="25"
+                      height="55"
+                      strokeWidth="3"
+                      rx="2"
+                    />
+                    <rect
+                      x="70"
+                      y="45"
+                      width="18"
+                      height="45"
+                      strokeWidth="3"
+                      rx="2"
+                    />
+                    <rect
+                      x="20"
+                      y="58"
+                      width="5"
+                      height="5"
+                      fill="currentColor"
+                      opacity="0.35"
+                    />
+                    <rect
+                      x="30"
+                      y="58"
+                      width="5"
+                      height="5"
+                      fill="currentColor"
+                      opacity="0.35"
+                    />
+                    <rect
+                      x="20"
+                      y="70"
+                      width="5"
+                      height="5"
+                      fill="currentColor"
+                      opacity="0.35"
+                    />
+                    <rect
+                      x="46"
+                      y="43"
+                      width="5"
+                      height="5"
+                      fill="currentColor"
+                      opacity="0.35"
+                    />
+                    <rect
+                      x="56"
+                      y="43"
+                      width="5"
+                      height="5"
+                      fill="currentColor"
+                      opacity="0.35"
+                    />
+                    <rect
+                      x="46"
+                      y="56"
+                      width="5"
+                      height="5"
+                      fill="currentColor"
+                      opacity="0.35"
+                    />
+                    <path
+                      d="M52 20 C52 17 49 15 47 17 C45 15 42 17 42 20 C42 23 47 28 47 28 C47 28 52 23 52 20Z"
+                      fill="currentColor"
+                      opacity="0.7"
+                    />
+                    <line
+                      x1="10"
+                      y1="90"
+                      x2="90"
+                      y2="90"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </div>
               </div>
-              <h2 className="text-xl font-bold text-primary-800">
-                {locale === "es" &&
-                  "Producción local – Bicicletas artesanales de bambú hechas en Barcelona"}
-                {locale === "en" &&
-                  "Local production – Handmade bamboo bicycles made in Barcelona"}
-                {locale === "ca" &&
-                  "Producció local – Bicicletes artesanals de bambú fetes a Barcelona"}
-              </h2>
-              <p className="text-gray-700">
-                {locale === "es" &&
-                  "Fabricamos nuestras bicicletas a mano en Barcelona, utilizando bambú cultivado en Cataluña y apoyando una economía de proximidad arraigada en el territorio local y su gente."}
-                {locale === "en" &&
-                  "We manufacture our bicycles by hand in Barcelona, using bamboo grown in Catalonia and supporting a proximity-based economy rooted in the local territory and its people."}
-                {locale === "ca" &&
-                  "Fabriquem les nostres bicicletes a mà a Barcelona, utilitzant bambú cultivat a Catalunya i donant suport a una economia de proximitat arrelada al territori local i la seva gent."}
-              </p>
             </div>
+            {/* Text (right) */}
+            <div>
+              <p className="mb-3 text-xs font-bold uppercase tracking-widest text-secondary-500">
+                02
+              </p>
+              <h2 className="text-4xl font-black tracking-tight text-secondary-900 lg:text-5xl">
+                {locale === "es" && "Plantación y Producción Local"}
+                {locale === "en" && "Plantation and Local Production"}
+                {locale === "ca" && "Plantació i Producció Local"}
+              </h2>
+              <p className="mt-2 text-xl font-semibold italic text-secondary-600">
+                {locale === "es" &&
+                  "Con nuestra plantación en Lleida y la producción en Barcelona, apoyamos una economía de proximidad arraigada en el territorio que genera empleo local con criterios éticos y sostenibles."}
+                {locale === "en" &&
+                  "With our plantation in Lleida and production in Barcelona, we support a proximity economy rooted in the territory that generates local employment with ethical and sustainable criteria."}
+                {locale === "ca" &&
+                  "Amb la nostra plantació a Lleida i la producció a Barcelona, recolzem una economia de proximitat arrelada al territori que genera ocupació local amb criteris ètics i sostenibles."}
+              </p>
+              <p className="mt-6 text-lg leading-relaxed text-gray-700">
+                {locale === "es" &&
+                  "Todo lo que hacemos, lo hacemos nosotros. Nuestros productos son 100% artesanales en Barcelona, utilizando materiales de producción local como el bambú Phyllostachys aurea y Phyllostachys nigra cultivado en Cataluña. Colaboramos con viveros en Gavà y mantenemos una plantación en Lleida, apostando por una economía de proximidad arraigada en la tierra y su gente."}
+                {locale === "en" &&
+                  "Everything we do, we do in-house. Our products are 100% handmade in Barcelona, using locally sourced materials such as Phyllostachys aurea and Phyllostachys nigra bamboo grown in Catalonia. We collaborate with nurseries in Gavà and maintain a plantation in Lleida, betting on a proximity-based economy rooted in the land and its people."}
+                {locale === "ca" &&
+                  "Tot el que fem, ho fem nosaltres. Els nostres productes són 100% artesanals a Barcelona, utilitzant materials d'origen local com el bambú Phyllostachys aurea i Phyllostachys nigra cultivat a Catalunya. Col·laborem amb vivers a Gavà i mantenim una plantació a Lleida, apostant per una economia de proximitat arrelada a la terra i la seva gent."}
+              </p>
+              <div className="mt-6 flex flex-wrap items-end gap-3">
+                <Image
+                  src={
+                    locale === "es"
+                      ? "/SDG%20Spanish/ods8_es_trabajo-decente.png"
+                      : locale === "ca"
+                        ? "/SDG%20Catalan/ods8_ca_feina-digna.png"
+                        : "/SDG%20English/ods8_en_decent-work.png"
+                  }
+                  alt="SDG 8"
+                  width={80}
+                  height={80}
+                  className="h-20 w-20 object-contain"
+                />
+                <Image
+                  src={
+                    locale === "es"
+                      ? "/SDG%20Spanish/ods11_es_ciudades-sostenibles.png"
+                      : locale === "ca"
+                        ? "/SDG%20Catalan/ods11_ca_ciutats-sostenibles.png"
+                        : "/SDG%20English/ods11_en_sustainable-cities.png"
+                  }
+                  alt="SDG 11"
+                  width={80}
+                  height={80}
+                  className="h-20 w-20 object-contain"
+                />
+                <Image
+                  src={
+                    locale === "es"
+                      ? "/SDG%20Spanish/ods12_es_consumo-responsable.png"
+                      : locale === "ca"
+                        ? "/SDG%20Catalan/ods12_ca_consum-responsable.png"
+                        : "/SDG%20English/ods12_en_responsible-consumption.png"
+                  }
+                  alt="SDG 12"
+                  width={80}
+                  height={80}
+                  className="h-20 w-20 object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
 
-            {/* Innovation */}
-            <div className="space-y-4">
-              <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary-600">
-                <svg
-                  className="h-6 w-6 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M13 10V3L4 14h7v7l9-11h-7z"
-                  />
-                </svg>
-              </div>
-              <h2 className="text-xl font-bold text-primary-800">
-                {locale === "es" &&
-                  "Innovación – Diseño sostenible con tecnología avanzada"}
-                {locale === "en" &&
-                  "Innovation – Sustainable design with advanced technology"}
-                {locale === "ca" &&
-                  "Innovació – Disseny sostenible amb tecnologia avançada"}
-              </h2>
-              <p className="text-gray-700">
-                {locale === "es" &&
-                  "Combinamos la artesanía tradicional con tecnologías avanzadas como la impresión 3D y el diseño paramétrico para asegurar precisión, rendimiento y durabilidad en cada bicicleta."}
-                {locale === "en" &&
-                  "We combine traditional craftsmanship with advanced technologies such as 3D printing and parametric design to ensure precision, performance and durability in every bicycle."}
-                {locale === "ca" &&
-                  "Combinem l'artesania tradicional amb tecnologies avançades com la impressió 3D i el disseny paramètric per assegurar precisió, rendiment i durabilitat en cada bicicleta."}
+      {/* ── 03 Innovation ── */}
+      <section className="relative overflow-hidden bg-primary-800 py-20 lg:py-32">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute right-0 top-0 h-full w-1/2 bg-linear-to-l from-primary-900/50 to-transparent" />
+          <div className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-primary-600/20" />
+        </div>
+        <Container maxWidth="2xl">
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+            {/* Text */}
+            <div className="text-white">
+              <p className="mb-3 text-xs font-bold uppercase tracking-widest text-primary-300">
+                03
               </p>
+              <h2 className="text-4xl font-black tracking-tight lg:text-5xl">
+                {locale === "es" && "Innovación"}
+                {locale === "en" && "Innovation"}
+                {locale === "ca" && "Innovació"}
+              </h2>
+              <p className="mt-2 text-xl font-semibold italic text-primary-200">
+                {locale === "es" &&
+                  "Combinamos técnicas artesanales y tecnología avanzada para producir de forma más eficiente, sostenible y con menor impacto."}
+                {locale === "en" &&
+                  "We combine artisanal techniques and advanced technology to produce more efficiently, sustainably, and with lower impact."}
+                {locale === "ca" &&
+                  "Combinem tècniques artesanals i tecnologia avançada per produir de manera més eficient, sostenible i amb menor impacte."}
+              </p>
+              <p className="mt-6 text-lg leading-relaxed text-primary-100">
+                {locale === "es" &&
+                  "Combinamos la tradición artesanal y la tecnología avanzada. Nuestro proceso de fabricación incorpora técnicas como la impresión 3D y el diseño paramétrico para garantizar precisión, rendimiento y estilo en cada pieza. Las influencias del savoir-faire francés y catalán se mezclan con el carácter creativo de la cultura urbana de Barcelona."}
+                {locale === "en" &&
+                  "We combine artisanal tradition and advanced technology. Our manufacturing process incorporates techniques such as 3D printing and parametric design to ensure precision, performance, and style in every piece. Influences from French and Catalan savoir-faire blend with the creative character of Barcelona's urban culture."}
+                {locale === "ca" &&
+                  "Combinem la tradició artesanal i la tecnologia avançada. El nostre procés de fabricació incorpora tècniques com la impressió 3D i el disseny paramètric per garantir precisió, rendiment i estil en cada peça. Les influències del savoir-faire francès i català es barregen amb el caràcter creatiu de la cultura urbana de Barcelona."}
+              </p>
+              <div className="mt-6 flex flex-wrap items-end gap-3">
+                <Image
+                  src={
+                    locale === "es"
+                      ? "/SDG%20Spanish/ods9_es_innovacion-industria.png"
+                      : locale === "ca"
+                        ? "/SDG%20Catalan/ods9_ca_industria-innovacio.png"
+                        : "/SDG%20English/ods9_en_industry-innovation.png"
+                  }
+                  alt="SDG 9"
+                  width={80}
+                  height={80}
+                  className="h-20 w-20 object-contain"
+                />
+                <Image
+                  src={
+                    locale === "es"
+                      ? "/SDG%20Spanish/ods12_es_consumo-responsable.png"
+                      : locale === "ca"
+                        ? "/SDG%20Catalan/ods12_ca_consum-responsable.png"
+                        : "/SDG%20English/ods12_en_responsible-consumption.png"
+                  }
+                  alt="SDG 12"
+                  width={80}
+                  height={80}
+                  className="h-20 w-20 object-contain"
+                />
+              </div>
             </div>
+            {/* Illustration */}
+            <div className="flex items-center justify-center">
+              <div className="relative">
+                <div className="h-72 w-72 rounded-full bg-primary-700/40 ring-1 ring-primary-500/30 lg:h-80 lg:w-80" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <svg
+                    className="h-40 w-40 text-primary-200"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 100 100"
+                  >
+                    <circle cx="50" cy="38" r="20" strokeWidth="3" />
+                    <path
+                      d="M42 58 L42 68 Q42 75 50 75 Q58 75 58 68 L58 58"
+                      strokeWidth="3"
+                    />
+                    <line x1="42" y1="64" x2="58" y2="64" strokeWidth="2.5" />
+                    <line
+                      x1="50"
+                      y1="10"
+                      x2="50"
+                      y2="5"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      opacity="0.5"
+                    />
+                    <line
+                      x1="72"
+                      y1="20"
+                      x2="76"
+                      y2="16"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      opacity="0.5"
+                    />
+                    <line
+                      x1="82"
+                      y1="40"
+                      x2="87"
+                      y2="40"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      opacity="0.5"
+                    />
+                    <line
+                      x1="28"
+                      y1="20"
+                      x2="24"
+                      y2="16"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      opacity="0.5"
+                    />
+                    <line
+                      x1="18"
+                      y1="40"
+                      x2="13"
+                      y2="40"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      opacity="0.5"
+                    />
+                    <circle
+                      cx="45"
+                      cy="38"
+                      r="2"
+                      fill="currentColor"
+                      opacity="0.6"
+                    />
+                    <circle
+                      cx="50"
+                      cy="33"
+                      r="2"
+                      fill="currentColor"
+                      opacity="0.6"
+                    />
+                    <circle
+                      cx="55"
+                      cy="38"
+                      r="2"
+                      fill="currentColor"
+                      opacity="0.6"
+                    />
+                    <circle
+                      cx="50"
+                      cy="43"
+                      r="2"
+                      fill="currentColor"
+                      opacity="0.6"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
 
-            {/* Responsible Consumption */}
-            <div className="space-y-4">
-              <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary-600">
-                <svg
-                  className="h-6 w-6 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                  />
-                </svg>
+      {/* ── 04 Responsible Consumption ── */}
+      <section className="bg-[#f7f3ed] py-20 lg:py-32">
+        <Container maxWidth="2xl">
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+            {/* Illustration (left) */}
+            <div className="flex items-center justify-center">
+              <div className="relative">
+                <div className="h-72 w-72 rounded-3xl bg-primary-100 lg:h-80 lg:w-80" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <svg
+                    className="h-44 w-44 text-primary-700"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 100 100"
+                  >
+                    <path
+                      d="M50 20 A30 30 0 1 1 25 68"
+                      strokeWidth="4"
+                      strokeLinecap="round"
+                    />
+                    <path
+                      d="M25 68 L18 60 M25 68 L33 60"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M44 56 L56 44"
+                      strokeWidth="5"
+                      strokeLinecap="round"
+                    />
+                    <circle cx="43" cy="57" r="5" strokeWidth="3" />
+                    <circle cx="57" cy="43" r="5" strokeWidth="3" />
+                  </svg>
+                </div>
               </div>
-              <h2 className="text-xl font-bold text-primary-800">
-                {locale === "es" &&
-                  "Consumo responsable – Bicicletas duraderas y reparables"}
-                {locale === "en" &&
-                  "Responsible consumption – Durable and repairable bicycles"}
-                {locale === "ca" &&
-                  "Consum responsable – Bicicletes duradores i reparables"}
-              </h2>
-              <p className="text-gray-700">
-                {locale === "es" &&
-                  "Diseñamos bicicletas pensadas para durar, para ser reparadas y para evolucionar contigo, ofreciendo una alternativa real a la producción en masa."}
-                {locale === "en" &&
-                  "We design bicycles meant to last, to be repaired and to evolve with you, offering a real alternative to mass production."}
-                {locale === "ca" &&
-                  "Dissenyem bicicletes pensades per durar, per ser reparades i per evolucionar amb tu, oferint una alternativa real a la producció en massa."}
-              </p>
             </div>
+            {/* Text (right) */}
+            <div>
+              <p className="mb-3 text-xs font-bold uppercase tracking-widest text-primary-500">
+                04
+              </p>
+              <h2 className="text-4xl font-black tracking-tight text-primary-900 lg:text-5xl">
+                {locale === "es" && "Consumo Responsable"}
+                {locale === "en" && "Responsible Consumption"}
+                {locale === "ca" && "Consum Responsable"}
+              </h2>
+              <p className="mt-2 text-xl font-semibold italic text-secondary-600">
+                {locale === "es" &&
+                  "Creamos productos duraderos, reparables y personalizables que fomentan un consumo consciente y respetuoso."}
+                {locale === "en" &&
+                  "We create durable, repairable, and customizable products that encourage conscious and respectful consumption."}
+                {locale === "ca" &&
+                  "Creem productes duradors, reparables i personalitzables que fomenten un consum conscient i respectuós."}
+              </p>
+              <p className="mt-6 text-lg leading-relaxed text-gray-700">
+                {locale === "es" &&
+                  "Etika Bikes nació como respuesta a un modelo económico insostenible. Creamos alternativas sostenibles: bicicletas de bambú duraderas, reparables y personalizables. Cada bici es una invitación a reflexionar sobre cómo consumimos y a elegir productos que respetan tanto a las personas como al medio ambiente."}
+                {locale === "en" &&
+                  "Etika Bikes was born as a response to an unsustainable economic model. We create sustainable alternatives: bamboo bicycles that are durable, repairable, and customizable. Each bike is an invitation to reflect on how we consume and to choose products that respect both people and the environment."}
+                {locale === "ca" &&
+                  "Etika Bikes va néixer com a resposta a un model econòmic insostenible. Creem alternatives sostenibles: bicicletes de bambú duradores, reparables i personalitzables. Cada bici és una invitació a reflexionar sobre com consumim i a escollir productes que respecten tant a les persones com al medi ambient."}
+              </p>
+              <div className="mt-6 flex flex-wrap items-end gap-3">
+                <Image
+                  src={
+                    locale === "es"
+                      ? "/SDG%20Spanish/ods12_es_consumo-responsable.png"
+                      : locale === "ca"
+                        ? "/SDG%20Catalan/ods12_ca_consum-responsable.png"
+                        : "/SDG%20English/ods12_en_responsible-consumption.png"
+                  }
+                  alt="SDG 12"
+                  width={80}
+                  height={80}
+                  className="h-20 w-20 object-contain"
+                />
+                <Image
+                  src={
+                    locale === "es"
+                      ? "/SDG%20Spanish/ods13_es_accion-climatica.png"
+                      : locale === "ca"
+                        ? "/SDG%20Catalan/ods13_ca_accio-climatica.png"
+                        : "/SDG%20English/ods13_en_climate-action.png"
+                  }
+                  alt="SDG 13"
+                  width={80}
+                  height={80}
+                  className="h-20 w-20 object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
 
-            {/* Environmental Awareness */}
-            <div className="space-y-4">
-              <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary-600">
-                <svg
-                  className="h-6 w-6 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                  />
-                </svg>
-              </div>
-              <h2 className="text-xl font-bold text-primary-800">
-                {locale === "es" &&
-                  "Consciencia ambiental colectiva – Redes para el cambio sostenible"}
-                {locale === "en" &&
-                  "Collective environmental awareness – Networks for sustainable change"}
-                {locale === "ca" &&
-                  "Consciència ambiental col·lectiva – Xarxes per al canvi sostenible"}
-              </h2>
-              <p className="text-gray-700">
-                {locale === "es" &&
-                  "Somos parte de redes como Barcelona + Sustainable, Pam a Pam y Biosphere, que promueven una economía local basada en valores."}
-                {locale === "en" &&
-                  "We are part of networks such as Barcelona + Sustainable, Pam a Pam and Biosphere, which promote a value-driven local economy."}
-                {locale === "ca" &&
-                  "Som part de xarxes com Barcelona + Sustainable, Pam a Pam i Biosphere, que promouen una economia local basada en valors."}
+      {/* ── 05 Collective Environmental Awareness ── */}
+      <section className="bg-white py-20 lg:py-32">
+        <Container maxWidth="2xl">
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+            {/* Text */}
+            <div>
+              <p className="mb-3 text-xs font-bold uppercase tracking-widest text-primary-500">
+                05
               </p>
+              <h2 className="text-4xl font-black tracking-tight text-primary-900 lg:text-5xl">
+                {locale === "es" && "Consciencia Ambiental Colectiva"}
+                {locale === "en" && "Collective Environmental Awareness"}
+                {locale === "ca" && "Consciència Ambiental Col·lectiva"}
+              </h2>
+              <p className="mt-2 text-xl font-semibold italic text-secondary-600">
+                {locale === "es" &&
+                  "Nuestros talleres refuerzan la educación ambiental, el empoderamiento ciudadano y la creación de redes con proyectos y comunidades afines."}
+                {locale === "en" &&
+                  "Our workshops reinforce environmental education, citizen empowerment, and networking with like-minded projects and communities."}
+                {locale === "ca" &&
+                  "Els nostres tallers reforcen l'educació ambiental, l'empoderament ciutadà i la creació de xarxes amb projectes i comunitats afins."}
+              </p>
+              <p className="mt-6 text-lg leading-relaxed text-gray-700">
+                {locale === "es" &&
+                  "Creemos que el cambio es colectivo. Por eso somos parte de la red Barcelona + Sostenible, el mapa de economía solidaria Pam a Pam y el sistema de certificación Biosphere —redes que promueven una economía local basada en valores."}
+                {locale === "en" &&
+                  "We believe that change is collective. That's why we are part of the Barcelona + Sostenible network, the Pam a Pam solidarity economy map, and the Biosphere certification system—networks that promote a local and values-driven economy."}
+                {locale === "ca" &&
+                  "Creiem que el canvi és col·lectiu. Per això som part de la xarxa Barcelona + Sostenible, el mapa d'economia solidària Pam a Pam i el sistema de certificació Biosphere —xarxes que promouen una economia local basada en valors."}
+              </p>
+              {/* Partner logos */}
+              <div className="mt-6 flex flex-wrap items-center gap-4">
+                <div className="rounded-xl bg-white p-3 shadow-sm ring-1 ring-gray-100">
+                  <Image
+                    src="/logos/logo_pam-a-pam.png"
+                    alt="Pam a Pam"
+                    width={80}
+                    height={60}
+                    className="h-14 w-auto object-contain"
+                  />
+                </div>
+                <div className="rounded-xl bg-white p-3 shadow-sm ring-1 ring-gray-100">
+                  <Image
+                    src="/logos/logo_biosphere.png"
+                    alt="Biosphere"
+                    width={80}
+                    height={60}
+                    className="h-14 w-auto object-contain"
+                  />
+                </div>
+                <div className="rounded-xl bg-white p-3 shadow-sm ring-1 ring-gray-100">
+                  <Image
+                    src="/logos/logo_bcn-mes-sostenible.png"
+                    alt="Barcelona + Sostenible"
+                    width={80}
+                    height={60}
+                    className="h-14 w-auto object-contain"
+                  />
+                </div>
+              </div>
+              <p className="mt-6 text-lg leading-relaxed text-gray-700">
+                {locale === "es" &&
+                  "Nuestros talleres de autoconstrucción no solo promueven la sostenibilidad, sino que también fortalecen el empoderamiento ciudadano, la educación ambiental práctica y las conexiones entre personas. Con cada bicicleta, contribuimos a la solidaridad verde entre barrios y comunidades. No solo construimos bicis: impulsamos un movimiento hacia un futuro más justo y sostenible."}
+                {locale === "en" &&
+                  "Our self-building workshops not only promote sustainability, but also strengthen citizen empowerment, hands-on environmental education, and connections between people. With every bicycle, we contribute to green solidarity between neighborhoods and communities. We don't just build bikes: we drive a movement toward a more just and sustainable future."}
+                {locale === "ca" &&
+                  "Els nostres tallers d'autoconstrucció no només promouen la sostenibilitat, sinó que també enforteixen l'empoderament ciutadà, l'educació ambiental pràctica i les connexions entre persones. Amb cada bicicleta, contribuïm a la solidaritat verda entre barris i comunitats. No només construïm bicis: impulsem un moviment cap a un futur més just i sostenible."}
+              </p>
+              <div className="mt-6 flex flex-wrap items-end gap-3">
+                <Image
+                  src={
+                    locale === "es"
+                      ? "/SDG%20Spanish/ods4_es_educacion-calidad.png"
+                      : locale === "ca"
+                        ? "/SDG%20Catalan/ods4_ca_educacio-qualitat.png"
+                        : "/SDG%20English/ods4_en_quality-education.png"
+                  }
+                  alt="SDG 4"
+                  width={80}
+                  height={80}
+                  className="h-20 w-20 object-contain"
+                />
+                <Image
+                  src={
+                    locale === "es"
+                      ? "/SDG%20Spanish/ods11_es_ciudades-sostenibles.png"
+                      : locale === "ca"
+                        ? "/SDG%20Catalan/ods11_ca_ciutats-sostenibles.png"
+                        : "/SDG%20English/ods11_en_sustainable-cities.png"
+                  }
+                  alt="SDG 11"
+                  width={80}
+                  height={80}
+                  className="h-20 w-20 object-contain"
+                />
+                <Image
+                  src={
+                    locale === "es"
+                      ? "/SDG%20Spanish/ods17_es_alianzas-objetivos.png"
+                      : locale === "ca"
+                        ? "/SDG%20Catalan/ods17_ca_aliances-objectius.png"
+                        : "/SDG%20English/ods17_en_partnerships-goal.png"
+                  }
+                  alt="SDG 17"
+                  width={80}
+                  height={80}
+                  className="h-20 w-20 object-contain"
+                />
+              </div>
             </div>
+            {/* Illustration */}
+            <div className="flex items-center justify-center">
+              <div className="relative">
+                <div className="h-72 w-72 rounded-full bg-primary-50 lg:h-80 lg:w-80" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <svg
+                    className="h-44 w-44 text-primary-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 100 100"
+                  >
+                    <circle
+                      cx="50"
+                      cy="50"
+                      r="8"
+                      strokeWidth="3"
+                      fill="currentColor"
+                      opacity="0.2"
+                    />
+                    <circle cx="50" cy="50" r="4" fill="currentColor" />
+                    <circle cx="80" cy="30" r="6" strokeWidth="2.5" />
+                    <circle cx="80" cy="70" r="6" strokeWidth="2.5" />
+                    <circle cx="20" cy="30" r="6" strokeWidth="2.5" />
+                    <circle cx="20" cy="70" r="6" strokeWidth="2.5" />
+                    <circle cx="50" cy="15" r="6" strokeWidth="2.5" />
+                    <circle cx="50" cy="85" r="6" strokeWidth="2.5" />
+                    <line
+                      x1="50"
+                      y1="50"
+                      x2="80"
+                      y2="30"
+                      strokeWidth="1.5"
+                      opacity="0.5"
+                    />
+                    <line
+                      x1="50"
+                      y1="50"
+                      x2="80"
+                      y2="70"
+                      strokeWidth="1.5"
+                      opacity="0.5"
+                    />
+                    <line
+                      x1="50"
+                      y1="50"
+                      x2="20"
+                      y2="30"
+                      strokeWidth="1.5"
+                      opacity="0.5"
+                    />
+                    <line
+                      x1="50"
+                      y1="50"
+                      x2="20"
+                      y2="70"
+                      strokeWidth="1.5"
+                      opacity="0.5"
+                    />
+                    <line
+                      x1="50"
+                      y1="50"
+                      x2="50"
+                      y2="15"
+                      strokeWidth="1.5"
+                      opacity="0.5"
+                    />
+                    <line
+                      x1="50"
+                      y1="50"
+                      x2="50"
+                      y2="85"
+                      strokeWidth="1.5"
+                      opacity="0.5"
+                    />
+                    <line
+                      x1="80"
+                      y1="30"
+                      x2="50"
+                      y2="15"
+                      strokeWidth="1"
+                      opacity="0.25"
+                    />
+                    <line
+                      x1="80"
+                      y1="30"
+                      x2="80"
+                      y2="70"
+                      strokeWidth="1"
+                      opacity="0.25"
+                    />
+                    <line
+                      x1="20"
+                      y1="30"
+                      x2="50"
+                      y2="15"
+                      strokeWidth="1"
+                      opacity="0.25"
+                    />
+                    <line
+                      x1="20"
+                      y1="70"
+                      x2="20"
+                      y2="30"
+                      strokeWidth="1"
+                      opacity="0.25"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
 
-            {/* Passion for Bicycles */}
-            <div className="space-y-4">
-              <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary-600">
-                <svg
-                  className="h-6 w-6 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
+      {/* ── 06 Passion for Bikes ── */}
+      <section
+        className="py-20 lg:py-32"
+        style={{ backgroundColor: "#5a4a3b" }}
+      >
+        <Container maxWidth="2xl">
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+            {/* Illustration (left on desktop) */}
+            <div className="flex items-center justify-center lg:order-first order-last">
+              <div className="relative">
+                <div className="h-72 w-72 rounded-full bg-white/10 lg:h-80 lg:w-80" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <svg
+                    className="h-44 w-44 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 100 100"
+                  >
+                    <circle cx="25" cy="65" r="18" strokeWidth="3" />
+                    <circle cx="75" cy="65" r="18" strokeWidth="3" />
+                    <line
+                      x1="50"
+                      y1="38"
+                      x2="25"
+                      y2="65"
+                      strokeWidth="3.5"
+                      strokeLinecap="round"
+                    />
+                    <line
+                      x1="50"
+                      y1="38"
+                      x2="75"
+                      y2="65"
+                      strokeWidth="3.5"
+                      strokeLinecap="round"
+                    />
+                    <line
+                      x1="50"
+                      y1="65"
+                      x2="50"
+                      y2="38"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                    />
+                    <line
+                      x1="25"
+                      y1="65"
+                      x2="50"
+                      y2="65"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                    />
+                    <line
+                      x1="50"
+                      y1="38"
+                      x2="62"
+                      y2="30"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                    />
+                    <line
+                      x1="56"
+                      y1="25"
+                      x2="68"
+                      y2="25"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                    />
+                    <line
+                      x1="50"
+                      y1="38"
+                      x2="40"
+                      y2="30"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                    />
+                    <line
+                      x1="34"
+                      y1="28"
+                      x2="46"
+                      y2="28"
+                      strokeWidth="3.5"
+                      strokeLinecap="round"
+                    />
+                    <path
+                      d="M47 50 C47 48 45 47 44 48 C43 47 41 48 41 50 C41 52 44 55 44 55 C44 55 47 52 47 50Z"
+                      fill="currentColor"
+                      opacity="0.7"
+                    />
+                  </svg>
+                </div>
+                <div className="absolute -inset-4 rounded-full border border-dashed border-white/20" />
               </div>
-              <h2 className="text-xl font-bold text-primary-800">
-                {locale === "es" &&
-                  "Pasión por las bicicletas – Movilidad activa, libre de emisiones"}
-                {locale === "en" &&
-                  "Passion for bicycles – Active, emission-free mobility"}
-                {locale === "ca" &&
-                  "Passió per les bicicletes – Mobilitat activa, lliure d'emissions"}
-              </h2>
-              <p className="text-gray-700">
-                {locale === "es" &&
-                  "Cada kilómetro recorrido en una bicicleta Etika es una declaración de intenciones y valores."}
-                {locale === "en" &&
-                  "Every kilometer ridden on an Etika bicycle is a statement of intent and values."}
-                {locale === "ca" &&
-                  "Cada quilòmetre recorregut en una bicicleta Etika és una declaració d'intencions i valors."}
-              </p>
             </div>
+            {/* Text */}
+            <div className="text-white">
+              <p className="mb-3 text-xs font-bold uppercase tracking-widest text-white/40">
+                06
+              </p>
+              <h2 className="text-4xl font-black tracking-tight lg:text-5xl">
+                {locale === "es" && "Pasión por las Bicicletas"}
+                {locale === "en" && "Passion for Bikes"}
+                {locale === "ca" && "Passió per les Bicicletes"}
+              </h2>
+              <p className="mt-2 text-xl font-semibold italic text-white/70">
+                {locale === "es" &&
+                  "Promovemos una movilidad activa, saludable y libre de emisiones. Cada pedalada es un acto de compromiso con uno mismo y con el planeta."}
+                {locale === "en" &&
+                  "We promote active, healthy, and emission-free mobility. Every pedal stroke is an act of commitment to oneself and to the planet."}
+                {locale === "ca" &&
+                  "Promovem una mobilitat activa, saludable i lliure d'emissions. Cada pedalada és un acte de compromís amb un mateix i amb el planeta."}
+              </p>
+              <p className="mt-6 text-lg leading-relaxed text-white/80">
+                {locale === "es" &&
+                  "Soñamos con bicis, pensamos en bicis y vivimos sobre dos ruedas. Queremos compartir esta pasión contigo y animarte a pedalear siempre que puedas. Porque cada kilómetro recorrido en una bici Etika es una declaración de intenciones, una forma de vida."}
+                {locale === "en" &&
+                  "We dream of bikes, think about bikes, and live on two wheels. We want to share this passion with you and encourage you to ride whenever you can. Because every kilometer traveled on an Etika bike is a statement of intent, a way of life."}
+                {locale === "ca" &&
+                  "Somiem amb bicis, pensem en bicis i vivim sobre dues rodes. Volem compartir aquesta passió amb tu i animar-te a pedalar sempre que puguis. Perquè cada quilòmetre recorregut en una bici Etika és una declaració d'intencions, una forma de vida."}
+              </p>
+              <div className="mt-6 flex flex-wrap items-end gap-3">
+                <Image
+                  src={
+                    locale === "es"
+                      ? "/SDG%20Spanish/ods3_es_salud-bienestar.png"
+                      : locale === "ca"
+                        ? "/SDG%20Catalan/ods3_ca_salut-benestar.png"
+                        : "/SDG%20English/ods3_en_good-health.png"
+                  }
+                  alt="SDG 3"
+                  width={80}
+                  height={80}
+                  className="h-20 w-20 object-contain"
+                />
+                <Image
+                  src={
+                    locale === "es"
+                      ? "/SDG%20Spanish/ods11_es_ciudades-sostenibles.png"
+                      : locale === "ca"
+                        ? "/SDG%20Catalan/ods11_ca_ciutats-sostenibles.png"
+                        : "/SDG%20English/ods11_en_sustainable-cities.png"
+                  }
+                  alt="SDG 11"
+                  width={80}
+                  height={80}
+                  className="h-20 w-20 object-contain"
+                />
+                <Image
+                  src={
+                    locale === "es"
+                      ? "/SDG%20Spanish/ods13_es_accion-climatica.png"
+                      : locale === "ca"
+                        ? "/SDG%20Catalan/ods13_ca_accio-climatica.png"
+                        : "/SDG%20English/ods13_en_climate-action.png"
+                  }
+                  alt="SDG 13"
+                  width={80}
+                  height={80}
+                  className="h-20 w-20 object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* ── 07 Sustainable Urban Mobility ── */}
+      <section className="bg-primary-50 py-20 lg:py-32">
+        <Container maxWidth="2xl">
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+            {/* Text */}
+            <div>
+              <p className="mb-3 text-xs font-bold uppercase tracking-widest text-primary-500">
+                07
+              </p>
+              <h2 className="text-4xl font-black tracking-tight text-primary-900 lg:text-5xl">
+                {locale === "es" && "Movilidad Urbana Sostenible"}
+                {locale === "en" && "Sustainable Urban Mobility"}
+                {locale === "ca" && "Mobilitat Urbana Sostenible"}
+              </h2>
+              <p className="mt-2 text-xl font-semibold italic text-secondary-600">
+                {locale === "es" &&
+                  "Promovemos una movilidad urbana más limpia, accesible y conectada. Cada bicicleta Etika ayuda a construir ciudades más humanas y habitables."}
+                {locale === "en" &&
+                  "We promote cleaner, more accessible, and more connected urban mobility. Each Etika bicycle helps build more human and livable cities."}
+                {locale === "ca" &&
+                  "Promovem una mobilitat urbana més neta, accessible i connectada. Cada bicicleta Etika ajuda a construir ciutats més humanes i habitables."}
+              </p>
+              <p className="mt-6 text-lg leading-relaxed text-gray-700">
+                {locale === "es" &&
+                  "Queremos que nuestras bicicletas sean más que objetos especiales: son una solución concreta para la movilidad ecológica cotidiana. Cada bici Etika es también una herramienta de transformación urbana."}
+                {locale === "en" &&
+                  "We want our bicycles to be more than just special objects—they are a concrete solution for daily ecological mobility. Each Etika bike is also a tool for urban transformation."}
+                {locale === "ca" &&
+                  "Volem que les nostres bicicletes siguin més que objectes especials: són una solució concreta per a la mobilitat ecològica quotidiana. Cada bici Etika és també una eina de transformació urbana."}
+              </p>
+              <ul className="mt-4 space-y-2">
+                <li className="flex items-start gap-3 text-lg leading-relaxed text-gray-700">
+                  <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-primary-500" />
+                  {locale === "es" &&
+                    "Ofrecemos bicicletas funcionales, duraderas y prácticas para entornos urbanos."}
+                  {locale === "en" &&
+                    "We offer functional, durable, and practical bicycles for urban environments."}
+                  {locale === "ca" &&
+                    "Oferim bicicletes funcionals, duradores i pràctiques per a entorns urbans."}
+                </li>
+                <li className="flex items-start gap-3 text-lg leading-relaxed text-gray-700">
+                  <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-primary-500" />
+                  {locale === "es" &&
+                    "Contribuimos a una ciudad más humana, habitable y conectada."}
+                  {locale === "en" &&
+                    "We contribute to a more human, livable, and connected city."}
+                  {locale === "ca" &&
+                    "Contribuïm a una ciutat més humana, habitable i connectada."}
+                </li>
+              </ul>
+              <div className="mt-6 flex flex-wrap items-end gap-3">
+                <Image
+                  src={
+                    locale === "es"
+                      ? "/SDG%20Spanish/ods11_es_ciudades-sostenibles.png"
+                      : locale === "ca"
+                        ? "/SDG%20Catalan/ods11_ca_ciutats-sostenibles.png"
+                        : "/SDG%20English/ods11_en_sustainable-cities.png"
+                  }
+                  alt="SDG 11"
+                  width={80}
+                  height={80}
+                  className="h-20 w-20 object-contain"
+                />
+                <Image
+                  src={
+                    locale === "es"
+                      ? "/SDG%20Spanish/ods13_es_accion-climatica.png"
+                      : locale === "ca"
+                        ? "/SDG%20Catalan/ods13_ca_accio-climatica.png"
+                        : "/SDG%20English/ods13_en_climate-action.png"
+                  }
+                  alt="SDG 13"
+                  width={80}
+                  height={80}
+                  className="h-20 w-20 object-contain"
+                />
+              </div>
+            </div>
+            {/* Illustration */}
+            <div className="flex items-center justify-center">
+              <div className="relative">
+                <div className="h-72 w-72 rounded-full bg-primary-100 lg:h-80 lg:w-80" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <svg
+                    className="h-44 w-44 text-primary-700"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 100 100"
+                  >
+                    <rect
+                      x="10"
+                      y="50"
+                      width="15"
+                      height="30"
+                      strokeWidth="2.5"
+                      rx="1"
+                    />
+                    <rect
+                      x="30"
+                      y="38"
+                      width="20"
+                      height="42"
+                      strokeWidth="2.5"
+                      rx="1"
+                    />
+                    <rect
+                      x="55"
+                      y="44"
+                      width="15"
+                      height="36"
+                      strokeWidth="2.5"
+                      rx="1"
+                    />
+                    <rect
+                      x="75"
+                      y="52"
+                      width="15"
+                      height="28"
+                      strokeWidth="2.5"
+                      rx="1"
+                    />
+                    <line
+                      x1="10"
+                      y1="85"
+                      x2="90"
+                      y2="85"
+                      strokeWidth="2"
+                      strokeDasharray="5 3"
+                    />
+                    <circle cx="35" cy="79" r="5" strokeWidth="2" />
+                    <circle cx="55" cy="79" r="5" strokeWidth="2" />
+                    <line
+                      x1="45"
+                      y1="68"
+                      x2="35"
+                      y2="79"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    />
+                    <line
+                      x1="45"
+                      y1="68"
+                      x2="55"
+                      y2="79"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    />
+                    <line
+                      x1="45"
+                      y1="68"
+                      x2="45"
+                      y2="79"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    />
+                    <line
+                      x1="35"
+                      y1="79"
+                      x2="45"
+                      y2="79"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    />
+                    <line
+                      x1="45"
+                      y1="68"
+                      x2="52"
+                      y2="63"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    />
+                    <line
+                      x1="38"
+                      y1="65"
+                      x2="45"
+                      y2="65"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                    />
+                    <circle cx="78" cy="18" r="7" strokeWidth="2.5" />
+                    <line
+                      x1="78"
+                      y1="5"
+                      x2="78"
+                      y2="2"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    />
+                    <line
+                      x1="91"
+                      y1="18"
+                      x2="94"
+                      y2="18"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    />
+                    <line
+                      x1="87"
+                      y1="9"
+                      x2="89"
+                      y2="7"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    />
+                    <line
+                      x1="87"
+                      y1="27"
+                      x2="89"
+                      y2="29"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* ── Closing Statement ── */}
+      <section className="border-t border-primary-200 bg-white py-20 lg:py-28">
+        <Container maxWidth="2xl">
+          <div className="mx-auto max-w-3xl text-center">
+            <div className="mx-auto mb-8 flex items-center justify-center gap-3">
+              <div className="h-px w-16 bg-primary-300" />
+              <div className="h-2 w-2 rounded-full bg-primary-400" />
+              <div className="h-px w-16 bg-primary-300" />
+            </div>
+            <p className="text-2xl font-bold text-primary-800 lg:text-3xl">
+              {locale === "es" &&
+                "\u201cEtika es, ante todo, una forma de vida.\u201d"}
+              {locale === "en" &&
+                "\u201cEtika is, above all, a way of life.\u201d"}
+              {locale === "ca" &&
+                "\u201cEtika és, sobretot, una forma de vida.\u201d"}
+            </p>
+            <p className="mt-6 text-lg leading-relaxed text-gray-600">
+              {locale === "es" &&
+                "Aspiramos a ofrecer una solución real para la movilidad urbana sostenible: accesible, funcional y en armonía con el entorno."}
+              {locale === "en" &&
+                "We aim to offer a real solution for sustainable urban mobility: accessible, functional and in harmony with the environment."}
+              {locale === "ca" &&
+                "Aspirem a oferir una solució real per a la mobilitat urbana sostenible: accessible, funcional i en harmonia amb l'entorn."}
+            </p>
           </div>
         </Container>
       </section>
@@ -802,103 +1868,256 @@ function SelfBuildWorkshopPage({ locale }: { locale: Locale }) {
       </section>
 
       {/* What's Included & Why */}
-      <section className="bg-white py-16 lg:py-24">
+      <section className="bg-gradient-to-b from-gray-50 to-white py-16 lg:py-24">
         <Container maxWidth="2xl">
-          <div className="grid gap-16 lg:grid-cols-2 lg:gap-24">
-            <div>
-              <h2 className="text-3xl font-bold text-primary-800 lg:text-4xl">
-                {locale === "es" && "Qué Incluye el Taller"}
-                {locale === "en" && "What the Workshop Includes"}
-                {locale === "ca" && "Què Inclou el Taller"}
-              </h2>
-              <div className="mt-8 space-y-4">
-                <div className="flex items-start gap-3">
-                  <div className="mt-1.5 h-2 w-2 rounded-full bg-primary-600"></div>
-                  <p className="text-gray-700">
-                    {locale === "es" &&
-                      "Orientación técnica y supervisión por artesanos de Etika Bikes"}
-                    {locale === "en" &&
-                      "Technical guidance and supervision by Etika Bikes artisans"}
-                    {locale === "ca" &&
-                      "Orientació tècnica i supervisió per artesans d'Etika Bikes"}
-                  </p>
+          <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
+            {/* Card 1 - What's Included */}
+            <div className="group relative overflow-hidden rounded-3xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300">
+              {/* Image Header */}
+              <div className="relative h-64 overflow-hidden">
+                <Image
+                  src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                  alt="Workshop tools and materials"
+                  width={1200}
+                  height={600}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary-900/90 via-primary-800/50 to-transparent"></div>
+                <div className="absolute bottom-6 left-6 right-6">
+                  <h2 className="text-3xl font-bold text-white lg:text-4xl">
+                    {locale === "es" && "Qué Incluye el Taller"}
+                    {locale === "en" && "What the Workshop Includes"}
+                    {locale === "ca" && "Què Inclou el Taller"}
+                  </h2>
                 </div>
-                <div className="flex items-start gap-3">
-                  <div className="mt-1.5 h-2 w-2 rounded-full bg-primary-600"></div>
-                  <p className="text-gray-700">
-                    {locale === "es" &&
-                      "Todos los materiales: tubos de bambú, fibras naturales, resinas, herramientas y accesorios"}
-                    {locale === "en" &&
-                      "All materials: bamboo tubes, natural fibers, resins, tools and accessories"}
-                    {locale === "ca" &&
-                      "Tots els materials: tubs de bambú, fibres naturals, resines, eines i accessoris"}
-                  </p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="mt-1.5 h-2 w-2 rounded-full bg-primary-600"></div>
-                  <p className="text-gray-700">
-                    {locale === "es" && "Ajuste del cuadro según tus medidas"}
-                    {locale === "en" &&
-                      "Frame adjustment according to your measurements"}
-                    {locale === "ca" &&
-                      "Ajust del quadre segons les teves mides"}
-                  </p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="mt-1.5 h-2 w-2 rounded-full bg-primary-600"></div>
-                  <p className="text-gray-700">
-                    {locale === "es" &&
-                      "Certificado de participación y personalización opcional del acabado"}
-                    {locale === "en" &&
-                      "Participation certificate and optional finish customization"}
-                    {locale === "ca" &&
-                      "Certificat de participació i personalització opcional de l'acabat"}
-                  </p>
+              </div>
+
+              {/* Content */}
+              <div className="p-8">
+                <div className="space-y-5">
+                  <div className="flex items-start gap-4 p-4 rounded-xl bg-primary-50/50 hover:bg-primary-50 transition-colors">
+                    <div className="flex-shrink-0 mt-1">
+                      <div className="h-8 w-8 rounded-full bg-primary-600 flex items-center justify-center">
+                        <svg
+                          className="h-4 w-4 text-white"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                    <p className="text-gray-700 leading-relaxed">
+                      {locale === "es" &&
+                        "Orientación técnica y supervisión por artesanos de Etika Bikes"}
+                      {locale === "en" &&
+                        "Technical guidance and supervision by Etika Bikes artisans"}
+                      {locale === "ca" &&
+                        "Orientació tècnica i supervisió per artesans d'Etika Bikes"}
+                    </p>
+                  </div>
+
+                  <div className="flex items-start gap-4 p-4 rounded-xl bg-primary-50/50 hover:bg-primary-50 transition-colors">
+                    <div className="flex-shrink-0 mt-1">
+                      <div className="h-8 w-8 rounded-full bg-primary-600 flex items-center justify-center">
+                        <svg
+                          className="h-4 w-4 text-white"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                    <p className="text-gray-700 leading-relaxed">
+                      {locale === "es" &&
+                        "Todos los materiales: tubos de bambú, fibras naturales, resinas, herramientas y accesorios"}
+                      {locale === "en" &&
+                        "All materials: bamboo tubes, natural fibers, resins, tools and accessories"}
+                      {locale === "ca" &&
+                        "Tots els materials: tubs de bambú, fibres naturals, resines, eines i accessoris"}
+                    </p>
+                  </div>
+
+                  <div className="flex items-start gap-4 p-4 rounded-xl bg-primary-50/50 hover:bg-primary-50 transition-colors">
+                    <div className="flex-shrink-0 mt-1">
+                      <div className="h-8 w-8 rounded-full bg-primary-600 flex items-center justify-center">
+                        <svg
+                          className="h-4 w-4 text-white"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                    <p className="text-gray-700 leading-relaxed">
+                      {locale === "es" && "Ajuste del cuadro según tus medidas"}
+                      {locale === "en" &&
+                        "Frame adjustment according to your measurements"}
+                      {locale === "ca" &&
+                        "Ajust del quadre segons les teves mides"}
+                    </p>
+                  </div>
+
+                  <div className="flex items-start gap-4 p-4 rounded-xl bg-primary-50/50 hover:bg-primary-50 transition-colors">
+                    <div className="flex-shrink-0 mt-1">
+                      <div className="h-8 w-8 rounded-full bg-primary-600 flex items-center justify-center">
+                        <svg
+                          className="h-4 w-4 text-white"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                    <p className="text-gray-700 leading-relaxed">
+                      {locale === "es" &&
+                        "Certificado de participación y personalización opcional del acabado"}
+                      {locale === "en" &&
+                        "Participation certificate and optional finish customization"}
+                      {locale === "ca" &&
+                        "Certificat de participació i personalització opcional de l'acabat"}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div>
-              <h2 className="text-3xl font-bold text-primary-800 lg:text-4xl">
-                {locale === "es" &&
-                  "Por Qué Construir tu Propia Bicicleta de Bambú"}
-                {locale === "en" && "Why Build Your Own Bamboo Bicycle"}
-                {locale === "ca" &&
-                  "Per Què Construir la Teva Pròpia Bicicleta de Bambú"}
-              </h2>
-              <div className="mt-8 space-y-4">
-                <div className="flex items-start gap-3">
-                  <div className="mt-1.5 h-2 w-2 rounded-full bg-primary-600"></div>
-                  <p className="text-gray-700">
+            {/* Card 2 - Why Build */}
+            <div className="group relative overflow-hidden rounded-3xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300">
+              {/* Image Header */}
+              <div className="relative h-64 overflow-hidden">
+                <Image
+                  src="https://images.unsplash.com/photo-1523995462485-3d171b5c8fa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                  alt="Person working on bamboo bicycle"
+                  width={1200}
+                  height={600}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-secondary-900/90 via-secondary-800/50 to-transparent"></div>
+                <div className="absolute bottom-6 left-6 right-6">
+                  <h2 className="text-3xl font-bold text-white lg:text-4xl">
                     {locale === "es" &&
-                      "Reduce tu huella ambiental utilizando materiales naturales y sostenibles"}
-                    {locale === "en" &&
-                      "Reduce your environmental footprint using natural and sustainable materials"}
+                      "Por Qué Construir tu Propia Bicicleta de Bambú"}
+                    {locale === "en" && "Why Build Your Own Bamboo Bicycle"}
                     {locale === "ca" &&
-                      "Redueix la teva petjada ambiental utilitzant materials naturals i sostenibles"}
-                  </p>
+                      "Per Què Construir la Teva Pròpia Bicicleta de Bambú"}
+                  </h2>
                 </div>
-                <div className="flex items-start gap-3">
-                  <div className="mt-1.5 h-2 w-2 rounded-full bg-primary-600"></div>
-                  <p className="text-gray-700">
-                    {locale === "es" &&
-                      "Aprende un proceso técnico y artesanal a través de la práctica directa"}
-                    {locale === "en" &&
-                      "Learn a technical and artisanal process through hands-on practice"}
-                    {locale === "ca" &&
-                      "Aprèn un procés tècnic i artesanal a través de la pràctica directa"}
-                  </p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="mt-1.5 h-2 w-2 rounded-full bg-primary-600"></div>
-                  <p className="text-gray-700">
-                    {locale === "es" &&
-                      "Vive una experiencia auténtica, creativa y transformadora"}
-                    {locale === "en" &&
-                      "Live an authentic, creative and transformative experience"}
-                    {locale === "ca" &&
-                      "Viu una experiència autèntica, creativa i transformadora"}
-                  </p>
+              </div>
+
+              {/* Content */}
+              <div className="p-8">
+                <div className="space-y-5">
+                  <div className="flex items-start gap-4 p-4 rounded-xl bg-secondary-50/50 hover:bg-secondary-50 transition-colors">
+                    <div className="flex-shrink-0 mt-1">
+                      <div className="h-8 w-8 rounded-full bg-secondary-700 flex items-center justify-center">
+                        <svg
+                          className="h-4 w-4 text-white"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                    <p className="text-gray-700 leading-relaxed">
+                      {locale === "es" &&
+                        "Reduce tu huella ambiental utilizando materiales naturales y sostenibles"}
+                      {locale === "en" &&
+                        "Reduce your environmental footprint using natural and sustainable materials"}
+                      {locale === "ca" &&
+                        "Redueix la teva petjada ambiental utilitzant materials naturals i sostenibles"}
+                    </p>
+                  </div>
+
+                  <div className="flex items-start gap-4 p-4 rounded-xl bg-secondary-50/50 hover:bg-secondary-50 transition-colors">
+                    <div className="flex-shrink-0 mt-1">
+                      <div className="h-8 w-8 rounded-full bg-secondary-700 flex items-center justify-center">
+                        <svg
+                          className="h-4 w-4 text-white"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                    <p className="text-gray-700 leading-relaxed">
+                      {locale === "es" &&
+                        "Aprende un proceso técnico y artesanal a través de la práctica directa"}
+                      {locale === "en" &&
+                        "Learn a technical and artisanal process through hands-on practice"}
+                      {locale === "ca" &&
+                        "Aprèn un procés tècnic i artesanal a través de la pràctica directa"}
+                    </p>
+                  </div>
+
+                  <div className="flex items-start gap-4 p-4 rounded-xl bg-secondary-50/50 hover:bg-secondary-50 transition-colors">
+                    <div className="flex-shrink-0 mt-1">
+                      <div className="h-8 w-8 rounded-full bg-secondary-700 flex items-center justify-center">
+                        <svg
+                          className="h-4 w-4 text-white"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                    <p className="text-gray-700 leading-relaxed">
+                      {locale === "es" &&
+                        "Vive una experiencia auténtica, creativa y transformadora"}
+                      {locale === "en" &&
+                        "Live an authentic, creative and transformative experience"}
+                      {locale === "ca" &&
+                        "Viu una experiència autèntica, creativa i transformadora"}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1193,144 +2412,260 @@ function CustomBikesPage({ locale }: { locale: Locale }) {
       </section>
 
       {/* Process & Craftsmanship */}
-      <section className="bg-white py-16 lg:py-24">
+      <section className="bg-gradient-to-b from-gray-50 via-white to-gray-50 py-16 lg:py-24">
         <Container maxWidth="2xl">
-          <div className="grid gap-16 lg:grid-cols-2 lg:gap-24">
-            <div>
-              <h2 className="text-3xl font-bold text-primary-800 lg:text-4xl">
-                {locale === "es" && "Artesanía Sostenible"}
-                {locale === "en" && "Sustainable Craftsmanship"}
-                {locale === "ca" && "Artesania Sostenible"}
-              </h2>
-              <div className="mt-6 space-y-4 text-lg leading-relaxed text-gray-700">
-                <p>
-                  {locale === "es" &&
-                    "Cada bicicleta se fabrica artesanalmente en nuestro taller de L'Hospitalet de Llobregat (Barcelona), utilizando bambú cultivado en Cataluña, fibras naturales de lino o carbono y resinas ecológicas."}
-                  {locale === "en" &&
-                    "Each bicycle is handmade in our workshop in L'Hospitalet de Llobregat (Barcelona), using bamboo grown in Catalonia, natural flax or carbon fibers and eco-friendly resins."}
-                  {locale === "ca" &&
-                    "Cada bicicleta es fabrica artesanalment al nostre taller de l'Hospitalet de Llobregat (Barcelona), utilitzant bambú cultivat a Catalunya, fibres naturals de lli o carboni i resines ecològiques."}
-                </p>
-                <p>
-                  {locale === "es" &&
-                    "Nuestro enfoque se centra en la durabilidad, la reparabilidad y la evolución a largo plazo — bicicletas diseñadas para crecer contigo."}
-                  {locale === "en" &&
-                    "Our approach focuses on durability, repairability and long-term evolution — bicycles designed to grow with you."}
-                  {locale === "ca" &&
-                    "El nostre enfocament se centra en la durabilitat, la reparabilitat i l'evolució a llarg termini — bicicletes dissenyades per créixer amb tu."}
-                </p>
+          {/* Sustainable Craftsmanship Card */}
+          <div className="mb-20">
+            <div className="grid lg:grid-cols-2 gap-8 items-center">
+              {/* Image */}
+              <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl group">
+                <Image
+                  src="https://images.unsplash.com/photo-1606898604882-0192d2139a2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                  alt="Bamboo bicycle workshop craftsmanship"
+                  width={1200}
+                  height={800}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary-900/80 via-primary-900/20 to-transparent"></div>
+                <div className="absolute bottom-6 left-6 right-6">
+                  <div className="inline-block px-4 py-2 bg-white/90 backdrop-blur-sm rounded-lg">
+                    <p className="text-sm font-semibold text-primary-800">
+                      {locale === "es" &&
+                        "L'Hospitalet de Llobregat, Barcelona"}
+                      {locale === "en" &&
+                        "L'Hospitalet de Llobregat, Barcelona"}
+                      {locale === "ca" &&
+                        "L'Hospitalet de Llobregat, Barcelona"}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="lg:pl-8">
+                <div className="inline-block px-4 py-1 bg-primary-100 text-primary-800 rounded-full text-sm font-semibold mb-4">
+                  {locale === "es" && "Nuestro Taller"}
+                  {locale === "en" && "Our Workshop"}
+                  {locale === "ca" && "El Nostre Taller"}
+                </div>
+                <h2 className="text-4xl font-bold text-primary-800 lg:text-5xl mb-6">
+                  {locale === "es" && "Artesanía Sostenible"}
+                  {locale === "en" && "Sustainable Craftsmanship"}
+                  {locale === "ca" && "Artesania Sostenible"}
+                </h2>
+                <div className="space-y-5 text-lg leading-relaxed text-gray-700">
+                  <p>
+                    {locale === "es" &&
+                      "Cada bicicleta se fabrica artesanalmente en nuestro taller de L'Hospitalet de Llobregat (Barcelona), utilizando bambú cultivado en Cataluña, fibras naturales de lino o carbono y resinas ecológicas."}
+                    {locale === "en" &&
+                      "Each bicycle is handmade in our workshop in L'Hospitalet de Llobregat (Barcelona), using bamboo grown in Catalonia, natural flax or carbon fibers and eco-friendly resins."}
+                    {locale === "ca" &&
+                      "Cada bicicleta es fabrica artesanalment al nostre taller de l'Hospitalet de Llobregat (Barcelona), utilitzant bambú cultivat a Catalunya, fibres naturals de lli o carboni i resines ecològiques."}
+                  </p>
+                  <p>
+                    {locale === "es" &&
+                      "Nuestro enfoque se centra en la durabilidad, la reparabilidad y la evolución a largo plazo — bicicletas diseñadas para crecer contigo."}
+                    {locale === "en" &&
+                      "Our approach focuses on durability, repairability and long-term evolution — bicycles designed to grow with you."}
+                    {locale === "ca" &&
+                      "El nostre enfocament se centra en la durabilitat, la reparabilitat i l'evolució a llarg termini — bicicletes dissenyades per créixer amb tu."}
+                  </p>
+                </div>
+
+                {/* Features */}
+                <div className="mt-8 grid grid-cols-3 gap-4">
+                  <div className="text-center p-4 bg-primary-50 rounded-xl">
+                    <div className="text-2xl font-bold text-primary-800">
+                      100%
+                    </div>
+                    <div className="text-xs text-gray-600 mt-1">
+                      {locale === "es" && "Artesanal"}
+                      {locale === "en" && "Handmade"}
+                      {locale === "ca" && "Artesanal"}
+                    </div>
+                  </div>
+                  <div className="text-center p-4 bg-secondary-50 rounded-xl">
+                    <div className="text-2xl font-bold text-secondary-800">
+                      Local
+                    </div>
+                    <div className="text-xs text-gray-600 mt-1">
+                      {locale === "es" && "Barcelona"}
+                      {locale === "en" && "Barcelona"}
+                      {locale === "ca" && "Barcelona"}
+                    </div>
+                  </div>
+                  <div className="text-center p-4 bg-primary-50 rounded-xl">
+                    <div className="text-2xl font-bold text-primary-800">
+                      Eco
+                    </div>
+                    <div className="text-xs text-gray-600 mt-1">
+                      {locale === "es" && "Sostenible"}
+                      {locale === "en" && "Sustainable"}
+                      {locale === "ca" && "Sostenible"}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
+          </div>
 
-            <div>
-              <h2 className="text-3xl font-bold text-primary-800 lg:text-4xl">
+          {/* Customization Process */}
+          <div className="relative">
+            <div className="text-center mb-12">
+              <div className="inline-block px-4 py-1 bg-secondary-100 text-secondary-800 rounded-full text-sm font-semibold mb-4">
+                {locale === "es" && "Paso a Paso"}
+                {locale === "en" && "Step by Step"}
+                {locale === "ca" && "Pas a Pas"}
+              </div>
+              <h2 className="text-4xl font-bold text-primary-800 lg:text-5xl">
                 {locale === "es" && "El Proceso de Personalización Etika"}
                 {locale === "en" && "The Etika Customization Process"}
                 {locale === "ca" && "El Procés de Personalització Etika"}
               </h2>
-              <div className="mt-8 space-y-6">
-                <div className="flex gap-4">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-600 text-white text-sm font-bold">
-                    1
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-primary-800">
-                      {locale === "es" && "Análisis inicial"}
-                      {locale === "en" && "Initial analysis"}
-                      {locale === "ca" && "Anàlisi inicial"}
-                    </h4>
-                    <p className="text-gray-700">
-                      {locale === "es" &&
-                        "medidas corporales, estilo de conducción y uso previsto"}
-                      {locale === "en" &&
-                        "body measurements, riding style and intended use"}
-                      {locale === "ca" &&
-                        "mides corporals, estil de conducció i ús previst"}
-                    </p>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-8">
+              {/* Left side - Process image */}
+              <div className="relative h-full min-h-[600px] rounded-2xl overflow-hidden shadow-xl">
+                <Image
+                  src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                  alt="Custom bicycle manufacturing process"
+                  width={1200}
+                  height={1200}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-primary-900/60 via-transparent to-secondary-900/60"></div>
+              </div>
+
+              {/* Right side - Process steps */}
+              <div className="space-y-6">
+                {/* Step 1 */}
+                <div className="group relative bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border-l-4 border-primary-600">
+                  <div className="flex gap-5">
+                    <div className="flex-shrink-0">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-600 text-white text-lg font-bold shadow-lg group-hover:scale-110 transition-transform">
+                        1
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-xl font-bold text-primary-800 mb-2">
+                        {locale === "es" && "Análisis inicial"}
+                        {locale === "en" && "Initial analysis"}
+                        {locale === "ca" && "Anàlisi inicial"}
+                      </h4>
+                      <p className="text-gray-700">
+                        {locale === "es" &&
+                          "medidas corporales, estilo de conducción y uso previsto"}
+                        {locale === "en" &&
+                          "body measurements, riding style and intended use"}
+                        {locale === "ca" &&
+                          "mides corporals, estil de conducció i ús previst"}
+                      </p>
+                    </div>
                   </div>
                 </div>
 
-                <div className="flex gap-4">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-600 text-white text-sm font-bold">
-                    2
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-primary-800">
-                      {locale === "es" && "Diseño del cuadro"}
-                      {locale === "en" && "Frame design"}
-                      {locale === "ca" && "Disseny del quadre"}
-                    </h4>
-                    <p className="text-gray-700">
-                      {locale === "es" &&
-                        "geometría, materiales y selección de componentes"}
-                      {locale === "en" &&
-                        "geometry, materials and component selection"}
-                      {locale === "ca" &&
-                        "geometria, materials i selecció de components"}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-600 text-white text-sm font-bold">
-                    3
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-primary-800">
-                      {locale === "es" && "Fabricación artesanal"}
-                      {locale === "en" && "Handmade fabrication"}
-                      {locale === "ca" && "Fabricació artesanal"}
-                    </h4>
-                    <p className="text-gray-700">
-                      {locale === "es" &&
-                        "construcción del cuadro de bambú con compuestos de fibra natural y bio-epoxi"}
-                      {locale === "en" &&
-                        "bamboo frame construction using natural fiber composites and bio-epoxy"}
-                      {locale === "ca" &&
-                        "construcció del quadre de bambú amb compostos de fibra natural i bio-epoxi"}
-                    </p>
+                {/* Step 2 */}
+                <div className="group relative bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border-l-4 border-primary-600">
+                  <div className="flex gap-5">
+                    <div className="flex-shrink-0">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-600 text-white text-lg font-bold shadow-lg group-hover:scale-110 transition-transform">
+                        2
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-xl font-bold text-primary-800 mb-2">
+                        {locale === "es" && "Diseño del cuadro"}
+                        {locale === "en" && "Frame design"}
+                        {locale === "ca" && "Disseny del quadre"}
+                      </h4>
+                      <p className="text-gray-700">
+                        {locale === "es" &&
+                          "geometría, materiales y selección de componentes"}
+                        {locale === "en" &&
+                          "geometry, materials and component selection"}
+                        {locale === "ca" &&
+                          "geometria, materials i selecció de components"}
+                      </p>
+                    </div>
                   </div>
                 </div>
 
-                <div className="flex gap-4">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-600 text-white text-sm font-bold">
-                    4
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-primary-800">
-                      {locale === "es" && "Montaje y ajuste"}
-                      {locale === "en" && "Assembly and tuning"}
-                      {locale === "ca" && "Muntatge i ajust"}
-                    </h4>
-                    <p className="text-gray-700">
-                      {locale === "es" &&
-                        "instalación, configuración y pruebas finales"}
-                      {locale === "en" &&
-                        "installation, setup and final testing"}
-                      {locale === "ca" &&
-                        "instal·lació, configuració i proves finals"}
-                    </p>
+                {/* Step 3 */}
+                <div className="group relative bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border-l-4 border-secondary-700">
+                  <div className="flex gap-5">
+                    <div className="flex-shrink-0">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-secondary-700 text-white text-lg font-bold shadow-lg group-hover:scale-110 transition-transform">
+                        3
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-xl font-bold text-primary-800 mb-2">
+                        {locale === "es" && "Fabricación artesanal"}
+                        {locale === "en" && "Handmade fabrication"}
+                        {locale === "ca" && "Fabricació artesanal"}
+                      </h4>
+                      <p className="text-gray-700">
+                        {locale === "es" &&
+                          "construcción del cuadro de bambú con compuestos de fibra natural y bio-epoxi"}
+                        {locale === "en" &&
+                          "bamboo frame construction using natural fiber composites and bio-epoxy"}
+                        {locale === "ca" &&
+                          "construcció del quadre de bambú amb compostos de fibra natural i bio-epoxi"}
+                      </p>
+                    </div>
                   </div>
                 </div>
 
-                <div className="flex gap-4">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-600 text-white text-sm font-bold">
-                    5
+                {/* Step 4 */}
+                <div className="group relative bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border-l-4 border-primary-600">
+                  <div className="flex gap-5">
+                    <div className="flex-shrink-0">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-600 text-white text-lg font-bold shadow-lg group-hover:scale-110 transition-transform">
+                        4
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-xl font-bold text-primary-800 mb-2">
+                        {locale === "es" && "Montaje y ajuste"}
+                        {locale === "en" && "Assembly and tuning"}
+                        {locale === "ca" && "Muntatge i ajust"}
+                      </h4>
+                      <p className="text-gray-700">
+                        {locale === "es" &&
+                          "instalación, configuración y pruebas finales"}
+                        {locale === "en" &&
+                          "installation, setup and final testing"}
+                        {locale === "ca" &&
+                          "instal·lació, configuració i proves finals"}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-primary-800">
-                      {locale === "es" && "Entrega y seguimiento"}
-                      {locale === "en" && "Delivery and follow-up"}
-                      {locale === "ca" && "Lliurament i seguiment"}
-                    </h4>
-                    <p className="text-gray-700">
-                      {locale === "es" &&
-                        "consejos de mantenimiento y ajustes post-entrega"}
-                      {locale === "en" &&
-                        "maintenance advice and post-delivery adjustments"}
-                      {locale === "ca" &&
-                        "consells de manteniment i ajustaments post-lliurament"}
-                    </p>
+                </div>
+
+                {/* Step 5 */}
+                <div className="group relative bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border-l-4 border-primary-600">
+                  <div className="flex gap-5">
+                    <div className="flex-shrink-0">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-600 text-white text-lg font-bold shadow-lg group-hover:scale-110 transition-transform">
+                        5
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-xl font-bold text-primary-800 mb-2">
+                        {locale === "es" && "Entrega y seguimiento"}
+                        {locale === "en" && "Delivery and follow-up"}
+                        {locale === "ca" && "Lliurament i seguiment"}
+                      </h4>
+                      <p className="text-gray-700">
+                        {locale === "es" &&
+                          "consejos de mantenimiento y ajustes post-entrega"}
+                        {locale === "en" &&
+                          "maintenance advice and post-delivery adjustments"}
+                        {locale === "ca" &&
+                          "consells de manteniment i ajustaments post-lliurament"}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1419,20 +2754,32 @@ function CarbonRepairPage({ locale }: { locale: Locale }) {
 
           {/* Image Side */}
           <div className="relative h-[80vh] lg:h-auto">
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1502744688674-c619d1586c9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
               alt="Carbon frame repair workshop"
+              width={2070}
+              height={1380}
               className="w-full h-full object-cover"
             />
           </div>
         </div>
       </section>
 
-      {/* Main Service Description */}
-      <section className="bg-white py-16 lg:py-24">
+      {/* ── Main Service Description ── */}
+      <section className="bg-white py-20 lg:py-28">
         <Container maxWidth="2xl">
           <div className="mx-auto max-w-4xl">
-            <h2 className="text-3xl font-bold text-primary-800 lg:text-4xl">
+            {/* Eyebrow */}
+            <p className="mb-8 text-center text-sm font-bold uppercase tracking-[0.25em] text-primary-500">
+              {locale === "es" &&
+                "Reparación especializada de cuadros de carbono en Barcelona"}
+              {locale === "en" &&
+                "Specialized carbon frame repair in Barcelona"}
+              {locale === "ca" &&
+                "Reparació especialitzada de quadres de carboni a Barcelona"}
+            </p>
+            {/* Main Heading */}
+            <h2 className="text-2xl font-light leading-relaxed text-gray-800 lg:text-3xl">
               {locale === "es" &&
                 "Reparamos, Reforzamos y Alargamos la Vida de Tu Bicicleta"}
               {locale === "en" &&
@@ -1440,390 +2787,257 @@ function CarbonRepairPage({ locale }: { locale: Locale }) {
               {locale === "ca" &&
                 "Reparem, Reforcem i Allargem la Vida de la Teva Bicicleta"}
             </h2>
-            <div className="mt-8 space-y-6 text-lg leading-relaxed text-gray-700">
-              <p>
-                {locale === "es" &&
-                  "En Etika Bikes, reparamos cuadros de fibra de carbono dañados utilizando técnicas especializadas de reparación con compuestos de fibra natural y bio-resinas."}
-                {locale === "en" &&
-                  "At Etika Bikes, we repair damaged carbon fiber frames using specialized repair techniques with natural fiber composites and bio-resins."}
-                {locale === "ca" &&
-                  "A Etika Bikes, reparem quadres de fibra de carboni danyats utilitzant tècniques especialitzades de reparació amb compostos de fibra natural i bio-resines."}
+            {/* Thin rule */}
+            <div className="my-8 h-px w-24 bg-primary-300" />
+            {/* Para 1 */}
+            <p className="text-lg leading-relaxed text-gray-600">
+              {locale === "es" &&
+                "En Etika Bikes, ofrecemos un servicio especializado de reparación de cuadros de carbono que combina precisión estructural, experiencia artesanal y materiales sostenibles."}
+              {locale === "en" &&
+                "At Etika Bikes, we offer a specialized carbon frame repair service combining structural precision, artisanal expertise and sustainable materials."}
+              {locale === "ca" &&
+                "A Etika Bikes, oferim un servei especialitzat de reparació de quadres de carboni que combina precisió estructural, experiència artesanal i materials sostenibles."}
+            </p>
+            {/* Para 2 */}
+            <p className="mt-6 text-lg leading-relaxed text-gray-600">
+              {locale === "es" &&
+                "Nuestro objetivo es restaurar la integridad y el rendimiento original de tu bicicleta mientras evitamos el desperdicio innecesario y alargamos su vida útil."}
+              {locale === "en" &&
+                "Our goal is to restore the original integrity and performance of your bicycle while avoiding unnecessary waste and extending its lifespan."}
+              {locale === "ca" &&
+                "El nostre objectiu és restaurar la integritat i el rendiment original de la teva bicicleta mentre evitem el malbaratament innecessari i allargem la seva vida útil."}
+            </p>
+            {/* Para 3 */}
+            <p className="mt-6 text-lg leading-relaxed text-gray-600">
+              {locale === "es" &&
+                "Todas las reparaciones se realizan a mano en nuestro taller en L'Hospitalet de Llobregat (Barcelona), siguiendo los mismos estándares de calidad utilizados en nuestros cuadros de bambú y fibra natural."}
+              {locale === "en" &&
+                "All repairs are carried out by hand in our workshop in L'Hospitalet de Llobregat (Barcelona), following the same quality standards used in our bamboo and natural fiber frames."}
+              {locale === "ca" &&
+                "Totes les reparacions es realitzen a mà al nostre taller a L'Hospitalet de Llobregat (Barcelona), seguint els mateixos estàndards de qualitat utilitzats als nostres quadres de bambú i fibra natural."}
+            </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* ── 01 A Technical and Artisanal Process ── */}
+      <section className="bg-primary-50 py-20 lg:py-32">
+        <Container maxWidth="2xl">
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+            {/* Text */}
+            <div>
+              <p className="mb-3 text-xs font-bold uppercase tracking-widest text-primary-400">
+                01
               </p>
-              <p>
+              <h2 className="text-4xl font-black tracking-tight text-primary-900 lg:text-5xl">
+                {locale === "es" && "Un Proceso Técnico y Artesanal"}
+                {locale === "en" && "A Technical and Artisanal Process"}
+                {locale === "ca" && "Un Procés Tècnic i Artesanal"}
+              </h2>
+              <p className="mt-2 text-xl font-semibold italic text-secondary-700">
                 {locale === "es" &&
-                  "Nuestro enfoque se centra en alargar la vida útil de tu bicicleta, evitando el desperdicio y ofreciendo una alternativa sostenible a la compra de un cuadro nuevo."}
+                  "Cada cuadro de carbono dañado requiere un enfoque específico. Analizamos cada caso individualmente antes de la intervención."}
                 {locale === "en" &&
-                  "Our approach focuses on extending the life of your bicycle, avoiding waste and offering a sustainable alternative to buying a new frame."}
+                  "Each damaged carbon frame requires a specific approach. We analyze every case individually before intervention."}
                 {locale === "ca" &&
-                  "El nostre enfocament se centra en allargar la vida útil de la teva bicicleta, evitant el malbaratament i oferint una alternativa sostenible a la compra d'un quadre nou."}
+                  "Cada quadre de carboni danyat requereix un enfocament específic. Analitzem cada cas individualment abans de la intervenció."}
               </p>
-              <p>
-                {locale === "es" &&
-                  "Con años de experiencia en materiales compuestos, restauramos la integridad estructural de cuadros dañados por grietas, impactos o desgaste, devolviendo la seguridad y el rendimiento original."}
-                {locale === "en" &&
-                  "With years of experience in composite materials, we restore the structural integrity of frames damaged by cracks, impacts or wear, returning the original safety and performance."}
-                {locale === "ca" &&
-                  "Amb anys d'experiència en materials compostos, restaurem la integritat estructural de quadres danyats per esquerdes, impactes o desgast, retornant la seguretat i el rendiment original."}
+              <p className="mt-6 text-lg font-semibold text-primary-800">
+                {locale === "es" && "El proceso incluye:"}
+                {locale === "en" && "The process includes:"}
+                {locale === "ca" && "El procés inclou:"}
               </p>
+              <ul className="mt-4 space-y-3">
+                <li className="flex items-start gap-3 text-lg text-gray-700">
+                  <div className="flex-shrink-0 mt-1">
+                    <div className="h-2 w-2 rounded-full bg-primary-600"></div>
+                  </div>
+                  <span>
+                    {locale === "es" && "Diagnóstico estructural e inspección visual"}
+                    {locale === "en" && "Structural diagnosis and visual inspection"}
+                    {locale === "ca" && "Diagnòstic estructural i inspecció visual"}
+                  </span>
+                </li>
+                <li className="flex items-start gap-3 text-lg text-gray-700">
+                  <div className="flex-shrink-0 mt-1">
+                    <div className="h-2 w-2 rounded-full bg-primary-600"></div>
+                  </div>
+                  <span>
+                    {locale === "es" && "Preparación de la zona dañada"}
+                    {locale === "en" && "Preparation of the damaged area"}
+                    {locale === "ca" && "Preparació de la zona danyada"}
+                  </span>
+                </li>
+                <li className="flex items-start gap-3 text-lg text-gray-700">
+                  <div className="flex-shrink-0 mt-1">
+                    <div className="h-2 w-2 rounded-full bg-primary-600"></div>
+                  </div>
+                  <span>
+                    {locale === "es" &&
+                      "Laminación usando fibra de carbono o fibra de lino con resinas epoxi de alto rendimiento"}
+                    {locale === "en" &&
+                      "Lamination using carbon fiber or flax fiber with high-performance epoxy resins"}
+                    {locale === "ca" &&
+                      "Laminació utilitzant fibra de carboni o fibra de lli amb resines epoxi d'alt rendiment"}
+                  </span>
+                </li>
+                <li className="flex items-start gap-3 text-lg text-gray-700">
+                  <div className="flex-shrink-0 mt-1">
+                    <div className="h-2 w-2 rounded-full bg-primary-600"></div>
+                  </div>
+                  <span>
+                    {locale === "es" && "Curado controlado y acabado final"}
+                    {locale === "en" && "Controlled curing and final finish"}
+                    {locale === "ca" && "Curat controlat i acabat final"}
+                  </span>
+                </li>
+                <li className="flex items-start gap-3 text-lg text-gray-700">
+                  <div className="flex-shrink-0 mt-1">
+                    <div className="h-2 w-2 rounded-full bg-primary-600"></div>
+                  </div>
+                  <span>
+                    {locale === "es" &&
+                      "Verificación completa de seguridad y rigidez"}
+                    {locale === "en" &&
+                      "Complete verification for safety and stiffness"}
+                    {locale === "ca" &&
+                      "Verificació completa de seguretat i rigidesa"}
+                  </span>
+                </li>
+              </ul>
+            </div>
+            {/* Illustration */}
+            <div className="flex items-center justify-center">
+              <div className="relative">
+                <div className="h-72 w-72 rounded-full bg-primary-100 lg:h-80 lg:w-80" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <svg
+                    className="h-40 w-40 text-primary-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 100 100"
+                  >
+                    {/* Wrench icon */}
+                    <path
+                      d="M65 25 L75 15 L85 25 L75 35 Z"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M75 25 L40 60"
+                      strokeWidth="4"
+                      strokeLinecap="round"
+                    />
+                    <circle
+                      cx="35"
+                      cy="65"
+                      r="15"
+                      strokeWidth="3"
+                    />
+                    <circle
+                      cx="35"
+                      cy="65"
+                      r="8"
+                      strokeWidth="2"
+                      opacity="0.5"
+                    />
+                    {/* Carbon fiber pattern */}
+                    <path
+                      d="M20 35 Q25 40 30 35 T40 35"
+                      strokeWidth="2"
+                      opacity="0.4"
+                    />
+                    <path
+                      d="M55 70 Q60 75 65 70 T75 70"
+                      strokeWidth="2"
+                      opacity="0.4"
+                    />
+                  </svg>
+                </div>
+                <div className="absolute -inset-4 rounded-full border-2 border-dashed border-primary-300 opacity-50" />
+              </div>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* Services & Specializations */}
-      <section className="bg-primary-50 py-16 lg:py-24">
+      {/* ── 02 Repair Is Also a Sustainable Choice ── */}
+      <section className="bg-[#f7f3ed] py-20 lg:py-32">
         <Container maxWidth="2xl">
-          <h2 className="mb-12 text-center text-3xl font-bold text-primary-800 lg:text-4xl">
-            {locale === "es" && "Servicios de Reparación Especializados"}
-            {locale === "en" && "Specialized Repair Services"}
-            {locale === "ca" && "Serveis de Reparació Especialitzats"}
-          </h2>
-
-          <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
-            <div className="rounded-2xl bg-white p-8">
-              <div className="inline-flex h-16 w-16 items-center justify-center rounded-xl bg-primary-600 mb-6">
-                <svg
-                  className="h-8 w-8 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
-                  />
-                </svg>
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+            {/* Illustration (left) */}
+            <div className="flex items-center justify-center">
+              <div className="relative">
+                <div className="h-72 w-72 rounded-3xl bg-primary-100 lg:h-80 lg:w-80" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <svg
+                    className="h-44 w-44 text-primary-700"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 100 100"
+                  >
+                    {/* Recycling/sustainability arrows */}
+                    <path
+                      d="M50 20 A30 30 0 1 1 25 68"
+                      strokeWidth="4"
+                      strokeLinecap="round"
+                    />
+                    <path
+                      d="M25 68 L18 60 M25 68 L33 60"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    {/* Leaf symbol */}
+                    <path
+                      d="M55 45 Q70 35 75 45 Q70 55 55 65 Q55 55 55 45"
+                      fill="currentColor"
+                      opacity="0.3"
+                    />
+                    <path
+                      d="M55 45 L55 65"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-primary-800 mb-4">
-                {locale === "es" && "Reparación de Grietas y Fracturas"}
-                {locale === "en" && "Crack and Fracture Repair"}
-                {locale === "ca" && "Reparació d'Esquerdes i Fractures"}
-              </h3>
-              <p className="text-gray-700 leading-relaxed">
-                {locale === "es" &&
-                  "Reparamos grietas en cuadros de carbono utilizando fibra natural de lino y bio-epoxi, restaurando la resistencia estructural."}
-                {locale === "en" &&
-                  "We repair cracks in carbon frames using natural flax fiber and bio-epoxy, restoring structural strength."}
-                {locale === "ca" &&
-                  "Reparem esquerdes en quadres de carboni utilitzant fibra natural de lli i bio-epoxi, restaurant la resistència estructural."}
-              </p>
             </div>
-
-            <div className="rounded-2xl bg-white p-8">
-              <div className="inline-flex h-16 w-16 items-center justify-center rounded-xl bg-primary-600 mb-6">
-                <svg
-                  className="h-8 w-8 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-primary-800 mb-4">
-                {locale === "es" && "Refuerzo Estructural"}
-                {locale === "en" && "Structural Reinforcement"}
-                {locale === "ca" && "Reforç Estructural"}
-              </h3>
-              <p className="text-gray-700 leading-relaxed">
-                {locale === "es" &&
-                  "Reforzamos áreas críticas de cuadros para prevenir futuros daños y mejorar la durabilidad a largo plazo."}
-                {locale === "en" &&
-                  "We reinforce critical areas of frames to prevent future damage and improve long-term durability."}
-                {locale === "ca" &&
-                  "Reforcem àrees crítiques de quadres per prevenir futurs danys i millorar la durabilitat a llarg termini."}
-              </p>
-            </div>
-
-            <div className="rounded-2xl bg-white p-8">
-              <div className="inline-flex h-16 w-16 items-center justify-center rounded-xl bg-primary-600 mb-6">
-                <svg
-                  className="h-8 w-8 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-primary-800 mb-4">
-                {locale === "es" && "Restauración de Cuadros Vintage"}
-                {locale === "en" && "Vintage Frame Restoration"}
-                {locale === "ca" && "Restauració de Quadres Vintage"}
-              </h3>
-              <p className="text-gray-700 leading-relaxed">
-                {locale === "es" &&
-                  "Restauramos cuadros de carbono antiguos o de colección, preservando su valor histórico mientras mejoramos su funcionalidad."}
-                {locale === "en" &&
-                  "We restore old or collectible carbon frames, preserving their historical value while improving functionality."}
-                {locale === "ca" &&
-                  "Restaurem quadres de carboni antics o de col·lecció, preservant el seu valor històric mentre millorem la funcionalitat."}
-              </p>
-            </div>
-
-            <div className="rounded-2xl bg-white p-8">
-              <div className="inline-flex h-16 w-16 items-center justify-center rounded-xl bg-primary-600 mb-6">
-                <svg
-                  className="h-8 w-8 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-primary-800 mb-4">
-                {locale === "es" && "Modificaciones Personalizadas"}
-                {locale === "en" && "Custom Modifications"}
-                {locale === "ca" && "Modificacions Personalitzades"}
-              </h3>
-              <p className="text-gray-700 leading-relaxed">
-                {locale === "es" &&
-                  "Adaptamos geometrías existentes o agregamos elementos específicos para mejorar el rendimiento según tus necesidades."}
-                {locale === "en" &&
-                  "We adapt existing geometries or add specific elements to improve performance according to your needs."}
-                {locale === "ca" &&
-                  "Adaptem geometries existents o afegim elements específics per millorar el rendiment segons les teves necessitats."}
-              </p>
-            </div>
-
-            <div className="rounded-2xl bg-white p-8">
-              <div className="inline-flex h-16 w-16 items-center justify-center rounded-xl bg-primary-600 mb-6">
-                <svg
-                  className="h-8 w-8 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-primary-800 mb-4">
-                {locale === "es" && "Inspección y Diagnóstico"}
-                {locale === "en" && "Inspection and Diagnosis"}
-                {locale === "ca" && "Inspecció i Diagnòstic"}
-              </h3>
-              <p className="text-gray-700 leading-relaxed">
-                {locale === "es" &&
-                  "Evaluamos el estado estructural de tu cuadro y te asesoramos sobre la viabilidad y el costo de la reparación."}
-                {locale === "en" &&
-                  "We evaluate the structural condition of your frame and advise you on the feasibility and cost of repair."}
-                {locale === "ca" &&
-                  "Avaluem l'estat estructural del teu quadre i t'assessorem sobre la viabilitat i el cost de la reparació."}
-              </p>
-            </div>
-
-            <div className="rounded-2xl bg-white p-8">
-              <div className="inline-flex h-16 w-16 items-center justify-center rounded-xl bg-primary-600 mb-6">
-                <svg
-                  className="h-8 w-8 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-primary-800 mb-4">
-                {locale === "es" && "Mantenimiento Preventivo"}
-                {locale === "en" && "Preventive Maintenance"}
-                {locale === "ca" && "Manteniment Preventiu"}
-              </h3>
-              <p className="text-gray-700 leading-relaxed">
-                {locale === "es" &&
-                  "Ofrecemos servicios de protección y mantenimiento para prevenir daños futuros en tu cuadro de carbono."}
-                {locale === "en" &&
-                  "We offer protection and maintenance services to prevent future damage to your carbon frame."}
-                {locale === "ca" &&
-                  "Oferim serveis de protecció i manteniment per prevenir futurs danys al teu quadre de carboni."}
-              </p>
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* Materials & Process */}
-      <section className="bg-white py-16 lg:py-24">
-        <Container maxWidth="2xl">
-          <div className="grid gap-16 lg:grid-cols-2 lg:gap-24">
+            {/* Text (right) */}
             <div>
-              <h2 className="text-3xl font-bold text-primary-800 lg:text-4xl">
-                {locale === "es" && "Materiales Sostenibles"}
-                {locale === "en" && "Sustainable Materials"}
-                {locale === "ca" && "Materials Sostenibles"}
+              <p className="mb-3 text-xs font-bold uppercase tracking-widest text-primary-500">
+                02
+              </p>
+              <h2 className="text-4xl font-black tracking-tight text-primary-900 lg:text-5xl">
+                {locale === "es" && "Reparar Es También una Elección Sostenible"}
+                {locale === "en" && "Repair Is Also a Sustainable Choice"}
+                {locale === "ca" && "Reparar És També una Elecció Sostenible"}
               </h2>
-              <div className="mt-6 space-y-4 text-lg leading-relaxed text-gray-700">
-                <p>
-                  {locale === "es" &&
-                    "Utilizamos fibra natural de lino de origen europeo y resinas bio-epoxi de origen vegetal para todas nuestras reparaciones."}
-                  {locale === "en" &&
-                    "We use European-sourced natural flax fiber and bio-epoxy resins from plant sources for all our repairs."}
-                  {locale === "ca" &&
-                    "Utilitzem fibra natural de lli d'origen europeu i resines bio-epoxi d'origen vegetal per a totes les nostres reparacions."}
-                </p>
-                <p>
-                  {locale === "es" &&
-                    "Estos materiales ofrecen características mecánicas comparables al carbono tradicional, pero con un impacto ambiental significativamente menor."}
-                  {locale === "en" &&
-                    "These materials offer mechanical characteristics comparable to traditional carbon, but with a significantly lower environmental impact."}
-                  {locale === "ca" &&
-                    "Aquests materials ofereixen característiques mecàniques comparables al carboni tradicional, però amb un impacte ambiental significativament menor."}
-                </p>
-                <p>
-                  {locale === "es" &&
-                    "Nuestro proceso garantiza la compatibilidad entre los materiales de reparación y el carbono original, asegurando una unión firme y duradera."}
-                  {locale === "en" &&
-                    "Our process guarantees compatibility between repair materials and original carbon, ensuring a firm and lasting bond."}
-                  {locale === "ca" &&
-                    "El nostre procés garanteix la compatibilitat entre els materials de reparació i el carboni original, assegurant una unió ferma i duradora."}
-                </p>
-              </div>
-            </div>
-
-            <div>
-              <h2 className="text-3xl font-bold text-primary-800 lg:text-4xl">
-                {locale === "es" && "Proceso de Reparación Etika"}
-                {locale === "en" && "Etika Repair Process"}
-                {locale === "ca" && "Procés de Reparació Etika"}
-              </h2>
-              <div className="mt-8 space-y-6">
-                <div className="flex gap-4">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-600 text-white text-sm font-bold">
-                    1
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-primary-800">
-                      {locale === "es" && "Evaluación inicial"}
-                      {locale === "en" && "Initial evaluation"}
-                      {locale === "ca" && "Avaluació inicial"}
-                    </h4>
-                    <p className="text-gray-700">
-                      {locale === "es" &&
-                        "inspección visual y análisis estructural del daño"}
-                      {locale === "en" &&
-                        "visual inspection and structural analysis of damage"}
-                      {locale === "ca" &&
-                        "inspecció visual i anàlisi estructural del dany"}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-600 text-white text-sm font-bold">
-                    2
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-primary-800">
-                      {locale === "es" && "Preparación del área"}
-                      {locale === "en" && "Area preparation"}
-                      {locale === "ca" && "Preparació de l'àrea"}
-                    </h4>
-                    <p className="text-gray-700">
-                      {locale === "es" &&
-                        "limpieza, lijado y preparación de la superficie"}
-                      {locale === "en" &&
-                        "cleaning, sanding and surface preparation"}
-                      {locale === "ca" &&
-                        "neteja, llimat i preparació de la superfície"}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-600 text-white text-sm font-bold">
-                    3
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-primary-800">
-                      {locale === "es" && "Aplicación de parche"}
-                      {locale === "en" && "Patch application"}
-                      {locale === "ca" && "Aplicació de pedaç"}
-                    </h4>
-                    <p className="text-gray-700">
-                      {locale === "es" &&
-                        "colocación de fibra natural y resina bio-epoxi"}
-                      {locale === "en" &&
-                        "placement of natural fiber and bio-epoxy resin"}
-                      {locale === "ca" &&
-                        "col·locació de fibra natural i resina bio-epoxi"}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-600 text-white text-sm font-bold">
-                    4
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-primary-800">
-                      {locale === "es" && "Curado y acabado"}
-                      {locale === "en" && "Curing and finishing"}
-                      {locale === "ca" && "Curat i acabat"}
-                    </h4>
-                    <p className="text-gray-700">
-                      {locale === "es" &&
-                        "tiempo de curado, lijado y acabado estético"}
-                      {locale === "en" &&
-                        "curing time, sanding and aesthetic finishing"}
-                      {locale === "ca" &&
-                        "temps de curat, llimat i acabat estètic"}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-600 text-white text-sm font-bold">
-                    5
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-primary-800">
-                      {locale === "es" && "Control de calidad"}
-                      {locale === "en" && "Quality control"}
-                      {locale === "ca" && "Control de qualitat"}
-                    </h4>
-                    <p className="text-gray-700">
-                      {locale === "es" &&
-                        "pruebas finales y garantía de la reparación"}
-                      {locale === "en" && "final testing and repair warranty"}
-                      {locale === "ca" &&
-                        "proves finals i garantia de la reparació"}
-                    </p>
-                  </div>
-                </div>
-              </div>
+              <p className="mt-2 text-xl font-semibold italic text-secondary-600">
+                {locale === "es" &&
+                  "Reducimos el impacto ambiental y maximizamos los recursos existentes."}
+                {locale === "en" &&
+                  "We reduce environmental impact and maximize existing resources."}
+                {locale === "ca" &&
+                  "Reduïm l'impacte ambiental i maximitzem els recursos existents."}
+              </p>
+              <p className="mt-6 text-lg leading-relaxed text-gray-700">
+                {locale === "es" &&
+                  "Reparar un cuadro de carbono en lugar de reemplazarlo reduce el impacto ambiental y maximiza los recursos existentes."}
+                {locale === "en" &&
+                  "Repairing a carbon frame instead of replacing it reduces environmental impact and maximizes existing resources."}
+                {locale === "ca" &&
+                  "Reparar un quadre de carboni en lloc de substituir-lo redueix l'impacte ambiental i maximitza els recursos existents."}
+              </p>
+              <p className="mt-4 text-lg leading-relaxed text-gray-700">
+                {locale === "es" &&
+                  "Siempre que sea posible, integramos fibras naturales de lino y resinas de base biológica, aplicando los principios de sostenibilidad también al trabajo de reparación."}
+                {locale === "en" &&
+                  "Whenever possible, we integrate natural flax fibers and bio-based resins, applying sustainability principles to repair work as well."}
+                {locale === "ca" &&
+                  "Sempre que sigui possible, integrem fibres naturals de lli i resines de base biològica, aplicant els principis de sostenibilitat també al treball de reparació."}
+              </p>
             </div>
           </div>
         </Container>
@@ -1834,44 +3048,34 @@ function CarbonRepairPage({ locale }: { locale: Locale }) {
         <Container maxWidth="2xl">
           <div className="text-center text-white">
             <h2 className="text-3xl font-bold lg:text-4xl">
-              {locale === "es" && "Dale una Segunda Vida a Tu Bicicleta"}
-              {locale === "en" && "Give Your Bicycle a Second Life"}
-              {locale === "ca" && "Dona una Segona Vida a la Teva Bicicleta"}
+              {locale === "es" && "Vuelve a Rodar con Confianza"}
+              {locale === "en" && "Ride Again with Confidence"}
+              {locale === "ca" && "Torna a Rodar amb Confiança"}
             </h2>
             <div className="mx-auto mt-6 max-w-3xl space-y-4 text-lg text-primary-200">
               <p>
                 {locale === "es" &&
-                  "En Etika Bikes creemos en la economía circular y en el valor de reparar en lugar de reemplazar."}
+                  "Reparamos grietas, impactos y zonas debilitadas en bicicletas de carretera, gravel, MTB y eléctricas."}
                 {locale === "en" &&
-                  "At Etika Bikes we believe in the circular economy and the value of repairing rather than replacing."}
+                  "We repair cracks, impacts and weakened areas on road, gravel, MTB and electric bicycles."}
                 {locale === "ca" &&
-                  "A Etika Bikes creiem en l'economia circular i en el valor de reparar en lloc de substituir."}
+                  "Reparem esquerdes, impactes i zones debilitades en bicicletes de carretera, gravel, MTB i elèctriques."}
               </p>
               <p>
                 {locale === "es" &&
-                  "Tu cuadro de carbono puede tener muchos años de vida por delante con la reparación adecuada."}
+                  "Cada reparación se entrega verificada y garantizada, lista para rodar de forma segura nuevamente."}
                 {locale === "en" &&
-                  "Your carbon frame can have many years of life ahead with proper repair."}
+                  "Each repair is delivered verified and guaranteed, ready to ride safely again."}
                 {locale === "ca" &&
-                  "El teu quadre de carboni pot tenir molts anys de vida per endavant amb la reparació adequada."}
+                  "Cada reparació es lliura verificada i garantida, llesta per rodar de forma segura novament."}
               </p>
               <p className="text-xl font-semibold text-white">
                 {locale === "es" &&
-                  "Sostenible, efectivo y más económico que comprar nuevo."}
+                  "Contáctanos y te asesoraremos sobre la mejor solución para tu cuadro de carbono."}
                 {locale === "en" &&
-                  "Sustainable, effective and more economical than buying new."}
+                  "Contact us and we will advise you on the best solution for your carbon frame."}
                 {locale === "ca" &&
-                  "Sostenible, efectiu i més econòmic que comprar nou."}
-              </p>
-            </div>
-            <div className="mt-8">
-              <p className="text-primary-200">
-                {locale === "es" &&
-                  "Trae tu cuadro dañado para una evaluación gratuita y presupuesto personalizado."}
-                {locale === "en" &&
-                  "Bring your damaged frame for a free evaluation and personalized quote."}
-                {locale === "ca" &&
-                  "Porta el teu quadre danyat per a una avaluació gratuïta i pressupost personalitzat."}
+                  "Contacta'ns i t'assessorarem sobre la millor solució per al teu quadre de carboni."}
               </p>
             </div>
           </div>
@@ -2779,15 +3983,15 @@ export async function generateMetadata({
   // Carbon Repair page metadata
   if (routeKey === "carbonRepair") {
     const titles: Record<Locale, string> = {
-      es: "Reparación de Cuadros de Carbono | Servicio Especializado en Barcelona – Etika Bikes",
-      en: "Carbon Frame Repair | Specialized Service in Barcelona – Etika Bikes",
-      ca: "Reparació de Quadres de Carboni | Servei Especialitzat a Barcelona – Etika Bikes",
+      es: "Reparación de Cuadros de Carbono en Barcelona | Etika Bikes",
+      en: "Carbon Frame Repair in Barcelona | Etika Bikes",
+      ca: "Reparació de Quadres de Carboni a Barcelona | Etika Bikes",
     };
 
     const descriptions: Record<Locale, string> = {
-      es: "Reparamos cuadros de fibra de carbono con técnicas especializadas y materiales sostenibles. Dale una segunda vida a tu bicicleta en Barcelona.",
-      en: "We repair carbon fiber frames with specialized techniques and sustainable materials. Give your bicycle a second life in Barcelona.",
-      ca: "Reparem quadres de fibra de carboni amb tècniques especialitzades i materials sostenibles. Dona una segunda vida a la teva bicicleta a Barcelona.",
+      es: "Reparamos cuadros de carbono en Barcelona usando técnicas precisas y un enfoque sostenible para alargar la vida de tu bicicleta.",
+      en: "We repair carbon frames in Barcelona using precise techniques and a sustainable approach to extend the life of your bicycle.",
+      ca: "Reparem quadres de carboni a Barcelona utilitzant tècniques precises i un enfocament sostenible per allargar la vida de la teva bicicleta.",
     };
 
     return {
