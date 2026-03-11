@@ -1,8 +1,16 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { type Locale } from "@/i18n";
 
 export function PhilosophyPage({ locale }: { locale: Locale }) {
+  const [openPillar, setOpenPillar] = useState<number | null>(null);
+
+  const togglePillar = (pillarNumber: number) => {
+    setOpenPillar(openPillar === pillarNumber ? null : pillarNumber);
+  };
   return (
     <div className="overflow-hidden">
       {/* ── Hero ── */}
@@ -112,79 +120,104 @@ export function PhilosophyPage({ locale }: { locale: Locale }) {
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
             {/* Text */}
             <div>
-              <p className="mb-3 text-xs font-bold uppercase tracking-widest text-primary-400">
-                01
-              </p>
-              <h2 className="text-4xl font-black tracking-tight text-primary-900 lg:text-5xl">
-                {locale === "es" && "Sostenibilidad"}
-                {locale === "en" && "Sustainability"}
-                {locale === "ca" && "Sostenibilitat"}
-              </h2>
-              <p className="mt-2 text-xl font-semibold italic text-secondary-700">
-                {locale === "es" &&
-                  "Reducimos la huella ecológica utilizando materiales biodegradables, promoviendo cultivos no extractivos y respetando los ciclos naturales."}
-                {locale === "en" &&
-                  "We reduce the ecological footprint by using biodegradable materials, promoting non-extractive crops, and respecting natural cycles."}
-                {locale === "ca" &&
-                  "Reduïm la petjada ecològica utilitzant materials biodegradables, promovent cultius no extractius i respectant els cicles naturals."}
-              </p>
-              <p className="mt-6 text-lg leading-relaxed text-gray-700">
-                {locale === "es" &&
-                  "Desde el cultivo del bambú hasta el montaje final de cada bicicleta, cada decisión que tomamos tiene como objetivo reducir nuestra huella ambiental sin comprometer la calidad ni el diseño."}
-                {locale === "en" &&
-                  "From the cultivation of bamboo to the final assembly of each bicycle, every decision we make aims to reduce our environmental footprint without compromising on quality or design."}
-                {locale === "ca" &&
-                  "Des del cultiu del bambú fins al muntatge final de cada bicicleta, cada decisió que prenem té com a objectiu reduir la nostra petjada ambiental sense comprometre la qualitat ni el disseny."}
-              </p>
-              <p className="mt-4 text-lg leading-relaxed text-gray-700">
-                {locale === "es" &&
-                  "Elegimos el bambú porque es un material que respeta el planeta desde el principio: crece rápido, es muy resistente y absorbe grandes cantidades de CO₂. A diferencia del aluminio o el acero, su cultivo no depende de procesos extractivos contaminantes y genera un impacto positivo en el medio ambiente. Al final de su vida útil, también se biodegrada de forma natural, reduciendo su huella como residuo. Montar una bicicleta de bambú hecha a mano en Barcelona es también una forma de cuidar los ecosistemas."}
-                {locale === "en" &&
-                  "We choose bamboo because it is a material that respects the planet from the start: it grows quickly, is highly resistant, and absorbs large amounts of CO₂. Unlike aluminum or steel, its cultivation does not rely on polluting extractive processes and generates a positive impact on the environment. At the end of its useful life, it also biodegrades naturally, reducing its footprint as waste. Riding a bamboo bicycle handmade in Barcelona is also a way of caring for ecosystems."}
-                {locale === "ca" &&
-                  "Triem el bambú perquè és un material que respecta el planeta des del principi: creix ràpidament, és molt resistent i absorbeix grans quantitats de CO₂. A diferència de l'alumini o l'acer, el seu cultiu no depèn de processos extractius contaminants i genera un impacte positiu en el medi ambient. Al final de la seva vida útil, també es biodegrada de manera natural, reduint la seva petjada com a residu. Pedalar en una bicicleta de bambú feta a mà a Barcelona és també una manera de cuidar els ecosistemes."}
-              </p>
-              {/* SDG Badges */}
-              <div className="mt-6 flex flex-wrap items-end gap-3">
-                <Image
-                  src={
-                    locale === "es"
-                      ? "/SDG%20Spanish/ods12_es_consumo-responsable.png"
-                      : locale === "ca"
-                        ? "/SDG%20Catalan/ods12_ca_consum-responsable.png"
-                        : "/SDG%20English/ods12_en_responsible-consumption.png"
-                  }
-                  alt="SDG 12"
-                  width={80}
-                  height={80}
-                  className="h-20 w-20 object-contain"
-                />
-                <Image
-                  src={
-                    locale === "es"
-                      ? "/SDG%20Spanish/ods13_es_accion-climatica.png"
-                      : locale === "ca"
-                        ? "/SDG%20Catalan/ods13_ca_accio-climatica.png"
-                        : "/SDG%20English/ods13_en_climate-action.png"
-                  }
-                  alt="SDG 13"
-                  width={80}
-                  height={80}
-                  className="h-20 w-20 object-contain"
-                />
-                <Image
-                  src={
-                    locale === "es"
-                      ? "/SDG%20Spanish/ods15_es_ecosistemas-terrestres.png"
-                      : locale === "ca"
-                        ? "/SDG%20Catalan/ods15_ca_ecosistemes-terrestres.png"
-                        : "/SDG%20English/ods15_en_life-on-land.png"
-                  }
-                  alt="SDG 15"
-                  width={80}
-                  height={80}
-                  className="h-20 w-20 object-contain"
-                />
+              <div className="cursor-pointer" onClick={() => togglePillar(1)}>
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex-1">
+                    <p className="mb-3 text-xs font-bold uppercase tracking-widest text-primary-400">
+                      01
+                    </p>
+                    <h2 className="text-4xl font-black tracking-tight text-primary-900 lg:text-5xl">
+                      {locale === "es" && "Sostenibilidad"}
+                      {locale === "en" && "Sustainability"}
+                      {locale === "ca" && "Sostenibilitat"}
+                    </h2>
+                    <p className="mt-2 text-xl font-semibold italic text-secondary-700">
+                      {locale === "es" &&
+                        "Reducimos la huella ecológica utilizando materiales biodegradables, promoviendo cultivos no extractivos y respetando los ciclos naturales."}
+                      {locale === "en" &&
+                        "We reduce the ecological footprint by using biodegradable materials, promoting non-extractive crops, and respecting natural cycles."}
+                      {locale === "ca" &&
+                        "Reduïm la petjada ecològica utilitzant materials biodegradables, promovent cultius no extractius i respectant els cicles naturals."}
+                    </p>
+                  </div>
+                  <div className="shrink-0 pt-1">
+                    <svg
+                      className={`h-6 w-6 text-primary-600 transition-transform duration-300 ${openPillar === 1 ? "rotate-45" : ""}`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 4v16m8-8H4"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div
+                className={`overflow-hidden transition-all duration-500 ease-in-out ${openPillar === 1 ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"}`}
+              >
+                <p className="mt-6 text-lg leading-relaxed text-gray-700">
+                  {locale === "es" &&
+                    "Desde el cultivo del bambú hasta el montaje final de cada bicicleta, cada decisión que tomamos tiene como objetivo reducir nuestra huella ambiental sin comprometer la calidad ni el diseño."}
+                  {locale === "en" &&
+                    "From the cultivation of bamboo to the final assembly of each bicycle, every decision we make aims to reduce our environmental footprint without compromising on quality or design."}
+                  {locale === "ca" &&
+                    "Des del cultiu del bambú fins al muntatge final de cada bicicleta, cada decisió que prenem té com a objectiu reduir la nostra petjada ambiental sense comprometre la qualitat ni el disseny."}
+                </p>
+                <p className="mt-4 text-lg leading-relaxed text-gray-700">
+                  {locale === "es" &&
+                    "Elegimos el bambú porque es un material que respeta el planeta desde el principio: crece rápido, es muy resistente y absorbe grandes cantidades de CO₂. A diferencia del aluminio o el acero, su cultivo no depende de procesos extractivos contaminantes y genera un impacto positivo en el medio ambiente. Al final de su vida útil, también se biodegrada de forma natural, reduciendo su huella como residuo. Montar una bicicleta de bambú hecha a mano en Barcelona es también una forma de cuidar los ecosistemas."}
+                  {locale === "en" &&
+                    "We choose bamboo because it is a material that respects the planet from the start: it grows quickly, is highly resistant, and absorbs large amounts of CO₂. Unlike aluminum or steel, its cultivation does not rely on polluting extractive processes and generates a positive impact on the environment. At the end of its useful life, it also biodegrades naturally, reducing its footprint as waste. Riding a bamboo bicycle handmade in Barcelona is also a way of caring for ecosystems."}
+                  {locale === "ca" &&
+                    "Triem el bambú perquè és un material que respecta el planeta des del principi: creix ràpidament, és molt resistent i absorbeix grans quantitats de CO₂. A diferència de l'alumini o l'acer, el seu cultiu no depèn de processos extractius contaminants i genera un impacte positiu en el medi ambient. Al final de la seva vida útil, també es biodegrada de manera natural, reduint la seva petjada com a residu. Pedalar en una bicicleta de bambú feta a mà a Barcelona és també una manera de cuidar els ecosistemes."}
+                </p>
+                {/* SDG Badges */}
+                <div className="mt-6 flex flex-wrap items-end gap-3">
+                  <Image
+                    src={
+                      locale === "es"
+                        ? "/SDG%20Spanish/ods12_es_consumo-responsable.png"
+                        : locale === "ca"
+                          ? "/SDG%20Catalan/ods12_ca_consum-responsable.png"
+                          : "/SDG%20English/ods12_en_responsible-consumption.png"
+                    }
+                    alt="SDG 12"
+                    width={80}
+                    height={80}
+                    className="h-20 w-20 object-contain"
+                  />
+                  <Image
+                    src={
+                      locale === "es"
+                        ? "/SDG%20Spanish/ods13_es_accion-climatica.png"
+                        : locale === "ca"
+                          ? "/SDG%20Catalan/ods13_ca_accio-climatica.png"
+                          : "/SDG%20English/ods13_en_climate-action.png"
+                    }
+                    alt="SDG 13"
+                    width={80}
+                    height={80}
+                    className="h-20 w-20 object-contain"
+                  />
+                  <Image
+                    src={
+                      locale === "es"
+                        ? "/SDG%20Spanish/ods15_es_ecosistemas-terrestres.png"
+                        : locale === "ca"
+                          ? "/SDG%20Catalan/ods15_ca_ecosistemes-terrestres.png"
+                          : "/SDG%20English/ods15_en_life-on-land.png"
+                    }
+                    alt="SDG 15"
+                    width={80}
+                    height={80}
+                    className="h-20 w-20 object-contain"
+                  />
+                </div>
               </div>
             </div>
             {/* Illustration */}
@@ -365,70 +398,95 @@ export function PhilosophyPage({ locale }: { locale: Locale }) {
             </div>
             {/* Text (right) */}
             <div>
-              <p className="mb-3 text-xs font-bold uppercase tracking-widest text-secondary-500">
-                02
-              </p>
-              <h2 className="text-4xl font-black tracking-tight text-secondary-900 lg:text-5xl">
-                {locale === "es" && "Plantación y Producción Local"}
-                {locale === "en" && "Plantation and Local Production"}
-                {locale === "ca" && "Plantació i Producció Local"}
-              </h2>
-              <p className="mt-2 text-xl font-semibold italic text-secondary-600">
-                {locale === "es" &&
-                  "Con nuestra plantación en Lleida y la producción en Barcelona, apoyamos una economía de proximidad arraigada en el territorio que genera empleo local con criterios éticos y sostenibles."}
-                {locale === "en" &&
-                  "With our plantation in Lleida and production in Barcelona, we support a proximity economy rooted in the territory that generates local employment with ethical and sustainable criteria."}
-                {locale === "ca" &&
-                  "Amb la nostra plantació a Lleida i la producció a Barcelona, recolzem una economia de proximitat arrelada al territori que genera ocupació local amb criteris ètics i sostenibles."}
-              </p>
-              <p className="mt-6 text-lg leading-relaxed text-gray-700">
-                {locale === "es" &&
-                  "Todo lo que hacemos, lo hacemos nosotros. Nuestros productos son 100% artesanales en Barcelona, utilizando materiales de producción local como el bambú Phyllostachys aurea y Phyllostachys nigra cultivado en Cataluña. Colaboramos con viveros en Gavà y mantenemos una plantación en Lleida, apostando por una economía de proximidad arraigada en la tierra y su gente."}
-                {locale === "en" &&
-                  "Everything we do, we do in-house. Our products are 100% handmade in Barcelona, using locally sourced materials such as Phyllostachys aurea and Phyllostachys nigra bamboo grown in Catalonia. We collaborate with nurseries in Gavà and maintain a plantation in Lleida, betting on a proximity-based economy rooted in the land and its people."}
-                {locale === "ca" &&
-                  "Tot el que fem, ho fem nosaltres. Els nostres productes són 100% artesanals a Barcelona, utilitzant materials d'origen local com el bambú Phyllostachys aurea i Phyllostachys nigra cultivat a Catalunya. Col·laborem amb vivers a Gavà i mantenim una plantació a Lleida, apostant per una economia de proximitat arrelada a la terra i la seva gent."}
-              </p>
-              <div className="mt-6 flex flex-wrap items-end gap-3">
-                <Image
-                  src={
-                    locale === "es"
-                      ? "/SDG%20Spanish/ods8_es_trabajo-decente.png"
-                      : locale === "ca"
-                        ? "/SDG%20Catalan/ods8_ca_feina-digna.png"
-                        : "/SDG%20English/ods8_en_decent-work.png"
-                  }
-                  alt="SDG 8"
-                  width={80}
-                  height={80}
-                  className="h-20 w-20 object-contain"
-                />
-                <Image
-                  src={
-                    locale === "es"
-                      ? "/SDG%20Spanish/ods11_es_ciudades-sostenibles.png"
-                      : locale === "ca"
-                        ? "/SDG%20Catalan/ods11_ca_ciutats-sostenibles.png"
-                        : "/SDG%20English/ods11_en_sustainable-cities.png"
-                  }
-                  alt="SDG 11"
-                  width={80}
-                  height={80}
-                  className="h-20 w-20 object-contain"
-                />
-                <Image
-                  src={
-                    locale === "es"
-                      ? "/SDG%20Spanish/ods12_es_consumo-responsable.png"
-                      : locale === "ca"
-                        ? "/SDG%20Catalan/ods12_ca_consum-responsable.png"
-                        : "/SDG%20English/ods12_en_responsible-consumption.png"
-                  }
-                  alt="SDG 12"
-                  width={80}
-                  height={80}
-                  className="h-20 w-20 object-contain"
-                />
+              <div className="cursor-pointer" onClick={() => togglePillar(2)}>
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex-1">
+                    <p className="mb-3 text-xs font-bold uppercase tracking-widest text-secondary-500">
+                      02
+                    </p>
+                    <h2 className="text-4xl font-black tracking-tight text-secondary-900 lg:text-5xl">
+                      {locale === "es" && "Plantación y Producción Local"}
+                      {locale === "en" && "Plantation and Local Production"}
+                      {locale === "ca" && "Plantació i Producció Local"}
+                    </h2>
+                    <p className="mt-2 text-xl font-semibold italic text-secondary-600">
+                      {locale === "es" &&
+                        "Con nuestra plantación en Lleida y la producción en Barcelona, apoyamos una economía de proximidad arraigada en el territorio que genera empleo local con criterios éticos y sostenibles."}
+                      {locale === "en" &&
+                        "With our plantation in Lleida and production in Barcelona, we support a proximity economy rooted in the territory that generates local employment with ethical and sustainable criteria."}
+                      {locale === "ca" &&
+                        "Amb la nostra plantació a Lleida i la producció a Barcelona, recolzem una economia de proximitat arrelada al territori que genera ocupació local amb criteris ètics i sostenibles."}
+                    </p>
+                  </div>
+                  <div className="shrink-0 pt-1">
+                    <svg
+                      className={`h-6 w-6 text-secondary-600 transition-transform duration-300 ${openPillar === 2 ? "rotate-45" : ""}`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 4v16m8-8H4"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div
+                className={`overflow-hidden transition-all duration-500 ease-in-out ${openPillar === 2 ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"}`}
+              >
+                <p className="mt-6 text-lg leading-relaxed text-gray-700">
+                  {locale === "es" &&
+                    "Todo lo que hacemos, lo hacemos nosotros. Nuestros productos son 100% artesanales en Barcelona, utilizando materiales de producción local como el bambú Phyllostachys aurea y Phyllostachys nigra cultivado en Cataluña. Colaboramos con viveros en Gavà y mantenemos una plantación en Lleida, apostando por una economía de proximidad arraigada en la tierra y su gente."}
+                  {locale === "en" &&
+                    "Everything we do, we do in-house. Our products are 100% handmade in Barcelona, using locally sourced materials such as Phyllostachys aurea and Phyllostachys nigra bamboo grown in Catalonia. We collaborate with nurseries in Gavà and maintain a plantation in Lleida, betting on a proximity-based economy rooted in the land and its people."}
+                  {locale === "ca" &&
+                    "Tot el que fem, ho fem nosaltres. Els nostres productes són 100% artesanals a Barcelona, utilitzant materials d'origen local com el bambú Phyllostachys aurea i Phyllostachys nigra cultivat a Catalunya. Col·laborem amb vivers a Gavà i mantenim una plantació a Lleida, apostant per una economia de proximitat arrelada a la terra i la seva gent."}
+                </p>
+                <div className="mt-6 flex flex-wrap items-end gap-3">
+                  <Image
+                    src={
+                      locale === "es"
+                        ? "/SDG%20Spanish/ods8_es_trabajo-decente.png"
+                        : locale === "ca"
+                          ? "/SDG%20Catalan/ods8_ca_feina-digna.png"
+                          : "/SDG%20English/ods8_en_decent-work.png"
+                    }
+                    alt="SDG 8"
+                    width={80}
+                    height={80}
+                    className="h-20 w-20 object-contain"
+                  />
+                  <Image
+                    src={
+                      locale === "es"
+                        ? "/SDG%20Spanish/ods11_es_ciudades-sostenibles.png"
+                        : locale === "ca"
+                          ? "/SDG%20Catalan/ods11_ca_ciutats-sostenibles.png"
+                          : "/SDG%20English/ods11_en_sustainable-cities.png"
+                    }
+                    alt="SDG 11"
+                    width={80}
+                    height={80}
+                    className="h-20 w-20 object-contain"
+                  />
+                  <Image
+                    src={
+                      locale === "es"
+                        ? "/SDG%20Spanish/ods12_es_consumo-responsable.png"
+                        : locale === "ca"
+                          ? "/SDG%20Catalan/ods12_ca_consum-responsable.png"
+                          : "/SDG%20English/ods12_en_responsible-consumption.png"
+                    }
+                    alt="SDG 12"
+                    width={80}
+                    height={80}
+                    className="h-20 w-20 object-contain"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -445,57 +503,82 @@ export function PhilosophyPage({ locale }: { locale: Locale }) {
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
             {/* Text */}
             <div className="text-white">
-              <p className="mb-3 text-xs font-bold uppercase tracking-widest text-primary-300">
-                03
-              </p>
-              <h2 className="text-4xl font-black tracking-tight lg:text-5xl">
-                {locale === "es" && "Innovación"}
-                {locale === "en" && "Innovation"}
-                {locale === "ca" && "Innovació"}
-              </h2>
-              <p className="mt-2 text-xl font-semibold italic text-primary-200">
-                {locale === "es" &&
-                  "Combinamos técnicas artesanales y tecnología avanzada para producir de forma más eficiente, sostenible y con menor impacto."}
-                {locale === "en" &&
-                  "We combine artisanal techniques and advanced technology to produce more efficiently, sustainably, and with lower impact."}
-                {locale === "ca" &&
-                  "Combinem tècniques artesanals i tecnologia avançada per produir de manera més eficient, sostenible i amb menor impacte."}
-              </p>
-              <p className="mt-6 text-lg leading-relaxed text-primary-100">
-                {locale === "es" &&
-                  "Combinamos la tradición artesanal y la tecnología avanzada. Nuestro proceso de fabricación incorpora técnicas como la impresión 3D y el diseño paramétrico para garantizar precisión, rendimiento y estilo en cada pieza. Las influencias del savoir-faire francés y catalán se mezclan con el carácter creativo de la cultura urbana de Barcelona."}
-                {locale === "en" &&
-                  "We combine artisanal tradition and advanced technology. Our manufacturing process incorporates techniques such as 3D printing and parametric design to ensure precision, performance, and style in every piece. Influences from French and Catalan savoir-faire blend with the creative character of Barcelona's urban culture."}
-                {locale === "ca" &&
-                  "Combinem la tradició artesanal i la tecnologia avançada. El nostre procés de fabricació incorpora tècniques com la impressió 3D i el disseny paramètric per garantir precisió, rendiment i estil en cada peça. Les influències del savoir-faire francès i català es barregen amb el caràcter creatiu de la cultura urbana de Barcelona."}
-              </p>
-              <div className="mt-6 flex flex-wrap items-end gap-3">
-                <Image
-                  src={
-                    locale === "es"
-                      ? "/SDG%20Spanish/ods9_es_innovacion-industria.png"
-                      : locale === "ca"
-                        ? "/SDG%20Catalan/ods9_ca_industria-innovacio.png"
-                        : "/SDG%20English/ods9_en_industry-innovation.png"
-                  }
-                  alt="SDG 9"
-                  width={80}
-                  height={80}
-                  className="h-20 w-20 object-contain"
-                />
-                <Image
-                  src={
-                    locale === "es"
-                      ? "/SDG%20Spanish/ods12_es_consumo-responsable.png"
-                      : locale === "ca"
-                        ? "/SDG%20Catalan/ods12_ca_consum-responsable.png"
-                        : "/SDG%20English/ods12_en_responsible-consumption.png"
-                  }
-                  alt="SDG 12"
-                  width={80}
-                  height={80}
-                  className="h-20 w-20 object-contain"
-                />
+              <div className="cursor-pointer" onClick={() => togglePillar(3)}>
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex-1">
+                    <p className="mb-3 text-xs font-bold uppercase tracking-widest text-primary-300">
+                      03
+                    </p>
+                    <h2 className="text-4xl font-black tracking-tight lg:text-5xl">
+                      {locale === "es" && "Innovación"}
+                      {locale === "en" && "Innovation"}
+                      {locale === "ca" && "Innovació"}
+                    </h2>
+                    <p className="mt-2 text-xl font-semibold italic text-primary-200">
+                      {locale === "es" &&
+                        "Combinamos técnicas artesanales y tecnología avanzada para producir de forma más eficiente, sostenible y con menor impacto."}
+                      {locale === "en" &&
+                        "We combine artisanal techniques and advanced technology to produce more efficiently, sustainably, and with lower impact."}
+                      {locale === "ca" &&
+                        "Combinem tècniques artesanals i tecnologia avançada per produir de manera més eficient, sostenible i amb menor impacte."}
+                    </p>
+                  </div>
+                  <div className="shrink-0 pt-1">
+                    <svg
+                      className={`h-6 w-6 text-primary-200 transition-transform duration-300 ${openPillar === 3 ? "rotate-45" : ""}`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 4v16m8-8H4"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div
+                className={`overflow-hidden transition-all duration-500 ease-in-out ${openPillar === 3 ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"}`}
+              >
+                <p className="mt-6 text-lg leading-relaxed text-primary-100">
+                  {locale === "es" &&
+                    "Combinamos la tradición artesanal y la tecnología avanzada. Nuestro proceso de fabricación incorpora técnicas como la impresión 3D y el diseño paramétrico para garantizar precisión, rendimiento y estilo en cada pieza. Las influencias del savoir-faire francés y catalán se mezclan con el carácter creativo de la cultura urbana de Barcelona."}
+                  {locale === "en" &&
+                    "We combine artisanal tradition and advanced technology. Our manufacturing process incorporates techniques such as 3D printing and parametric design to ensure precision, performance, and style in every piece. Influences from French and Catalan savoir-faire blend with the creative character of Barcelona's urban culture."}
+                  {locale === "ca" &&
+                    "Combinem la tradició artesanal i la tecnologia avançada. El nostre procés de fabricació incorpora tècniques com la impressió 3D i el disseny paramètric per garantir precisió, rendiment i estil en cada peça. Les influències del savoir-faire francès i català es barregen amb el caràcter creatiu de la cultura urbana de Barcelona."}
+                </p>
+                <div className="mt-6 flex flex-wrap items-end gap-3">
+                  <Image
+                    src={
+                      locale === "es"
+                        ? "/SDG%20Spanish/ods9_es_innovacion-industria.png"
+                        : locale === "ca"
+                          ? "/SDG%20Catalan/ods9_ca_industria-innovacio.png"
+                          : "/SDG%20English/ods9_en_industry-innovation.png"
+                    }
+                    alt="SDG 9"
+                    width={80}
+                    height={80}
+                    className="h-20 w-20 object-contain"
+                  />
+                  <Image
+                    src={
+                      locale === "es"
+                        ? "/SDG%20Spanish/ods12_es_consumo-responsable.png"
+                        : locale === "ca"
+                          ? "/SDG%20Catalan/ods12_ca_consum-responsable.png"
+                          : "/SDG%20English/ods12_en_responsible-consumption.png"
+                    }
+                    alt="SDG 12"
+                    width={80}
+                    height={80}
+                    className="h-20 w-20 object-contain"
+                  />
+                </div>
               </div>
             </div>
             {/* Illustration */}
@@ -635,57 +718,82 @@ export function PhilosophyPage({ locale }: { locale: Locale }) {
             </div>
             {/* Text (right) */}
             <div>
-              <p className="mb-3 text-xs font-bold uppercase tracking-widest text-primary-500">
-                04
-              </p>
-              <h2 className="text-4xl font-black tracking-tight text-primary-900 lg:text-5xl">
-                {locale === "es" && "Consumo Responsable"}
-                {locale === "en" && "Responsible Consumption"}
-                {locale === "ca" && "Consum Responsable"}
-              </h2>
-              <p className="mt-2 text-xl font-semibold italic text-secondary-600">
-                {locale === "es" &&
-                  "Creamos productos duraderos, reparables y personalizables que fomentan un consumo consciente y respetuoso."}
-                {locale === "en" &&
-                  "We create durable, repairable, and customizable products that encourage conscious and respectful consumption."}
-                {locale === "ca" &&
-                  "Creem productes duradors, reparables i personalitzables que fomenten un consum conscient i respectuós."}
-              </p>
-              <p className="mt-6 text-lg leading-relaxed text-gray-700">
-                {locale === "es" &&
-                  "Etika Bikes nació como respuesta a un modelo económico insostenible. Creamos alternativas sostenibles: bicicletas de bambú duraderas, reparables y personalizables. Cada bici es una invitación a reflexionar sobre cómo consumimos y a elegir productos que respetan tanto a las personas como al medio ambiente."}
-                {locale === "en" &&
-                  "Etika Bikes was born as a response to an unsustainable economic model. We create sustainable alternatives: bamboo bicycles that are durable, repairable, and customizable. Each bike is an invitation to reflect on how we consume and to choose products that respect both people and the environment."}
-                {locale === "ca" &&
-                  "Etika Bikes va néixer com a resposta a un model econòmic insostenible. Creem alternatives sostenibles: bicicletes de bambú duradores, reparables i personalitzables. Cada bici és una invitació a reflexionar sobre com consumim i a escollir productes que respecten tant a les persones com al medi ambient."}
-              </p>
-              <div className="mt-6 flex flex-wrap items-end gap-3">
-                <Image
-                  src={
-                    locale === "es"
-                      ? "/SDG%20Spanish/ods12_es_consumo-responsable.png"
-                      : locale === "ca"
-                        ? "/SDG%20Catalan/ods12_ca_consum-responsable.png"
-                        : "/SDG%20English/ods12_en_responsible-consumption.png"
-                  }
-                  alt="SDG 12"
-                  width={80}
-                  height={80}
-                  className="h-20 w-20 object-contain"
-                />
-                <Image
-                  src={
-                    locale === "es"
-                      ? "/SDG%20Spanish/ods13_es_accion-climatica.png"
-                      : locale === "ca"
-                        ? "/SDG%20Catalan/ods13_ca_accio-climatica.png"
-                        : "/SDG%20English/ods13_en_climate-action.png"
-                  }
-                  alt="SDG 13"
-                  width={80}
-                  height={80}
-                  className="h-20 w-20 object-contain"
-                />
+              <div className="cursor-pointer" onClick={() => togglePillar(4)}>
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex-1">
+                    <p className="mb-3 text-xs font-bold uppercase tracking-widest text-primary-500">
+                      04
+                    </p>
+                    <h2 className="text-4xl font-black tracking-tight text-primary-900 lg:text-5xl">
+                      {locale === "es" && "Consumo Responsable"}
+                      {locale === "en" && "Responsible Consumption"}
+                      {locale === "ca" && "Consum Responsable"}
+                    </h2>
+                    <p className="mt-2 text-xl font-semibold italic text-secondary-600">
+                      {locale === "es" &&
+                        "Creamos productos duraderos, reparables y personalizables que fomentan un consumo consciente y respetuoso."}
+                      {locale === "en" &&
+                        "We create durable, repairable, and customizable products that encourage conscious and respectful consumption."}
+                      {locale === "ca" &&
+                        "Creem productes duradors, reparables i personalitzables que fomenten un consum conscient i respectuós."}
+                    </p>
+                  </div>
+                  <div className="shrink-0 pt-1">
+                    <svg
+                      className={`h-6 w-6 text-primary-600 transition-transform duration-300 ${openPillar === 4 ? "rotate-45" : ""}`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 4v16m8-8H4"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div
+                className={`overflow-hidden transition-all duration-500 ease-in-out ${openPillar === 4 ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"}`}
+              >
+                <p className="mt-6 text-lg leading-relaxed text-gray-700">
+                  {locale === "es" &&
+                    "Etika Bikes nació como respuesta a un modelo económico insostenible. Creamos alternativas sostenibles: bicicletas de bambú duraderas, reparables y personalizables. Cada bici es una invitación a reflexionar sobre cómo consumimos y a elegir productos que respetan tanto a las personas como al medio ambiente."}
+                  {locale === "en" &&
+                    "Etika Bikes was born as a response to an unsustainable economic model. We create sustainable alternatives: bamboo bicycles that are durable, repairable, and customizable. Each bike is an invitation to reflect on how we consume and to choose products that respect both people and the environment."}
+                  {locale === "ca" &&
+                    "Etika Bikes va néixer com a resposta a un model econòmic insostenible. Creem alternatives sostenibles: bicicletes de bambú duradores, reparables i personalitzables. Cada bici és una invitació a reflexionar sobre com consumim i a escollir productes que respecten tant a les persones com al medi ambient."}
+                </p>
+                <div className="mt-6 flex flex-wrap items-end gap-3">
+                  <Image
+                    src={
+                      locale === "es"
+                        ? "/SDG%20Spanish/ods12_es_consumo-responsable.png"
+                        : locale === "ca"
+                          ? "/SDG%20Catalan/ods12_ca_consum-responsable.png"
+                          : "/SDG%20English/ods12_en_responsible-consumption.png"
+                    }
+                    alt="SDG 12"
+                    width={80}
+                    height={80}
+                    className="h-20 w-20 object-contain"
+                  />
+                  <Image
+                    src={
+                      locale === "es"
+                        ? "/SDG%20Spanish/ods13_es_accion-climatica.png"
+                        : locale === "ca"
+                          ? "/SDG%20Catalan/ods13_ca_accio-climatica.png"
+                          : "/SDG%20English/ods13_en_climate-action.png"
+                    }
+                    alt="SDG 13"
+                    width={80}
+                    height={80}
+                    className="h-20 w-20 object-contain"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -698,108 +806,133 @@ export function PhilosophyPage({ locale }: { locale: Locale }) {
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
             {/* Text */}
             <div>
-              <p className="mb-3 text-xs font-bold uppercase tracking-widest text-primary-500">
-                05
-              </p>
-              <h2 className="text-4xl font-black tracking-tight text-primary-900 lg:text-5xl">
-                {locale === "es" && "Consciencia Ambiental Colectiva"}
-                {locale === "en" && "Collective Environmental Awareness"}
-                {locale === "ca" && "Consciència Ambiental Col·lectiva"}
-              </h2>
-              <p className="mt-2 text-xl font-semibold italic text-secondary-600">
-                {locale === "es" &&
-                  "Nuestros talleres refuerzan la educación ambiental, el empoderamiento ciudadano y la creación de redes con proyectos y comunidades afines."}
-                {locale === "en" &&
-                  "Our workshops reinforce environmental education, citizen empowerment, and networking with like-minded projects and communities."}
-                {locale === "ca" &&
-                  "Els nostres tallers reforcen l'educació ambiental, l'empoderament ciutadà i la creació de xarxes amb projectes i comunitats afins."}
-              </p>
-              <p className="mt-6 text-lg leading-relaxed text-gray-700">
-                {locale === "es" &&
-                  "Creemos que el cambio es colectivo. Por eso somos parte de la red Barcelona + Sostenible, el mapa de economía solidaria Pam a Pam y el sistema de certificación Biosphere —redes que promueven una economía local basada en valores."}
-                {locale === "en" &&
-                  "We believe that change is collective. That's why we are part of the Barcelona + Sostenible network, the Pam a Pam solidarity economy map, and the Biosphere certification system—networks that promote a local and values-driven economy."}
-                {locale === "ca" &&
-                  "Creiem que el canvi és col·lectiu. Per això som part de la xarxa Barcelona + Sostenible, el mapa d'economia solidària Pam a Pam i el sistema de certificació Biosphere —xarxes que promouen una economia local basada en valors."}
-              </p>
-              {/* Partner logos */}
-              <div className="mt-6 flex flex-wrap items-center gap-4">
-                <div className="rounded-xl bg-white p-3 shadow-sm ring-1 ring-gray-100">
-                  <Image
-                    src="/logos/logo_pam-a-pam.png"
-                    alt="Pam a Pam"
-                    width={80}
-                    height={60}
-                    className="h-14 w-auto object-contain"
-                  />
-                </div>
-                <div className="rounded-xl bg-white p-3 shadow-sm ring-1 ring-gray-100">
-                  <Image
-                    src="/logos/logo_biosphere.png"
-                    alt="Biosphere"
-                    width={80}
-                    height={60}
-                    className="h-14 w-auto object-contain"
-                  />
-                </div>
-                <div className="rounded-xl bg-white p-3 shadow-sm ring-1 ring-gray-100">
-                  <Image
-                    src="/logos/logo_bcn-mes-sostenible.png"
-                    alt="Barcelona + Sostenible"
-                    width={80}
-                    height={60}
-                    className="h-14 w-auto object-contain"
-                  />
+              <div className="cursor-pointer" onClick={() => togglePillar(5)}>
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex-1">
+                    <p className="mb-3 text-xs font-bold uppercase tracking-widest text-primary-500">
+                      05
+                    </p>
+                    <h2 className="text-4xl font-black tracking-tight text-primary-900 lg:text-5xl">
+                      {locale === "es" && "Consciencia Ambiental Colectiva"}
+                      {locale === "en" && "Collective Environmental Awareness"}
+                      {locale === "ca" && "Consciència Ambiental Col·lectiva"}
+                    </h2>
+                    <p className="mt-2 text-xl font-semibold italic text-secondary-600">
+                      {locale === "es" &&
+                        "Nuestros talleres refuerzan la educación ambiental, el empoderamiento ciudadano y la creación de redes con proyectos y comunidades afines."}
+                      {locale === "en" &&
+                        "Our workshops reinforce environmental education, citizen empowerment, and networking with like-minded projects and communities."}
+                      {locale === "ca" &&
+                        "Els nostres tallers reforcen l'educació ambiental, l'empoderament ciutadà i la creació de xarxes amb projectes i comunitats afins."}
+                    </p>
+                  </div>
+                  <div className="shrink-0 pt-1">
+                    <svg
+                      className={`h-6 w-6 text-primary-600 transition-transform duration-300 ${openPillar === 5 ? "rotate-45" : ""}`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 4v16m8-8H4"
+                      />
+                    </svg>
+                  </div>
                 </div>
               </div>
-              <p className="mt-6 text-lg leading-relaxed text-gray-700">
-                {locale === "es" &&
-                  "Nuestros talleres de autoconstrucción no solo promueven la sostenibilidad, sino que también fortalecen el empoderamiento ciudadano, la educación ambiental práctica y las conexiones entre personas. Con cada bicicleta, contribuimos a la solidaridad verde entre barrios y comunidades. No solo construimos bicis: impulsamos un movimiento hacia un futuro más justo y sostenible."}
-                {locale === "en" &&
-                  "Our self-building workshops not only promote sustainability, but also strengthen citizen empowerment, hands-on environmental education, and connections between people. With every bicycle, we contribute to green solidarity between neighborhoods and communities. We don't just build bikes: we drive a movement toward a more just and sustainable future."}
-                {locale === "ca" &&
-                  "Els nostres tallers d'autoconstrucció no només promouen la sostenibilitat, sinó que també enforteixen l'empoderament ciutadà, l'educació ambiental pràctica i les connexions entre persones. Amb cada bicicleta, contribuïm a la solidaritat verda entre barris i comunitats. No només construïm bicis: impulsem un moviment cap a un futur més just i sostenible."}
-              </p>
-              <div className="mt-6 flex flex-wrap items-end gap-3">
-                <Image
-                  src={
-                    locale === "es"
-                      ? "/SDG%20Spanish/ods4_es_educacion-calidad.png"
-                      : locale === "ca"
-                        ? "/SDG%20Catalan/ods4_ca_educacio-qualitat.png"
-                        : "/SDG%20English/ods4_en_quality-education.png"
-                  }
-                  alt="SDG 4"
-                  width={80}
-                  height={80}
-                  className="h-20 w-20 object-contain"
-                />
-                <Image
-                  src={
-                    locale === "es"
-                      ? "/SDG%20Spanish/ods11_es_ciudades-sostenibles.png"
-                      : locale === "ca"
-                        ? "/SDG%20Catalan/ods11_ca_ciutats-sostenibles.png"
-                        : "/SDG%20English/ods11_en_sustainable-cities.png"
-                  }
-                  alt="SDG 11"
-                  width={80}
-                  height={80}
-                  className="h-20 w-20 object-contain"
-                />
-                <Image
-                  src={
-                    locale === "es"
-                      ? "/SDG%20Spanish/ods17_es_alianzas-objetivos.png"
-                      : locale === "ca"
-                        ? "/SDG%20Catalan/ods17_ca_aliances-objectius.png"
-                        : "/SDG%20English/ods17_en_partnerships-goal.png"
-                  }
-                  alt="SDG 17"
-                  width={80}
-                  height={80}
-                  className="h-20 w-20 object-contain"
-                />
+              <div
+                className={`overflow-hidden transition-all duration-500 ease-in-out ${openPillar === 5 ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"}`}
+              >
+                <p className="mt-6 text-lg leading-relaxed text-gray-700">
+                  {locale === "es" &&
+                    "Creemos que el cambio es colectivo. Por eso somos parte de la red Barcelona + Sostenible, el mapa de economía solidaria Pam a Pam y el sistema de certificación Biosphere —redes que promueven una economía local basada en valores."}
+                  {locale === "en" &&
+                    "We believe that change is collective. That's why we are part of the Barcelona + Sostenible network, the Pam a Pam solidarity economy map, and the Biosphere certification system—networks that promote a local and values-driven economy."}
+                  {locale === "ca" &&
+                    "Creiem que el canvi és col·lectiu. Per això som part de la xarxa Barcelona + Sostenible, el mapa d'economia solidària Pam a Pam i el sistema de certificació Biosphere —xarxes que promouen una economia local basada en valors."}
+                </p>
+                {/* Partner logos */}
+                <div className="mt-6 flex flex-wrap items-center gap-4">
+                  <div className="rounded-xl bg-white p-3 shadow-sm ring-1 ring-gray-100">
+                    <Image
+                      src="/logos/logo_pam-a-pam.png"
+                      alt="Pam a Pam"
+                      width={80}
+                      height={60}
+                      className="h-14 w-auto object-contain"
+                    />
+                  </div>
+                  <div className="rounded-xl bg-white p-3 shadow-sm ring-1 ring-gray-100">
+                    <Image
+                      src="/logos/logo_biosphere.png"
+                      alt="Biosphere"
+                      width={80}
+                      height={60}
+                      className="h-14 w-auto object-contain"
+                    />
+                  </div>
+                  <div className="rounded-xl bg-white p-3 shadow-sm ring-1 ring-gray-100">
+                    <Image
+                      src="/logos/logo_bcn-mes-sostenible.png"
+                      alt="Barcelona + Sostenible"
+                      width={80}
+                      height={60}
+                      className="h-14 w-auto object-contain"
+                    />
+                  </div>
+                </div>
+                <p className="mt-6 text-lg leading-relaxed text-gray-700">
+                  {locale === "es" &&
+                    "Nuestros talleres de autoconstrucción no solo promueven la sostenibilidad, sino que también fortalecen el empoderamiento ciudadano, la educación ambiental práctica y las conexiones entre personas. Con cada bicicleta, contribuimos a la solidaridad verde entre barrios y comunidades. No solo construimos bicis: impulsamos un movimiento hacia un futuro más justo y sostenible."}
+                  {locale === "en" &&
+                    "Our self-building workshops not only promote sustainability, but also strengthen citizen empowerment, hands-on environmental education, and connections between people. With every bicycle, we contribute to green solidarity between neighborhoods and communities. We don't just build bikes: we drive a movement toward a more just and sustainable future."}
+                  {locale === "ca" &&
+                    "Els nostres tallers d'autoconstrucció no només promouen la sostenibilitat, sinó que també enforteixen l'empoderament ciutadà, l'educació ambiental pràctica i les connexions entre persones. Amb cada bicicleta, contribuïm a la solidaritat verda entre barris i comunitats. No només construïm bicis: impulsem un moviment cap a un futur més just i sostenible."}
+                </p>
+                <div className="mt-6 flex flex-wrap items-end gap-3">
+                  <Image
+                    src={
+                      locale === "es"
+                        ? "/SDG%20Spanish/ods4_es_educacion-calidad.png"
+                        : locale === "ca"
+                          ? "/SDG%20Catalan/ods4_ca_educacio-qualitat.png"
+                          : "/SDG%20English/ods4_en_quality-education.png"
+                    }
+                    alt="SDG 4"
+                    width={80}
+                    height={80}
+                    className="h-20 w-20 object-contain"
+                  />
+                  <Image
+                    src={
+                      locale === "es"
+                        ? "/SDG%20Spanish/ods11_es_ciudades-sostenibles.png"
+                        : locale === "ca"
+                          ? "/SDG%20Catalan/ods11_ca_ciutats-sostenibles.png"
+                          : "/SDG%20English/ods11_en_sustainable-cities.png"
+                    }
+                    alt="SDG 11"
+                    width={80}
+                    height={80}
+                    className="h-20 w-20 object-contain"
+                  />
+                  <Image
+                    src={
+                      locale === "es"
+                        ? "/SDG%20Spanish/ods17_es_alianzas-objetivos.png"
+                        : locale === "ca"
+                          ? "/SDG%20Catalan/ods17_ca_aliances-objectius.png"
+                          : "/SDG%20English/ods17_en_partnerships-goal.png"
+                    }
+                    alt="SDG 17"
+                    width={80}
+                    height={80}
+                    className="h-20 w-20 object-contain"
+                  />
+                </div>
               </div>
             </div>
             {/* Illustration */}
@@ -1012,70 +1145,95 @@ export function PhilosophyPage({ locale }: { locale: Locale }) {
             </div>
             {/* Text */}
             <div className="text-white">
-              <p className="mb-3 text-xs font-bold uppercase tracking-widest text-white/40">
-                06
-              </p>
-              <h2 className="text-4xl font-black tracking-tight lg:text-5xl">
-                {locale === "es" && "Pasión por las Bicicletas"}
-                {locale === "en" && "Passion for Bikes"}
-                {locale === "ca" && "Passió per les Bicicletes"}
-              </h2>
-              <p className="mt-2 text-xl font-semibold italic text-white/70">
-                {locale === "es" &&
-                  "Promovemos una movilidad activa, saludable y libre de emisiones. Cada pedalada es un acto de compromiso con uno mismo y con el planeta."}
-                {locale === "en" &&
-                  "We promote active, healthy, and emission-free mobility. Every pedal stroke is an act of commitment to oneself and to the planet."}
-                {locale === "ca" &&
-                  "Promovem una mobilitat activa, saludable i lliure d'emissions. Cada pedalada és un acte de compromís amb un mateix i amb el planeta."}
-              </p>
-              <p className="mt-6 text-lg leading-relaxed text-white/80">
-                {locale === "es" &&
-                  "Soñamos con bicis, pensamos en bicis y vivimos sobre dos ruedas. Queremos compartir esta pasión contigo y animarte a pedalear siempre que puedas. Porque cada kilómetro recorrido en una bici Etika es una declaración de intenciones, una forma de vida."}
-                {locale === "en" &&
-                  "We dream of bikes, think about bikes, and live on two wheels. We want to share this passion with you and encourage you to ride whenever you can. Because every kilometer traveled on an Etika bike is a statement of intent, a way of life."}
-                {locale === "ca" &&
-                  "Somiem amb bicis, pensem en bicis i vivim sobre dues rodes. Volem compartir aquesta passió amb tu i animar-te a pedalar sempre que puguis. Perquè cada quilòmetre recorregut en una bici Etika és una declaració d'intencions, una forma de vida."}
-              </p>
-              <div className="mt-6 flex flex-wrap items-end gap-3">
-                <Image
-                  src={
-                    locale === "es"
-                      ? "/SDG%20Spanish/ods3_es_salud-bienestar.png"
-                      : locale === "ca"
-                        ? "/SDG%20Catalan/ods3_ca_salut-benestar.png"
-                        : "/SDG%20English/ods3_en_good-health.png"
-                  }
-                  alt="SDG 3"
-                  width={80}
-                  height={80}
-                  className="h-20 w-20 object-contain"
-                />
-                <Image
-                  src={
-                    locale === "es"
-                      ? "/SDG%20Spanish/ods11_es_ciudades-sostenibles.png"
-                      : locale === "ca"
-                        ? "/SDG%20Catalan/ods11_ca_ciutats-sostenibles.png"
-                        : "/SDG%20English/ods11_en_sustainable-cities.png"
-                  }
-                  alt="SDG 11"
-                  width={80}
-                  height={80}
-                  className="h-20 w-20 object-contain"
-                />
-                <Image
-                  src={
-                    locale === "es"
-                      ? "/SDG%20Spanish/ods13_es_accion-climatica.png"
-                      : locale === "ca"
-                        ? "/SDG%20Catalan/ods13_ca_accio-climatica.png"
-                        : "/SDG%20English/ods13_en_climate-action.png"
-                  }
-                  alt="SDG 13"
-                  width={80}
-                  height={80}
-                  className="h-20 w-20 object-contain"
-                />
+              <div className="cursor-pointer" onClick={() => togglePillar(6)}>
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex-1">
+                    <p className="mb-3 text-xs font-bold uppercase tracking-widest text-white/40">
+                      06
+                    </p>
+                    <h2 className="text-4xl font-black tracking-tight lg:text-5xl">
+                      {locale === "es" && "Pasión por las Bicicletas"}
+                      {locale === "en" && "Passion for Bikes"}
+                      {locale === "ca" && "Passió per les Bicicletes"}
+                    </h2>
+                    <p className="mt-2 text-xl font-semibold italic text-white/70">
+                      {locale === "es" &&
+                        "Promovemos una movilidad activa, saludable y libre de emisiones. Cada pedalada es un acto de compromiso con uno mismo y con el planeta."}
+                      {locale === "en" &&
+                        "We promote active, healthy, and emission-free mobility. Every pedal stroke is an act of commitment to oneself and to the planet."}
+                      {locale === "ca" &&
+                        "Promovem una mobilitat activa, saludable i lliure d'emissions. Cada pedalada és un acte de compromís amb un mateix i amb el planeta."}
+                    </p>
+                  </div>
+                  <div className="shrink-0 pt-1">
+                    <svg
+                      className={`h-6 w-6 text-white/70 transition-transform duration-300 ${openPillar === 6 ? "rotate-45" : ""}`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 4v16m8-8H4"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div
+                className={`overflow-hidden transition-all duration-500 ease-in-out ${openPillar === 6 ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"}`}
+              >
+                <p className="mt-6 text-lg leading-relaxed text-white/80">
+                  {locale === "es" &&
+                    "Soñamos con bicis, pensamos en bicis y vivimos sobre dos ruedas. Queremos compartir esta pasión contigo y animarte a pedalear siempre que puedas. Porque cada kilómetro recorrido en una bici Etika es una declaración de intenciones, una forma de vida."}
+                  {locale === "en" &&
+                    "We dream of bikes, think about bikes, and live on two wheels. We want to share this passion with you and encourage you to ride whenever you can. Because every kilometer traveled on an Etika bike is a statement of intent, a way of life."}
+                  {locale === "ca" &&
+                    "Somiem amb bicis, pensem en bicis i vivim sobre dues rodes. Volem compartir aquesta passió amb tu i animar-te a pedalar sempre que puguis. Perquè cada quilòmetre recorregut en una bici Etika és una declaració d'intencions, una forma de vida."}
+                </p>
+                <div className="mt-6 flex flex-wrap items-end gap-3">
+                  <Image
+                    src={
+                      locale === "es"
+                        ? "/SDG%20Spanish/ods3_es_salud-bienestar.png"
+                        : locale === "ca"
+                          ? "/SDG%20Catalan/ods3_ca_salut-benestar.png"
+                          : "/SDG%20English/ods3_en_good-health.png"
+                    }
+                    alt="SDG 3"
+                    width={80}
+                    height={80}
+                    className="h-20 w-20 object-contain"
+                  />
+                  <Image
+                    src={
+                      locale === "es"
+                        ? "/SDG%20Spanish/ods11_es_ciudades-sostenibles.png"
+                        : locale === "ca"
+                          ? "/SDG%20Catalan/ods11_ca_ciutats-sostenibles.png"
+                          : "/SDG%20English/ods11_en_sustainable-cities.png"
+                    }
+                    alt="SDG 11"
+                    width={80}
+                    height={80}
+                    className="h-20 w-20 object-contain"
+                  />
+                  <Image
+                    src={
+                      locale === "es"
+                        ? "/SDG%20Spanish/ods13_es_accion-climatica.png"
+                        : locale === "ca"
+                          ? "/SDG%20Catalan/ods13_ca_accio-climatica.png"
+                          : "/SDG%20English/ods13_en_climate-action.png"
+                    }
+                    alt="SDG 13"
+                    width={80}
+                    height={80}
+                    className="h-20 w-20 object-contain"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -1088,77 +1246,102 @@ export function PhilosophyPage({ locale }: { locale: Locale }) {
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
             {/* Text */}
             <div>
-              <p className="mb-3 text-xs font-bold uppercase tracking-widest text-primary-500">
-                07
-              </p>
-              <h2 className="text-4xl font-black tracking-tight text-primary-900 lg:text-5xl">
-                {locale === "es" && "Movilidad Urbana Sostenible"}
-                {locale === "en" && "Sustainable Urban Mobility"}
-                {locale === "ca" && "Mobilitat Urbana Sostenible"}
-              </h2>
-              <p className="mt-2 text-xl font-semibold italic text-secondary-600">
-                {locale === "es" &&
-                  "Promovemos una movilidad urbana más limpia, accesible y conectada. Cada bicicleta Etika ayuda a construir ciudades más humanas y habitables."}
-                {locale === "en" &&
-                  "We promote cleaner, more accessible, and more connected urban mobility. Each Etika bicycle helps build more human and livable cities."}
-                {locale === "ca" &&
-                  "Promovem una mobilitat urbana més neta, accessible i connectada. Cada bicicleta Etika ajuda a construir ciutats més humanes i habitables."}
-              </p>
-              <p className="mt-6 text-lg leading-relaxed text-gray-700">
-                {locale === "es" &&
-                  "Queremos que nuestras bicicletas sean más que objetos especiales: son una solución concreta para la movilidad ecológica cotidiana. Cada bici Etika es también una herramienta de transformación urbana."}
-                {locale === "en" &&
-                  "We want our bicycles to be more than just special objects—they are a concrete solution for daily ecological mobility. Each Etika bike is also a tool for urban transformation."}
-                {locale === "ca" &&
-                  "Volem que les nostres bicicletes siguin més que objectes especials: són una solució concreta per a la mobilitat ecològica quotidiana. Cada bici Etika és també una eina de transformació urbana."}
-              </p>
-              <ul className="mt-4 space-y-2">
-                <li className="flex items-start gap-3 text-lg leading-relaxed text-gray-700">
-                  <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-primary-500" />
+              <div className="cursor-pointer" onClick={() => togglePillar(7)}>
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex-1">
+                    <p className="mb-3 text-xs font-bold uppercase tracking-widest text-primary-500">
+                      07
+                    </p>
+                    <h2 className="text-4xl font-black tracking-tight text-primary-900 lg:text-5xl">
+                      {locale === "es" && "Movilidad Urbana Sostenible"}
+                      {locale === "en" && "Sustainable Urban Mobility"}
+                      {locale === "ca" && "Mobilitat Urbana Sostenible"}
+                    </h2>
+                    <p className="mt-2 text-xl font-semibold italic text-secondary-600">
+                      {locale === "es" &&
+                        "Promovemos una movilidad urbana más limpia, accesible y conectada. Cada bicicleta Etika ayuda a construir ciudades más humanas y habitables."}
+                      {locale === "en" &&
+                        "We promote cleaner, more accessible, and more connected urban mobility. Each Etika bicycle helps build more human and livable cities."}
+                      {locale === "ca" &&
+                        "Promovem una mobilitat urbana més neta, accessible i connectada. Cada bicicleta Etika ajuda a construir ciutats més humanes i habitables."}
+                    </p>
+                  </div>
+                  <div className="shrink-0 pt-1">
+                    <svg
+                      className={`h-6 w-6 text-primary-600 transition-transform duration-300 ${openPillar === 7 ? "rotate-45" : ""}`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 4v16m8-8H4"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div
+                className={`overflow-hidden transition-all duration-500 ease-in-out ${openPillar === 7 ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"}`}
+              >
+                <p className="mt-6 text-lg leading-relaxed text-gray-700">
                   {locale === "es" &&
-                    "Ofrecemos bicicletas funcionales, duraderas y prácticas para entornos urbanos."}
+                    "Queremos que nuestras bicicletas sean más que objetos especiales: son una solución concreta para la movilidad ecológica cotidiana. Cada bici Etika es también una herramienta de transformación urbana."}
                   {locale === "en" &&
-                    "We offer functional, durable, and practical bicycles for urban environments."}
+                    "We want our bicycles to be more than just special objects—they are a concrete solution for daily ecological mobility. Each Etika bike is also a tool for urban transformation."}
                   {locale === "ca" &&
-                    "Oferim bicicletes funcionals, duradores i pràctiques per a entorns urbans."}
-                </li>
-                <li className="flex items-start gap-3 text-lg leading-relaxed text-gray-700">
-                  <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-primary-500" />
-                  {locale === "es" &&
-                    "Contribuimos a una ciudad más humana, habitable y conectada."}
-                  {locale === "en" &&
-                    "We contribute to a more human, livable, and connected city."}
-                  {locale === "ca" &&
-                    "Contribuïm a una ciutat més humana, habitable i connectada."}
-                </li>
-              </ul>
-              <div className="mt-6 flex flex-wrap items-end gap-3">
-                <Image
-                  src={
-                    locale === "es"
-                      ? "/SDG%20Spanish/ods11_es_ciudades-sostenibles.png"
-                      : locale === "ca"
-                        ? "/SDG%20Catalan/ods11_ca_ciutats-sostenibles.png"
-                        : "/SDG%20English/ods11_en_sustainable-cities.png"
-                  }
-                  alt="SDG 11"
-                  width={80}
-                  height={80}
-                  className="h-20 w-20 object-contain"
-                />
-                <Image
-                  src={
-                    locale === "es"
-                      ? "/SDG%20Spanish/ods13_es_accion-climatica.png"
-                      : locale === "ca"
-                        ? "/SDG%20Catalan/ods13_ca_accio-climatica.png"
-                        : "/SDG%20English/ods13_en_climate-action.png"
-                  }
-                  alt="SDG 13"
-                  width={80}
-                  height={80}
-                  className="h-20 w-20 object-contain"
-                />
+                    "Volem que les nostres bicicletes siguin més que objectes especials: són una solució concreta per a la mobilitat ecològica quotidiana. Cada bici Etika és també una eina de transformació urbana."}
+                </p>
+                <ul className="mt-4 space-y-2">
+                  <li className="flex items-start gap-3 text-lg leading-relaxed text-gray-700">
+                    <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-primary-500" />
+                    {locale === "es" &&
+                      "Ofrecemos bicicletas funcionales, duraderas y prácticas para entornos urbanos."}
+                    {locale === "en" &&
+                      "We offer functional, durable, and practical bicycles for urban environments."}
+                    {locale === "ca" &&
+                      "Oferim bicicletes funcionals, duradores i pràctiques per a entorns urbans."}
+                  </li>
+                  <li className="flex items-start gap-3 text-lg leading-relaxed text-gray-700">
+                    <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-primary-500" />
+                    {locale === "es" &&
+                      "Contribuimos a una ciudad más humana, habitable y conectada."}
+                    {locale === "en" &&
+                      "We contribute to a more human, livable, and connected city."}
+                    {locale === "ca" &&
+                      "Contribuïm a una ciutat més humana, habitable i connectada."}
+                  </li>
+                </ul>
+                <div className="mt-6 flex flex-wrap items-end gap-3">
+                  <Image
+                    src={
+                      locale === "es"
+                        ? "/SDG%20Spanish/ods11_es_ciudades-sostenibles.png"
+                        : locale === "ca"
+                          ? "/SDG%20Catalan/ods11_ca_ciutats-sostenibles.png"
+                          : "/SDG%20English/ods11_en_sustainable-cities.png"
+                    }
+                    alt="SDG 11"
+                    width={80}
+                    height={80}
+                    className="h-20 w-20 object-contain"
+                  />
+                  <Image
+                    src={
+                      locale === "es"
+                        ? "/SDG%20Spanish/ods13_es_accion-climatica.png"
+                        : locale === "ca"
+                          ? "/SDG%20Catalan/ods13_ca_accio-climatica.png"
+                          : "/SDG%20English/ods13_en_climate-action.png"
+                    }
+                    alt="SDG 13"
+                    width={80}
+                    height={80}
+                    className="h-20 w-20 object-contain"
+                  />
+                </div>
               </div>
             </div>
             {/* Illustration */}

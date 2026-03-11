@@ -5,16 +5,16 @@ export function ContactPage({ locale }: { locale: Locale }) {
   return (
     <div className="bg-gray-50">
       {/* Contact Form Section */}
-      <section className="py-24">
+      <section className="py-12 lg:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 grid-cols-1">
+          <div className="grid lg:grid-cols-2 grid-cols-1 items-stretch">
             <div className="lg:mb-0 mb-10">
-              <div className="group w-full h-full">
-                <div className="relative h-full">
+              <div className="group w-full h-full max-h-[700px]">
+                <div className="relative h-full min-h-[500px]">
                   <img
-                    src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80"
-                    alt="Bamboo bicycle workshop"
-                    className="w-full h-full lg:rounded-l-2xl rounded-2xl bg-blend-multiply bg-primary-700 object-cover"
+                    src="/assets/bike-back.jpg"
+                    alt="Bamboo bicycle"
+                    className="absolute inset-0 w-full h-full lg:rounded-l-2xl rounded-2xl bg-blend-multiply bg-primary-700 object-cover"
                   />
                   <h1 className="font-semibold text-white text-4xl font-bold leading-10 absolute top-11 left-11">
                     {locale === "es" && "Contacta con nosotros"}
@@ -108,27 +108,27 @@ export function ContactPage({ locale }: { locale: Locale }) {
               </div>
             </div>
 
-            <div className="bg-gray-50 p-5 lg:p-11 lg:rounded-r-2xl rounded-2xl">
-              <h2 className="text-primary-600 text-4xl font-semibold leading-10 mb-11">
+            <div className="bg-gray-50 p-5 lg:p-8 lg:rounded-r-2xl rounded-2xl flex flex-col justify-center">
+              <h2 className="text-primary-600 text-3xl font-semibold leading-10 mb-6">
                 {locale === "es" && "Envíanos un Mensaje"}
                 {locale === "en" && "Send Us A Message"}
                 {locale === "ca" && "Envia'ns un Missatge"}
               </h2>
               <input
                 type="text"
-                className="w-full h-12 text-gray-600 placeholder-gray-400 shadow-sm bg-transparent text-lg font-normal leading-7 rounded-full border border-gray-200 focus:outline-none focus:border-primary-500 pl-4 mb-10"
+                className="w-full h-12 text-gray-600 placeholder-gray-400 shadow-sm bg-transparent text-lg font-normal leading-7 rounded-full border border-gray-200 focus:outline-none focus:border-primary-500 pl-4 mb-6"
                 placeholder={
                   locale === "es" ? "Nombre" : locale === "ca" ? "Nom" : "Name"
                 }
               />
               <input
                 type="email"
-                className="w-full h-12 text-gray-600 placeholder-gray-400 shadow-sm bg-transparent text-lg font-normal leading-7 rounded-full border border-gray-200 focus:outline-none focus:border-primary-500 pl-4 mb-10"
+                className="w-full h-12 text-gray-600 placeholder-gray-400 shadow-sm bg-transparent text-lg font-normal leading-7 rounded-full border border-gray-200 focus:outline-none focus:border-primary-500 pl-4 mb-6"
                 placeholder="Email"
               />
               <input
                 type="tel"
-                className="w-full h-12 text-gray-600 placeholder-gray-400 shadow-sm bg-transparent text-lg font-normal leading-7 rounded-full border border-gray-200 focus:outline-none focus:border-primary-500 pl-4 mb-10"
+                className="w-full h-12 text-gray-600 placeholder-gray-400 shadow-sm bg-transparent text-lg font-normal leading-7 rounded-full border border-gray-200 focus:outline-none focus:border-primary-500 pl-4 mb-6"
                 placeholder={
                   locale === "es"
                     ? "Teléfono"
@@ -137,8 +137,8 @@ export function ContactPage({ locale }: { locale: Locale }) {
                       : "Phone"
                 }
               />
-              <div className="mb-10">
-                <h4 className="text-gray-500 text-lg font-normal leading-7 mb-4">
+              <div className="mb-6">
+                <h4 className="text-gray-500 text-base font-normal leading-7 mb-3">
                   {locale === "es" && "Método preferido de comunicación"}
                   {locale === "en" && "Preferred method of communication"}
                   {locale === "ca" && "Mètode preferit de comunicació"}
@@ -181,7 +181,7 @@ export function ContactPage({ locale }: { locale: Locale }) {
                 </div>
               </div>
               <textarea
-                className="w-full h-32 text-gray-600 placeholder-gray-400 bg-transparent text-lg shadow-sm font-normal leading-7 rounded-2xl border border-gray-200 focus:outline-none focus:border-primary-500 p-4 mb-10 resize-none"
+                className="w-full h-24 text-gray-600 placeholder-gray-400 bg-transparent text-lg shadow-sm font-normal leading-7 rounded-2xl border border-gray-200 focus:outline-none focus:border-primary-500 p-4 mb-6 resize-none"
                 placeholder={
                   locale === "es"
                     ? "Mensaje"

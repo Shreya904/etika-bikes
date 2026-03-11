@@ -47,5 +47,77 @@
     "rights": "Todos los derechos reservados",
     "openingHours": "Horario de apertura",
     "mondayToSaturday": "Lunes a Sábado"
+  },
+  "bicycles": {
+    "pageTitle": "Nuestras Bicicletas de Bambú",
+    "pageSubtitle": "Cada bicicleta es única, hecha a mano en Barcelona con bambú sostenible",
+    "ebikesSection": "EBIKES",
+    "classicSection": "CLASSIC",
+    "prototypesSection": "PROTOTYPES",
+    "underConstructionText": "En construcción - Próximamente disponible",
+    "customizableNote": "No trabajamos con stock. Cada bicicleta se fabrica a medida.",
+    "guaranteeNote": "7 años de garantía en el cuadro de bambú"
+  },
+  "ebikeUrban": {
+    "title": "Etika Urban E-Bike",
+    "subtitle": "movilidad eléctrica con alma natural",
+    "intro": "Diseñada y fabricada a mano en Barcelona, la Etika Urban E-Bike combina tecnología, confort y sostenibilidad para quienes buscan una experiencia de movilidad urbana responsable y elegante.",
+    "description1": "Su cuadro de bambú cultivado localmente ofrece una conducción suave, absorbiendo vibraciones y aportando una estética cálida y única que la diferencia de cualquier otra bicicleta eléctrica.",
+    "description2": "Cada detalle está pensado para ofrecer un equilibrio perfecto entre rendimiento, durabilidad y diseño artesanal.",
+    "description3": "Ideal para moverte por la ciudad con estilo, fluidez y cero emisiones.",
+    "componentsTitle": "Componentes principales",
+    "motor": "Motor Bafang M420 – 250W, 80Nm: asistencia eléctrica suave, potente y silenciosa.",
+    "gears": "Cambio interno Shimano Nexus 7v – mantenimiento mínimo y funcionamiento preciso.",
+    "tires": "Cubiertas Schwalbe Marathon Plus – protección antipinchazos para un uso diario sin preocupaciones.",
+    "saddle": "Sillín Brooks – elegancia clásica y comodidad inigualable.",
+    "fork": "Horquilla RockShox Judy Silver TK Solo Air 29\" – máxima absorción y confort en el asfalto.",
+    "brakes": "Frenos de disco hidráulicos – seguridad y control en todo tipo de condiciones.",
+    "warranty": "7 años de garantía en el cuadro de bambú – confianza total en una estructura natural y resistente.",
+    "valuesTitle": "Natural. Eléctrica. Urbana. Personal.",
+    "valuesText": "Más que una bicicleta, la Etika Urban E-Bike representa un estilo de vida consciente: fabricada artesanalmente, con materiales naturales y un compromiso real con la movilidad sostenible.",
+    "customText": "No trabajamos con stock: cada bicicleta se fabrica a medida, permitiendo personalizar componentes, acabados o detalles según tus preferencias.",
+    "customText2": "Puedes elegir el modelo tal como lo ves en la foto o adaptarlo a tu estilo y necesidades.",
+    "uniqueText": "Cada creación es única — porque cada persona y cada camino también lo son.",
+    "cta": "Conduce la ciudad de otra manera — con estilo, silencio y alma de bambú."
+  },
+  "ebikeMtb": {
+    "title": "Etika MTB E-Bike",
+    "subtitle": "naturaleza, potencia y aventura",
+    "intro": "Fabricada a mano en Barcelona, la Etika MTB E-Bike une la fuerza del bambú con la tecnología eléctrica más avanzada para ofrecer una experiencia de montaña única.",
+    "description1": "Su cuadro de bambú natural, ligero y resistente, absorbe las vibraciones del terreno y ofrece una conducción ágil y cómoda, incluso en los senderos más exigentes.",
+    "description2": "Diseñada para quienes buscan una bicicleta de montaña sostenible, robusta y con un diseño artesanal que no pasa desapercibido.",
+    "componentsTitle": "Componentes principales",
+    "motor": "Motor Bafang M420 – 250W, 80Nm: asistencia potente y progresiva en subidas y terrenos técnicos, cumpliendo con la normativa europea para circular también por ciudad.",
+    "gears": "Cambio interno Shimano Nexus 7v – precisión y fiabilidad con bajo mantenimiento.",
+    "tires": "Cubiertas Michelin Country Grip 29x2.10 – tracción y control en todo tipo de superficies.",
+    "saddle": "Sillín Brooks – comodidad y estilo para largas rutas.",
+    "fork": "Horquilla RockShox Judy Silver TK Solo Air 29\" – suspensión suave y ajustable para un rendimiento óptimo.",
+    "brakes": "Frenos de disco hidráulicos – seguridad total y potencia de frenado constante.",
+    "warranty": "7 años de garantía en el cuadro de bambú – durabilidad y confianza en una estructura natural y resistente.",
+    "valuesTitle": "Montaña sostenible. Energía natural. Personalizada.",
+    "valuesText": "Cada Etika MTB E-Bike se fabrica a medida, adaptada a las preferencias y necesidades de cada ciclista.",
+    "customText": "No trabajamos con stock: creemos en una producción artesanal, consciente y personalizada.",
+    "powerNote": "Por normativa, la bicicleta está equipada con un motor de 250W, lo que permite su uso tanto en montaña como en ciudad. Sin embargo, para quienes buscan un rendimiento superior en terrenos privados o fuera de la vía pública, podemos montar motores más potentes bajo pedido.",
+    "customText2": "Puedes elegir el modelo tal como lo ves en la foto o personalizar componentes, acabados o detalles según tu estilo y tus necesidades.",
+    "uniqueText": "Cada creación es única — porque cada persona y cada camino también lo son.",
+    "cta": "Redescubre la montaña — con fuerza eléctrica, espíritu artesanal y alma de bambú."
+  },
+  "pushBike": {
+    "title": "Bicicleta Sin Pedales de Bambú",
+    "subtitle": "El primer paso hacia la libertad sobre dos ruedas",
+    "description": "Fabricada a mano con bambú sostenible, nuestra bicicleta sin pedales es perfecta para que los más pequeños aprendan equilibrio y coordinación de forma natural.",
+    "comingSoon": "Más información próximamente"
+  },
+  "bmx": {
+    "title": "BMX de Bambú",
+    "subtitle": "Fuerza y flexibilidad natural",
+    "description": "Prototipo de BMX construido con bambú, combinando resistencia, ligereza y absorción de impactos para una experiencia única.",
+    "comingSoon": "Más información próximamente"
+  },
+  "tricycle": {
+    "title": "Triciclo de Bambú",
+    "subtitle": "Estabilidad y sostenibilidad",
+    "description": "Prototipo de triciclo de bambú, ideal para movilidad urbana sostenible con mayor estabilidad y capacidad de carga.",
+    "comingSoon": "Más información próximamente"
   }
 }

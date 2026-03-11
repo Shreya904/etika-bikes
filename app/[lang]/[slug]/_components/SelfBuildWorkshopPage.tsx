@@ -33,7 +33,7 @@ export function SelfBuildWorkshopPage({ locale }: { locale: Locale }) {
           {/* Image Side */}
           <div className="relative h-[80vh] lg:h-auto">
             <img
-              src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80"
+              src="/assets/Workshop1.jpeg"
               alt="Bamboo bicycle workshop"
               className="w-full h-full object-cover"
             />
@@ -196,7 +196,7 @@ export function SelfBuildWorkshopPage({ locale }: { locale: Locale }) {
             {/* Image Container */}
             <div className="relative overflow-hidden rounded-2xl">
               <img
-                src="https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80"
+                src="/assets/Workshop2.jpeg"
                 alt="Bamboo bicycle workshop in Barcelona"
                 className="w-full h-full object-cover"
               />
@@ -266,11 +266,9 @@ export function SelfBuildWorkshopPage({ locale }: { locale: Locale }) {
             <div className="group relative overflow-hidden rounded-3xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300">
               {/* Image Header */}
               <div className="relative h-64 overflow-hidden">
-                <Image
-                  src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                <img
+                  src="/assets/Workshop_outdoor.png"
                   alt="Workshop tools and materials"
-                  width={1200}
-                  height={600}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary-900/90 via-primary-800/50 to-transparent"></div>
@@ -404,11 +402,9 @@ export function SelfBuildWorkshopPage({ locale }: { locale: Locale }) {
             <div className="group relative overflow-hidden rounded-3xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300">
               {/* Image Header */}
               <div className="relative h-64 overflow-hidden">
-                <Image
-                  src="https://images.unsplash.com/photo-1523995462485-3d171b5c8fa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                <img
+                  src="/assets/closeups.jpg"
                   alt="Person working on bamboo bicycle"
-                  width={1200}
-                  height={600}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-secondary-900/90 via-secondary-800/50 to-transparent"></div>

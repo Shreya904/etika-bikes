@@ -31,7 +31,7 @@ export function Footer() {
             </div>
 
             <div className="mt-8">
-              <p className="max-w-xs text-sm leading-loose text-gray-400">
+              <p className="max-w-xs text-base leading-relaxed text-gray-300">
                 {locale === "es" &&
                   "Construye tu propia bicicleta de bambú. Talleres en Barcelona, kits DIY enviados a todo el mundo. Sostenible, único e inconfundiblemente tuyo."}
                 {locale === "en" &&
@@ -45,7 +45,7 @@ export function Footer() {
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
                   <svg
-                    className="size-5 text-gray-400"
+                    className="size-6 text-gray-400"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                   >
@@ -54,14 +54,14 @@ export function Footer() {
                   </svg>
                   <a
                     href="mailto:hello@etikabikes.com"
-                    className="text-base text-gray-300 transition hover:text-white"
+                    className="text-lg text-gray-300 transition hover:text-white hover:underline"
                   >
                     hello@etikabikes.com
                   </a>
                 </div>
                 <div className="flex items-center gap-4">
                   <svg
-                    className="size-5 text-gray-400"
+                    className="size-6 text-gray-400"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                   >
@@ -71,7 +71,7 @@ export function Footer() {
                       clipRule="evenodd"
                     />
                   </svg>
-                  <span className="text-base text-gray-300">
+                  <span className="text-lg text-gray-300">
                     Barcelona, Spain
                   </span>
                 </div>
@@ -89,7 +89,7 @@ export function Footer() {
                   >
                     <span className="sr-only">Instagram</span>
                     <svg
-                      className="size-5"
+                      className="size-6"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >
@@ -106,7 +106,7 @@ export function Footer() {
                   >
                     <span className="sr-only">Facebook</span>
                     <svg
-                      className="size-5"
+                      className="size-6"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >
@@ -125,16 +125,16 @@ export function Footer() {
           <div className="grid grid-cols-1 gap-12 sm:grid-cols-3 lg:col-span-3 lg:grid-cols-3 lg:gap-8 xl:gap-10">
             {/* Our Creations */}
             <div>
-              <h3 className="text-xs font-semibold uppercase tracking-widest text-white">
+              <h3 className="text-sm font-semibold uppercase tracking-widest text-white">
                 {locale === "es" && "CREACIONES"}
                 {locale === "en" && "OUR CREATIONS"}
                 {locale === "ca" && "CREACIONS"}
               </h3>
-              <ul className="mt-6 space-y-3 text-sm">
+              <ul className="mt-6 space-y-3.5 text-base">
                 <li>
                   <Link
                     href={getFullPath("bicycles", locale)}
-                    className="text-gray-300 transition hover:text-white"
+                    className="text-gray-300 transition hover:text-white hover:underline"
                   >
                     {locale === "es" && "Bicicletas"}
                     {locale === "en" && "Bicycles"}
@@ -144,7 +144,7 @@ export function Footer() {
                 <li>
                   <Link
                     href={getFullPath("frames", locale)}
-                    className="text-gray-300 transition hover:text-white"
+                    className="text-gray-300 transition hover:text-white hover:underline"
                   >
                     {locale === "es" && "Cuadros"}
                     {locale === "en" && "Frames"}
@@ -154,7 +154,7 @@ export function Footer() {
                 <li>
                   <Link
                     href={getFullPath("selfBuildKits", locale)}
-                    className="text-gray-300 transition hover:text-white"
+                    className="text-gray-300 transition hover:text-white hover:underline"
                   >
                     {locale === "es" && "Kits de Autoconstrucción"}
                     {locale === "en" && "Self-build Kits"}
@@ -164,7 +164,7 @@ export function Footer() {
                 <li>
                   <Link
                     href={getFullPath("accessories", locale)}
-                    className="text-gray-300 transition hover:text-white"
+                    className="text-gray-300 transition hover:text-white hover:underline"
                   >
                     {locale === "es" && "Accesorios"}
                     {locale === "en" && "Accessories"}
@@ -176,16 +176,16 @@ export function Footer() {
 
             {/* Etika Workshop */}
             <div>
-              <h3 className="text-xs font-semibold uppercase tracking-widest text-white">
+              <h3 className="text-sm font-semibold uppercase tracking-widest text-white">
                 {locale === "es" && "TALLER"}
                 {locale === "en" && "WORKSHOP"}
                 {locale === "ca" && "TALLER"}
               </h3>
-              <ul className="mt-6 space-y-3 text-sm">
+              <ul className="mt-6 space-y-3.5 text-base">
                 <li>
                   <Link
                     href={getFullPath("selfBuildWorkshop", locale)}
-                    className="text-gray-300 transition hover:text-white"
+                    className="text-gray-300 transition hover:text-white hover:underline"
                   >
                     {locale === "es" && "Taller de Autoconstrucción"}
                     {locale === "en" && "Self-build Workshop"}
@@ -195,7 +195,7 @@ export function Footer() {
                 <li>
                   <Link
                     href={getFullPath("customBikes", locale)}
-                    className="text-gray-300 transition hover:text-white"
+                    className="text-gray-300 transition hover:text-white hover:underline"
                   >
                     {locale === "es" && "Bicicletas a Medida"}
                     {locale === "en" && "Bespoke Bikes"}
@@ -205,7 +205,7 @@ export function Footer() {
                 <li>
                   <Link
                     href={getFullPath("carbonRepair", locale)}
-                    className="text-gray-300 transition hover:text-white"
+                    className="text-gray-300 transition hover:text-white hover:underline"
                   >
                     {locale === "es" && "Reparación de Carbono"}
                     {locale === "en" && "Carbon Repair"}
@@ -217,16 +217,16 @@ export function Footer() {
 
             {/* About + Links */}
             <div>
-              <h3 className="text-xs font-semibold uppercase tracking-widest text-white">
+              <h3 className="text-sm font-semibold uppercase tracking-widest text-white">
                 {locale === "es" && "NOSOTROS"}
                 {locale === "en" && "ABOUT"}
                 {locale === "ca" && "NOSALTRES"}
               </h3>
-              <ul className="mt-6 space-y-3 text-sm">
+              <ul className="mt-6 space-y-3.5 text-base">
                 <li>
                   <Link
                     href={getFullPath("ourStory", locale)}
-                    className="text-gray-300 transition hover:text-white"
+                    className="text-gray-300 transition hover:text-white hover:underline"
                   >
                     {locale === "es" && "Nuestra Historia"}
                     {locale === "en" && "Our Story"}
@@ -236,7 +236,7 @@ export function Footer() {
                 <li>
                   <Link
                     href={getFullPath("philosophy", locale)}
-                    className="text-gray-300 transition hover:text-white"
+                    className="text-gray-300 transition hover:text-white hover:underline"
                   >
                     {locale === "es" && "Filosofía y Valores"}
                     {locale === "en" && "Philosophy & Values"}
@@ -246,7 +246,7 @@ export function Footer() {
                 <li>
                   <Link
                     href={getFullPath("bambooMaterials", locale)}
-                    className="text-gray-300 transition hover:text-white"
+                    className="text-gray-300 transition hover:text-white hover:underline"
                   >
                     {locale === "es" && "Bambú y Materiales"}
                     {locale === "en" && "Bamboo and Materials"}
@@ -256,7 +256,7 @@ export function Footer() {
                 <li>
                   <Link
                     href={getFullPath("faq", locale)}
-                    className="text-gray-300 transition hover:text-white"
+                    className="text-gray-300 transition hover:text-white hover:underline"
                   >
                     FAQ
                   </Link>
@@ -264,11 +264,11 @@ export function Footer() {
               </ul>
 
               <div className="mt-8 border-t border-gray-700/60 pt-8">
-                <ul className="space-y-3 text-sm">
+                <ul className="space-y-3.5 text-base">
                   <li>
                     <Link
                       href={getFullPath("collaborations", locale)}
-                      className="text-gray-300 transition hover:text-white"
+                      className="text-gray-300 transition hover:text-white hover:underline"
                     >
                       {locale === "es" && "Colaboraciones"}
                       {locale === "en" && "Collaborations"}
@@ -278,7 +278,7 @@ export function Footer() {
                   <li>
                     <Link
                       href={getFullPath("blog", locale)}
-                      className="text-gray-300 transition hover:text-white"
+                      className="text-gray-300 transition hover:text-white hover:underline"
                     >
                       Blog
                     </Link>
@@ -286,7 +286,7 @@ export function Footer() {
                   <li>
                     <Link
                       href={getFullPath("contact", locale)}
-                      className="text-gray-300 transition hover:text-white"
+                      className="text-gray-300 transition hover:text-white hover:underline"
                     >
                       {locale === "es" && "Contacto"}
                       {locale === "en" && "Contact"}

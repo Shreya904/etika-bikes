@@ -47,5 +47,77 @@
     "rights": "Tots els drets reservats",
     "openingHours": "Horari",
     "mondayToSaturday": "Dilluns a Dissabte"
+  },
+  "bicycles": {
+    "pageTitle": "Les Nostres Bicicletes de Bambú",
+    "pageSubtitle": "Cada bicicleta és única, feta a mà a Barcelona amb bambú sostenible",
+    "ebikesSection": "EBIKES",
+    "classicSection": "CLASSIC",
+    "prototypesSection": "PROTOTYPES",
+    "underConstructionText": "En construcció - Pròximament disponible",
+    "customizableNote": "No treballem amb estoc. Cada bicicleta es fabrica a mida.",
+    "guaranteeNote": "7 anys de garantia al quadre de bambú"
+  },
+  "ebikeUrban": {
+    "title": "Etika Urban E-Bike",
+    "subtitle": "mobilitat elèctrica amb ànima natural",
+    "intro": "Dissenyada i fabricada a mà a Barcelona, l'Etika Urban E-Bike combina tecnologia, confort i sostenibilitat per a aquells que busquen una experiència de mobilitat urbana responsable i elegant.",
+    "description1": "El seu quadre de bambú cultivat localment ofereix una conducció suau, absorbint vibracions i aportant una estètica càlida i única que la diferencia de qualsevol altra bicicleta elèctrica.",
+    "description2": "Cada detall està pensat per oferir un equilibri perfecte entre rendiment, durabilitat i disseny artesanal.",
+    "description3": "Ideal per moure't per la ciutat amb estil, fluïdesa i zero emissions.",
+    "componentsTitle": "Components principals",
+    "motor": "Motor Bafang M420 – 250W, 80Nm: assistència elèctrica suau, potent i silenciosa.",
+    "gears": "Canvi intern Shimano Nexus 7v – manteniment mínim i funcionament precís.",
+    "tires": "Cobertes Schwalbe Marathon Plus – protecció antipinxades per a un ús diari sense preocupacions.",
+    "saddle": "Selló Brooks – elegància clàssica i comoditat inigualable.",
+    "fork": "Forquilla RockShox Judy Silver TK Solo Air 29\" – màxima absorció i confort a l'asfalt.",
+    "brakes": "Frens de disc hidràulics – seguretat i control en tot tipus de condicions.",
+    "warranty": "7 anys de garantia al quadre de bambú – confiança total en una estructura natural i resistent.",
+    "valuesTitle": "Natural. Elèctrica. Urbana. Personal.",
+    "valuesText": "Més que una bicicleta, l'Etika Urban E-Bike representa un estil de vida conscient: fabricada artesanalment, amb materials naturals i un compromís real amb la mobilitat sostenible.",
+    "customText": "No treballem amb estoc: cada bicicleta es fabrica a mida, permetent personalitzar components, acabats o detalls segons les teves preferències.",
+    "customText2": "Pots triar el model tal com el veus a la foto o adaptar-lo al teu estil i necessitats.",
+    "uniqueText": "Cada creació és única — perquè cada persona i cada camí també ho són.",
+    "cta": "Condueix la ciutat d'una altra manera — amb estil, silenci i ànima de bambú."
+  },
+  "ebikeMtb": {
+    "title": "Etika MTB E-Bike",
+    "subtitle": "naturalesa, potència i aventura",
+    "intro": "Fabricada a mà a Barcelona, l'Etika MTB E-Bike uneix la força del bambú amb la tecnologia elèctrica més avançada per oferir una experiència de muntanya única.",
+    "description1": "El seu quadre de bambú natural, lleuger i resistent, absorbeix les vibracions del terreny i ofereix una conducció àgil i còmoda, fins i tot als senders més exigents.",
+    "description2": "Dissenyada per a aquells que busquen una bicicleta de muntanya sostenible, robusta i amb un disseny artesanal que no passa desapercebut.",
+    "componentsTitle": "Components principals",
+    "motor": "Motor Bafang M420 – 250W, 80Nm: assistència potent i progressiva en pujades i terrenys tècnics, complint amb la normativa europea per circular també per ciutat.",
+    "gears": "Canvi intern Shimano Nexus 7v – precisió i fiabilitat amb baix manteniment.",
+    "tires": "Cobertes Michelin Country Grip 29x2.10 – tracció i control en tot tipus de superfícies.",
+    "saddle": "Selló Brooks – comoditat i estil per a rutes llargues.",
+    "fork": "Forquilla RockShox Judy Silver TK Solo Air 29\" – suspensió suau i ajustable per a un rendiment òptim.",
+    "brakes": "Frens de disc hidràulics – seguretat total i potència de frenada constant.",
+    "warranty": "7 anys de garantia al quadre de bambú – durabilitat i confiança en una estructura natural i resistent.",
+    "valuesTitle": "Muntanya sostenible. Energia natural. Personalitzada.",
+    "valuesText": "Cada Etika MTB E-Bike es fabrica a mida, adaptada a les preferències i necessitats de cada ciclista.",
+    "customText": "No treballem amb estoc: creiem en una producció artesanal, conscient i personalitzada.",
+    "powerNote": "Per normativa, la bicicleta està equipada amb un motor de 250W, el que permet el seu ús tant a muntanya com a ciutat. No obstant això, per a aquells que busquen un rendiment superior en terrenys privats o fora de la via pública, podem muntar motors més potents sota comanda.",
+    "customText2": "Pots triar el model tal com el veus a la foto o personalitzar components, acabats o detalls segons el teu estil i les teves necessitats.",
+    "uniqueText": "Cada creació és única — perquè cada persona i cada camí també ho són.",
+    "cta": "Redescobreix la muntanya — amb força elèctrica, esperit artesanal i ànima de bambú."
+  },
+  "pushBike": {
+    "title": "Bicicleta d'Equilibri de Bambú",
+    "subtitle": "El primer pas cap a la llibertat sobre dues rodes",
+    "description": "Fabricada a mà amb bambú sostenible, la nostra bicicleta d'equilibri és perfecta perquè els més petits aprenguin equilibri i coordinació de forma natural.",
+    "comingSoon": "Més informació pròximament"
+  },
+  "bmx": {
+    "title": "BMX de Bambú",
+    "subtitle": "Força i flexibilitat natural",
+    "description": "Prototip de BMX construït amb bambú, combinant resistència, lleugeresa i absorció d'impactes per a una experiència única.",
+    "comingSoon": "Més informació pròximament"
+  },
+  "tricycle": {
+    "title": "Tricicle de Bambú",
+    "subtitle": "Estabilitat i sostenibilitat",
+    "description": "Prototip de tricicle de bambú, ideal per a mobilitat urbana sostenible amb major estabilitat i capacitat de càrrega.",
+    "comingSoon": "Més informació pròximament"
   }
 }

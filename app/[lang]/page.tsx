@@ -1,6 +1,8 @@
 import { Container } from "@/components/ui/Container";
 import { HeroCarousel } from "@/components/sections/HeroCarousel";
 import Link from "next/link";
+import { type Locale } from "@/i18n";
+import { getFullPath } from "@/lib/routes";
 
 /*
   UNSPLASH IMAGES - Easy to swap:
@@ -11,7 +13,14 @@ import Link from "next/link";
   To swap: Change the photo ID (part after photo-) and update alt text accordingly
 */
 
-export default function HomePage() {
+export default async function HomePage({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang } = await params;
+  const locale = lang as Locale;
+
   return (
     <div className="bg-gray-50">
       {/* Hero Carousel */}
@@ -24,8 +33,8 @@ export default function HomePage() {
             <div className="order-2 lg:order-1">
               <div className="aspect-[4/3] overflow-hidden rounded-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=800&h=600&fit=crop&crop=center"
-                  alt="Handmade bamboo bicycle craftsmanship workshop"
+                  src="/assets/E-bike.jpg"
+                  alt="Etika Bikes bamboo e-bike"
                   className="h-full w-full object-cover"
                 />
               </div>
@@ -127,7 +136,7 @@ export default function HomePage() {
             <div>
               <div className="aspect-[4/3] overflow-hidden rounded-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=600&fit=crop&crop=center"
+                  src="/assets/Bamboo forest.jpg"
                   alt="Sustainable bamboo forest and natural materials"
                   className="h-full w-full object-cover"
                 />
@@ -144,7 +153,7 @@ export default function HomePage() {
             <div className="order-2 lg:order-1">
               <div className="aspect-[4/3] overflow-hidden rounded-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=600&fit=crop&crop=center"
+                  src="/assets/Handmade.png "
                   alt="Barcelona workshop and local craftsmanship"
                   className="h-full w-full object-cover"
                 />
@@ -204,7 +213,10 @@ export default function HomePage() {
       </section>
 
       {/* Massive Video Section */}
-      <section className="bg-primary-900 min-h-screen flex items-center py-24 lg:py-32">
+      <section
+        className="min-h-screen flex items-center py-24 lg:py-32"
+        style={{ backgroundColor: "#4d8233" }}
+      >
         <Container maxWidth="2xl" className="w-full">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-white lg:text-6xl">
@@ -244,13 +256,13 @@ export default function HomePage() {
             </p>
             <div className="mt-10 flex flex-col gap-6 sm:flex-row sm:justify-center">
               <Link
-                href="/en/workshop"
+                href={getFullPath("selfBuildWorkshop", locale)}
                 className="inline-flex items-center justify-center rounded-xl bg-white px-8 py-4 text-lg font-semibold text-primary-800 transition-all hover:bg-primary-50 hover:shadow-lg"
               >
                 Join Our Workshop
               </Link>
               <Link
-                href="/en/custom-bikes"
+                href={getFullPath("customBikes", locale)}
                 className="inline-flex items-center justify-center rounded-xl border-2 border-white px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-white hover:text-primary-800"
               >
                 Custom Made Bicycles
@@ -259,7 +271,10 @@ export default function HomePage() {
             <div className="mt-8 text-center">
               <p className="text-primary-300">
                 Have questions?{" "}
-                <Link href="/en/contact" className="underline hover:text-white">
+                <Link
+                  href={getFullPath("contact", locale)}
+                  className="underline hover:text-white"
+                >
                   Get in touch
                 </Link>
               </p>

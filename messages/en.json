@@ -8,7 +8,7 @@
     "ebikesUrban": "Urban E-Bike",
     "ebikesGravel": "E-Bike Gravel",
     "classic": "Classic Bicycles",
-    "classicPushBike": "Balance Bike",
+    "classicPushBike": "Push Bike",
     "classicUrban": "Classic Urban",
     "classicGravel": "Classic Gravel",
     "prototypes": "Prototypes",
@@ -47,5 +47,77 @@
     "rights": "All rights reserved",
     "openingHours": "Opening hours",
     "mondayToSaturday": "Monday to Saturday"
+  },
+  "bicycles": {
+    "pageTitle": "Our Bamboo Bicycles",
+    "pageSubtitle": "Each bicycle is unique, handmade in Barcelona with sustainable bamboo",
+    "ebikesSection": "EBIKES",
+    "classicSection": "CLASSIC",
+    "prototypesSection": "PROTOTYPES",
+    "underConstructionText": "Under construction - Coming soon",
+    "customizableNote": "We don't keep stock. Each bicycle is custom-made.",
+    "guaranteeNote": "7-year warranty on the bamboo frame"
+  },
+  "ebikeUrban": {
+    "title": "Etika Urban E-Bike",
+    "subtitle": "electric mobility with a natural soul",
+    "intro": "Designed and handcrafted in Barcelona, the Etika Urban E-Bike combines technology, comfort and sustainability for those seeking a responsible and elegant urban mobility experience.",
+    "description1": "Its locally-grown bamboo frame offers a smooth ride, absorbing vibrations and providing a warm, unique aesthetic that sets it apart from any other electric bicycle.",
+    "description2": "Every detail is designed to offer a perfect balance between performance, durability and artisan design.",
+    "description3": "Ideal for moving around the city with style, fluidity and zero emissions.",
+    "componentsTitle": "Main Components",
+    "motor": "Bafang M420 Motor – 250W, 80Nm: smooth, powerful and silent electric assistance.",
+    "gears": "Shimano Nexus 7-speed internal hub – minimal maintenance and precise operation.",
+    "tires": "Schwalbe Marathon Plus tires – puncture protection for worry-free daily use.",
+    "saddle": "Brooks saddle – classic elegance and unmatched comfort.",
+    "fork": "RockShox Judy Silver TK Solo Air 29\" fork – maximum absorption and comfort on pavement.",
+    "brakes": "Hydraulic disc brakes – safety and control in all conditions.",
+    "warranty": "7-year warranty on the bamboo frame – total confidence in a natural and resistant structure.",
+    "valuesTitle": "Natural. Electric. Urban. Personal.",
+    "valuesText": "More than a bicycle, the Etika Urban E-Bike represents a conscious lifestyle: handcrafted, with natural materials and a real commitment to sustainable mobility.",
+    "customText": "We don't keep stock: each bicycle is custom-made, allowing you to personalize components, finishes or details according to your preferences.",
+    "customText2": "You can choose the model as you see it in the photo or adapt it to your style and needs.",
+    "uniqueText": "Each creation is unique — because each person and each journey are too.",
+    "cta": "Ride the city differently — with style, silence and a soul of bamboo."
+  },
+  "ebikeMtb": {
+    "title": "Etika MTB E-Bike",
+    "subtitle": "nature, power and adventure",
+    "intro": "Handcrafted in Barcelona, the Etika MTB E-Bike combines the strength of bamboo with the most advanced electric technology to offer a unique mountain experience.",
+    "description1": "Its natural bamboo frame, lightweight and resistant, absorbs terrain vibrations and offers agile, comfortable riding, even on the most demanding trails.",
+    "description2": "Designed for those seeking a sustainable, robust mountain bike with an artisan design that doesn't go unnoticed.",
+    "componentsTitle": "Main Components",
+    "motor": "Bafang M420 Motor – 250W, 80Nm: powerful and progressive assistance on climbs and technical terrain, complying with European regulations for city use too.",
+    "gears": "Shimano Nexus 7-speed internal hub – precision and reliability with low maintenance.",
+    "tires": "Michelin Country Grip 29x2.10 tires – traction and control on all types of surfaces.",
+    "saddle": "Brooks saddle – comfort and style for long routes.",
+    "fork": "RockShox Judy Silver TK Solo Air 29\" fork – smooth and adjustable suspension for optimal performance.",
+    "brakes": "Hydraulic disc brakes – total safety and constant braking power.",
+    "warranty": "7-year warranty on the bamboo frame – durability and confidence in a natural and resistant structure.",
+    "valuesTitle": "Sustainable mountain. Natural energy. Customized.",
+    "valuesText": "Each Etika MTB E-Bike is custom-made, adapted to the preferences and needs of each cyclist.",
+    "customText": "We don't keep stock: we believe in artisan, conscious and personalized production.",
+    "powerNote": "By regulation, the bicycle is equipped with a 250W motor, allowing its use both on mountains and in the city. However, for those seeking superior performance on private terrain or off public roads, we can install more powerful motors upon request.",
+    "customText2": "You can choose the model as you see it in the photo or customize components, finishes or details according to your style and needs.",
+    "uniqueText": "Each creation is unique — because each person and each path are too.",
+    "cta": "Rediscover the mountain — with electric power, artisan spirit and a soul of bamboo."
+  },
+  "pushBike": {
+    "title": "Bamboo Push Bike",
+    "subtitle": "The first step towards freedom on two wheels",
+    "description": "Handcrafted with sustainable bamboo, our push bike is perfect for little ones to learn balance and coordination naturally.",
+    "comingSoon": "More information coming soon"
+  },
+  "bmx": {
+    "title": "Bamboo BMX",
+    "subtitle": "Natural strength and flexibility",
+    "description": "BMX prototype built with bamboo, combining strength, lightness and impact absorption for a unique experience.",
+    "comingSoon": "More information coming soon"
+  },
+  "tricycle": {
+    "title": "Bamboo Tricycle",
+    "subtitle": "Stability and sustainability",
+    "description": "Bamboo tricycle prototype, ideal for sustainable urban mobility with greater stability and load capacity.",
+    "comingSoon": "More information coming soon"
   }
 }

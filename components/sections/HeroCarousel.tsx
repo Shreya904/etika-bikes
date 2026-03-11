@@ -16,21 +16,18 @@ const slides = [
   },
   {
     id: 1,
-    image:
-      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=85&fit=crop&auto=format",
+    image: "/assets/Bamboo forest.jpg",
     alt: "Bamboo forest — the raw material behind every Etika bicycle",
   },
   {
     id: 2,
-    image:
-      "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1920&q=85&fit=crop&auto=format",
+    image: "/assets/Workshop2.jpeg",
     alt: "Craftsman working on a handmade bicycle frame in a workshop",
   },
   {
     id: 3,
-    image:
-      "https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=1920&q=85&fit=crop&auto=format",
-    alt: "Bamboo bicycle leaning against a wall in Barcelona",
+    image: "/assets/etikabikes.jpg",
+    alt: "Building your own bamboo bicycle with your hands",
   },
 ];
 

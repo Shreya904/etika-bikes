@@ -32,7 +32,7 @@ export function CustomBikesPage({ locale }: { locale: Locale }) {
           {/* Image Side */}
           <div className="relative h-[80vh] lg:h-auto">
             <img
-              src="https://images.unsplash.com/photo-1571068316344-75bc76f77890?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+              src="/assets/BMX.jpg"
               alt="Custom bamboo bicycle design"
               className="w-full h-full object-cover"
             />
@@ -205,11 +205,9 @@ export function CustomBikesPage({ locale }: { locale: Locale }) {
             <div className="grid lg:grid-cols-2 gap-8 items-center">
               {/* Image */}
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl group">
-                <Image
-                  src="https://images.unsplash.com/photo-1606898604882-0192d2139a2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                <img
+                  src="/assets/Handmade.png"
                   alt="Bamboo bicycle workshop craftsmanship"
-                  width={1200}
-                  height={800}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary-900/80 via-primary-900/20 to-transparent"></div>
@@ -313,11 +311,9 @@ export function CustomBikesPage({ locale }: { locale: Locale }) {
             <div className="grid lg:grid-cols-2 gap-8">
               {/* Left side - Process image */}
               <div className="relative h-full min-h-[600px] rounded-2xl overflow-hidden shadow-xl">
-                <Image
-                  src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                <img
+                  src="/assets/partsinwork.png"
                   alt="Custom bicycle manufacturing process"
-                  width={1200}
-                  height={1200}
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-br from-primary-900/60 via-transparent to-secondary-900/60"></div>

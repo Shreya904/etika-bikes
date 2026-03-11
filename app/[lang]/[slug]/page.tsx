@@ -15,6 +15,12 @@ import { CustomBikesPage } from "./_components/CustomBikesPage";
 import { CarbonRepairPage } from "./_components/CarbonRepairPage";
 import { FAQPage } from "./_components/FAQPage";
 import { ContactPage } from "./_components/ContactPage";
+import { BicyclesPage } from "./_components/BicyclesPage";
+import { EbikeUrbanPage } from "./_components/EbikeUrbanPage";
+import { EbikeMtbPage } from "./_components/EbikeMtbPage";
+import { PushBikePage } from "./_components/PushBikePage";
+import { BmxPage } from "./_components/BmxPage";
+import { TricyclePage } from "./_components/TricyclePage";
 
 // Ensure unrecognised slugs are handled at runtime, not just at build time
 export const dynamicParams = true;
@@ -24,15 +30,11 @@ export const dynamicParams = true;
 
 // ─── Pages the client explicitly marked as "under construction" ───────────────
 const UNDER_CONSTRUCTION: Set<RouteKey> = new Set([
-  // Our Creations – all pages except ebikeMtb and ebikeUrban (which have content)
+  // Our Creations – remaining under construction
   "creations",
-  "bicycles",
   "ebikes",
   "classic",
-  "pushBike",
   "prototypes",
-  "bmx",
-  "tricycle",
   "cargoBike",
   "frames",
   "selfBuildKits",
@@ -276,6 +278,31 @@ export default async function SlugPage({
   // Contact page
   if (routeKey === "contact") {
     return <ContactPage locale={locale} />;
+  }
+
+  // Bicycles pages
+  if (routeKey === "bicycles") {
+    return <BicyclesPage locale={locale} />;
+  }
+
+  if (routeKey === "ebikeUrban") {
+    return <EbikeUrbanPage locale={locale} />;
+  }
+
+  if (routeKey === "ebikeMtb") {
+    return <EbikeMtbPage locale={locale} />;
+  }
+
+  if (routeKey === "pushBike") {
+    return <PushBikePage locale={locale} />;
+  }
+
+  if (routeKey === "bmx") {
+    return <BmxPage locale={locale} />;
+  }
+
+  if (routeKey === "tricycle") {
+    return <TricyclePage locale={locale} />;
   }
 
   // All other recognised routes are not yet built – return 404 for now.

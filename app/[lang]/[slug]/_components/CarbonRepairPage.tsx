@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { type Locale } from "@/i18n";
 
@@ -30,20 +29,19 @@ export function CarbonRepairPage({ locale }: { locale: Locale }) {
           </div>
 
           {/* Image Side */}
-          <div className="relative h-[80vh] lg:h-auto">
-            <Image
-              src="https://images.unsplash.com/photo-1502744688674-c619d1586c9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+          <div className="relative h-[80vh] lg:h-auto overflow-hidden">
+            <img
+              src="/assets/bike-illustration.jpeg"
               alt="Carbon frame repair workshop"
-              width={2070}
-              height={1380}
               className="w-full h-full object-cover"
+              style={{ minHeight: "100%", minWidth: "100%" }}
             />
           </div>
         </div>
       </section>
 
       {/* ── Main Service Description ── */}
-      <section className="bg-white py-20 lg:py-28">
+      <section className="bg-white py-16 lg:py-24">
         <Container maxWidth="2xl">
           <div className="mx-auto max-w-4xl">
             {/* Eyebrow */}
