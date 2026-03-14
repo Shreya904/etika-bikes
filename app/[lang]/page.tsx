@@ -222,7 +222,7 @@ export default async function HomePage({
             <h2 className="text-4xl font-bold text-white lg:text-6xl">
               Experience the Craft
             </h2>
-            <p className="mt-6 text-xl text-primary-200 lg:text-2xl">
+            <p className="mt-6 text-xl text-white lg:text-2xl">
               Watch our artisans build handmade bamboo bicycles in Barcelona
             </p>
           </div>

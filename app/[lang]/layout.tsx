@@ -1,10 +1,18 @@
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
+import { Poiret_One } from "next/font/google";
 import { locales } from "@/i18n";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import "../globals.css";
+
+const poiretOne = Poiret_One({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-poiret-one",
+  display: "swap",
+});
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ lang: locale }));
@@ -27,8 +35,8 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={lang}>
-      <body className="antialiased flex min-h-screen flex-col">
+    <html lang={lang} className={poiretOne.variable}>
+      <body className="font-poiret antialiased flex min-h-screen flex-col">
         <NextIntlClientProvider messages={messages}>
           <Header />
           <main className="flex-1">{children}</main>

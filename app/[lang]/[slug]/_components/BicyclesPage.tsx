@@ -176,7 +176,7 @@ export function BicyclesPage({ locale }: BicyclesPageProps) {
               <h1 className="text-4xl font-bold lg:text-5xl xl:text-6xl mb-6">
                 {t.pageTitle}
               </h1>
-              <p className="text-xl text-primary-200 leading-relaxed">
+              <p className="text-xl text-white leading-relaxed">
                 {t.pageSubtitle}
               </p>
               <div className="mt-10 flex items-center gap-3">

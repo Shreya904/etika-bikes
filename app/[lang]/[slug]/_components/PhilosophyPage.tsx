@@ -14,7 +14,7 @@ export function PhilosophyPage({ locale }: { locale: Locale }) {
   return (
     <div className="overflow-hidden">
       {/* ── Hero ── */}
-      <section className="relative overflow-hidden bg-primary-800 py-24 lg:py-40">
+      <section className="relative flex min-h-[calc(25svh-5rem)] items-center overflow-hidden bg-primary-800 py-8 lg:py-10">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute -right-48 -top-48 h-175 w-175 rounded-full border-2 border-white/5" />
           <div className="absolute -right-24 -top-24 h-125 w-125 rounded-full border border-white/5" />

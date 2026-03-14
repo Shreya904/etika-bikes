@@ -206,7 +206,7 @@ export function HeroCarousel() {
         </h1>
 
         {/* Sub */}
-        <p className="mt-6 max-w-md text-base leading-relaxed text-gray-300 sm:text-lg">
+        <p className="mt-6 max-w-md text-base leading-relaxed text-white sm:text-lg">
           {slide.sub}
         </p>
 

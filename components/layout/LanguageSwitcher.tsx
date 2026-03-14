@@ -71,7 +71,7 @@ export function LanguageSwitcher() {
             "flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-medium transition-all",
             currentLocale === locale
               ? "bg-primary-700 text-white shadow-sm"
-              : "text-gray-600 hover:bg-bamboo-100 hover:text-gray-900",
+              : "text-gray-800 hover:bg-bamboo-100 hover:text-gray-900",
           )}
         >
           <FlagIcon locale={locale} />

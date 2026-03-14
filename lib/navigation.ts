@@ -89,7 +89,7 @@ export const mainNavigation: NavItem[] = [
     labelKey: "about",
     route: "about",
     children: [
-      { labelKey: "aboutStory", route: "ourStory" },
+      // { labelKey: "aboutStory", route: "ourStory" },
       { labelKey: "aboutPhilosophy", route: "philosophy" },
       { labelKey: "aboutBamboo", route: "bambooMaterials" },
       { labelKey: "aboutFaq", route: "faq" },
