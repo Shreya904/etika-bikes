@@ -1,12 +1,14 @@
 import React from "react";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import type { ComponentType } from "react";
 import { locales, type Locale } from "@/i18n";
 import {
   resolveSlug,
   getAllSlugParams,
   type RouteKey,
 } from "@/lib/slugResolver";
+import { getAllBikeSlugParams, getBikeBySlug } from "@/lib/cms/bikes";
 import { UnderConstruction } from "@/components/ui";
 import { PhilosophyPage } from "./_components/PhilosophyPage";
 import { BambooMaterialsPage } from "./_components/BambooMaterialsPage";
@@ -21,6 +23,7 @@ import { EbikeMtbPage } from "./_components/EbikeMtbPage";
 import { PushBikePage } from "./_components/PushBikePage";
 import { BmxPage } from "./_components/BmxPage";
 import { TricyclePage } from "./_components/TricyclePage";
+import { CmsBikeDetailPage } from "./_components/CmsBikeDetailPage";
 
 // Ensure unrecognised slugs are handled at runtime, not just at build time
 export const dynamicParams = true;
@@ -52,9 +55,27 @@ const UNDER_CONSTRUCTION: Set<RouteKey> = new Set([
   "blog",
 ]);
 
+const ROUTE_COMPONENTS: Partial<
+  Record<RouteKey, ComponentType<{ locale: Locale }>>
+> = {
+  philosophy: PhilosophyPage,
+  bambooMaterials: BambooMaterialsPage,
+  selfBuildWorkshop: SelfBuildWorkshopPage,
+  customBikes: CustomBikesPage,
+  carbonRepair: CarbonRepairPage,
+  faq: FAQPage,
+  contact: ContactPage,
+  bicycles: BicyclesPage,
+  ebikeUrban: EbikeUrbanPage,
+  ebikeMtb: EbikeMtbPage,
+  pushBike: PushBikePage,
+  bmx: BmxPage,
+  tricycle: TricyclePage,
+};
+
 // ─── Static params: pre-render every locale × slug combination ────────────────
 export function generateStaticParams() {
-  return getAllSlugParams();
+  return [...getAllSlugParams(), ...getAllBikeSlugParams()];
 }
 
 // ─── Metadata ─────────────────────────────────────────────────────────────────
@@ -66,6 +87,15 @@ export async function generateMetadata({
   const { lang, slug } = await params;
   const locale = lang as Locale;
   const routeKey = resolveSlug(slug, locale);
+  const cmsBike = getBikeBySlug(slug, locale);
+
+  if (!routeKey && cmsBike) {
+    return {
+      title: `${cmsBike.title[locale] ?? cmsBike.title.en} | Etika Bikes`,
+      description:
+        cmsBike.shortDescription[locale] ?? cmsBike.shortDescription.en,
+    };
+  }
 
   if (!routeKey) return {};
 
@@ -239,6 +269,12 @@ export default async function SlugPage({
 
   const locale = lang as Locale;
   const routeKey = resolveSlug(slug, locale);
+  const cmsBike = getBikeBySlug(slug, locale);
+
+  // CMS bike pages use a shared template and take priority if the slug matches CMS content.
+  if (cmsBike) {
+    return <CmsBikeDetailPage locale={locale} bike={cmsBike} />;
+  }
 
   // Unknown slug → hard 404
   if (!routeKey) notFound();
@@ -248,61 +284,9 @@ export default async function SlugPage({
     return <UnderConstruction />;
   }
 
-  // About Us pages with content
-  if (routeKey === "philosophy") {
-    return <PhilosophyPage locale={locale} />;
-  }
-
-  if (routeKey === "bambooMaterials") {
-    return <BambooMaterialsPage locale={locale} />;
-  }
-
-  // Workshop pages with content
-  if (routeKey === "selfBuildWorkshop") {
-    return <SelfBuildWorkshopPage locale={locale} />;
-  }
-
-  if (routeKey === "customBikes") {
-    return <CustomBikesPage locale={locale} />;
-  }
-
-  if (routeKey === "carbonRepair") {
-    return <CarbonRepairPage locale={locale} />;
-  }
-
-  // FAQ page
-  if (routeKey === "faq") {
-    return <FAQPage locale={locale} />;
-  }
-
-  // Contact page
-  if (routeKey === "contact") {
-    return <ContactPage locale={locale} />;
-  }
-
-  // Bicycles pages
-  if (routeKey === "bicycles") {
-    return <BicyclesPage locale={locale} />;
-  }
-
-  if (routeKey === "ebikeUrban") {
-    return <EbikeUrbanPage locale={locale} />;
-  }
-
-  if (routeKey === "ebikeMtb") {
-    return <EbikeMtbPage locale={locale} />;
-  }
-
-  if (routeKey === "pushBike") {
-    return <PushBikePage locale={locale} />;
-  }
-
-  if (routeKey === "bmx") {
-    return <BmxPage locale={locale} />;
-  }
-
-  if (routeKey === "tricycle") {
-    return <TricyclePage locale={locale} />;
+  const RouteComponent = ROUTE_COMPONENTS[routeKey];
+  if (RouteComponent) {
+    return <RouteComponent locale={locale} />;
   }
 
   // All other recognised routes are not yet built – return 404 for now.
