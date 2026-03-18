@@ -35,7 +35,7 @@ export function CustomBikesPage({ locale }: { locale: Locale }) {
               src="/assets/BMX.jpg"
               alt="Custom bamboo bicycle design"
               className="w-full h-full object-cover rounded-none"
-              style={{ minHeight: '220px' }}
+              style={{ minHeight: "220px" }}
             />
           </div>
         </div>

@@ -34,7 +34,7 @@ export function CarbonRepairPage({ locale }: { locale: Locale }) {
               src="/assets/bike-illustration.jpeg"
               alt="Carbon frame repair workshop"
               className="w-full h-full object-cover rounded-none lg:max-h-[80vh]"
-              style={{ minHeight: '220px' }}
+              style={{ minHeight: "220px" }}
             />
           </div>
         </div>

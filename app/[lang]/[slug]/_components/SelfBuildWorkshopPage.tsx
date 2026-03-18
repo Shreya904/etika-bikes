@@ -36,7 +36,7 @@ export function SelfBuildWorkshopPage({ locale }: { locale: Locale }) {
               src="/assets/Workshop1.jpeg"
               alt="Bamboo bicycle workshop"
               className="w-full h-full object-cover rounded-none"
-              style={{ minHeight: '220px' }}
+              style={{ minHeight: "220px" }}
             />
           </div>
         </div>
