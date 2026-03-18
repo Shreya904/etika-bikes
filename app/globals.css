@@ -88,8 +88,9 @@
   --color-foreground: var(--black);
 
   /* Font families */
-  --font-family-poiret: var(--font-poiret-one), system-ui, -apple-system, sans-serif;
-  
+  --font-family-poiret:
+    var(--font-poiret-one), system-ui, -apple-system, sans-serif;
+
   /* Make Poiret One available as utility class */
   --font-sans: var(--font-poiret-one), system-ui, -apple-system, sans-serif;
 }
@@ -99,12 +100,17 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    border: 1px solid red;
   }
 
   body {
     background: var(--background);
     color: #0a0a0a; /* Much darker for better contrast */
-    font-family: var(--font-poiret-one), system-ui, -apple-system, sans-serif;
+    font-family:
+      var(--font-poiret-one),
+      system-ui,
+      -apple-system,
+      sans-serif;
     font-feature-settings: "kern";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -115,12 +121,49 @@
     text-shadow: 0 0 0.5px rgba(0, 0, 0, 0.3);
   }
 
+  /* Keep selected text readable across the site. */
+  *::selection {
+    color: #ffffff !important;
+    background: Highlight !important;
+    -webkit-text-fill-color: #ffffff !important;
+    -webkit-text-stroke: 0 !important;
+    text-shadow: none !important;
+  }
+
+  *::-moz-selection {
+    color: #ffffff !important;
+    background: Highlight !important;
+    -webkit-text-fill-color: #ffffff !important;
+    -webkit-text-stroke: 0 !important;
+    text-shadow: none !important;
+  }
+
   /* Improve readability for body text with Poiret One */
   /* Only apply dark colors on light backgrounds */
-  :not([class*="bg-primary-7"]):not([class*="bg-primary-8"]):not([class*="bg-primary-9"]):not([class*="bg-secondary-6"]):not([class*="bg-secondary-7"]):not([class*="bg-secondary-8"]):not([class*="bg-secondary-9"]):not(footer):not(header) p,
-  :not([class*="bg-primary-7"]):not([class*="bg-primary-8"]):not([class*="bg-primary-9"]):not([class*="bg-secondary-6"]):not([class*="bg-secondary-7"]):not([class*="bg-secondary-8"]):not([class*="bg-secondary-9"]):not(footer):not(header) li,
-  :not([class*="bg-primary-7"]):not([class*="bg-primary-8"]):not([class*="bg-primary-9"]):not([class*="bg-secondary-6"]):not([class*="bg-secondary-7"]):not([class*="bg-secondary-8"]):not([class*="bg-secondary-9"]):not(footer):not(header) span,
-  :not([class*="bg-primary-7"]):not([class*="bg-primary-8"]):not([class*="bg-primary-9"]):not([class*="bg-secondary-6"]):not([class*="bg-secondary-7"]):not([class*="bg-secondary-8"]):not([class*="bg-secondary-9"]):not(footer):not(header) div {
+  :not([class*="bg-primary-7"]):not([class*="bg-primary-8"]):not(
+      [class*="bg-primary-9"]
+    ):not([class*="bg-secondary-6"]):not([class*="bg-secondary-7"]):not(
+      [class*="bg-secondary-8"]
+    ):not([class*="bg-secondary-9"]):not(footer):not(header)
+    p,
+  :not([class*="bg-primary-7"]):not([class*="bg-primary-8"]):not(
+      [class*="bg-primary-9"]
+    ):not([class*="bg-secondary-6"]):not([class*="bg-secondary-7"]):not(
+      [class*="bg-secondary-8"]
+    ):not([class*="bg-secondary-9"]):not(footer):not(header)
+    li,
+  :not([class*="bg-primary-7"]):not([class*="bg-primary-8"]):not(
+      [class*="bg-primary-9"]
+    ):not([class*="bg-secondary-6"]):not([class*="bg-secondary-7"]):not(
+      [class*="bg-secondary-8"]
+    ):not([class*="bg-secondary-9"]):not(footer):not(header)
+    span,
+  :not([class*="bg-primary-7"]):not([class*="bg-primary-8"]):not(
+      [class*="bg-primary-9"]
+    ):not([class*="bg-secondary-6"]):not([class*="bg-secondary-7"]):not(
+      [class*="bg-secondary-8"]
+    ):not([class*="bg-secondary-9"]):not(footer):not(header)
+    div {
     letter-spacing: 0.02em;
     line-height: 1.7;
     color: #0a0a0a; /* Much darker text */
@@ -130,12 +173,42 @@
   }
 
   /* Headings - make them stand out more (only on light backgrounds) */
-  :not([class*="bg-primary-7"]):not([class*="bg-primary-8"]):not([class*="bg-primary-9"]):not([class*="bg-secondary-6"]):not([class*="bg-secondary-7"]):not([class*="bg-secondary-8"]):not([class*="bg-secondary-9"]):not(footer):not(header) h1,
-  :not([class*="bg-primary-7"]):not([class*="bg-primary-8"]):not([class*="bg-primary-9"]):not([class*="bg-secondary-6"]):not([class*="bg-secondary-7"]):not([class*="bg-secondary-8"]):not([class*="bg-secondary-9"]):not(footer):not(header) h2,
-  :not([class*="bg-primary-7"]):not([class*="bg-primary-8"]):not([class*="bg-primary-9"]):not([class*="bg-secondary-6"]):not([class*="bg-secondary-7"]):not([class*="bg-secondary-8"]):not([class*="bg-secondary-9"]):not(footer):not(header) h3,
-  :not([class*="bg-primary-7"]):not([class*="bg-primary-8"]):not([class*="bg-primary-9"]):not([class*="bg-secondary-6"]):not([class*="bg-secondary-7"]):not([class*="bg-secondary-8"]):not([class*="bg-secondary-9"]):not(footer):not(header) h4,
-  :not([class*="bg-primary-7"]):not([class*="bg-primary-8"]):not([class*="bg-primary-9"]):not([class*="bg-secondary-6"]):not([class*="bg-secondary-7"]):not([class*="bg-secondary-8"]):not([class*="bg-secondary-9"]):not(footer):not(header) h5,
-  :not([class*="bg-primary-7"]):not([class*="bg-primary-8"]):not([class*="bg-primary-9"]):not([class*="bg-secondary-6"]):not([class*="bg-secondary-7"]):not([class*="bg-secondary-8"]):not([class*="bg-secondary-9"]):not(footer):not(header) h6 {
+  :not([class*="bg-primary-7"]):not([class*="bg-primary-8"]):not(
+      [class*="bg-primary-9"]
+    ):not([class*="bg-secondary-6"]):not([class*="bg-secondary-7"]):not(
+      [class*="bg-secondary-8"]
+    ):not([class*="bg-secondary-9"]):not(footer):not(header)
+    h1,
+  :not([class*="bg-primary-7"]):not([class*="bg-primary-8"]):not(
+      [class*="bg-primary-9"]
+    ):not([class*="bg-secondary-6"]):not([class*="bg-secondary-7"]):not(
+      [class*="bg-secondary-8"]
+    ):not([class*="bg-secondary-9"]):not(footer):not(header)
+    h2,
+  :not([class*="bg-primary-7"]):not([class*="bg-primary-8"]):not(
+      [class*="bg-primary-9"]
+    ):not([class*="bg-secondary-6"]):not([class*="bg-secondary-7"]):not(
+      [class*="bg-secondary-8"]
+    ):not([class*="bg-secondary-9"]):not(footer):not(header)
+    h3,
+  :not([class*="bg-primary-7"]):not([class*="bg-primary-8"]):not(
+      [class*="bg-primary-9"]
+    ):not([class*="bg-secondary-6"]):not([class*="bg-secondary-7"]):not(
+      [class*="bg-secondary-8"]
+    ):not([class*="bg-secondary-9"]):not(footer):not(header)
+    h4,
+  :not([class*="bg-primary-7"]):not([class*="bg-primary-8"]):not(
+      [class*="bg-primary-9"]
+    ):not([class*="bg-secondary-6"]):not([class*="bg-secondary-7"]):not(
+      [class*="bg-secondary-8"]
+    ):not([class*="bg-secondary-9"]):not(footer):not(header)
+    h5,
+  :not([class*="bg-primary-7"]):not([class*="bg-primary-8"]):not(
+      [class*="bg-primary-9"]
+    ):not([class*="bg-secondary-6"]):not([class*="bg-secondary-7"]):not(
+      [class*="bg-secondary-8"]
+    ):not([class*="bg-secondary-9"]):not(footer):not(header)
+    h6 {
     letter-spacing: 0.03em;
     font-weight: 400; /* Poiret One only has one weight */
     color: #000000; /* Pure black for headings */
@@ -146,7 +219,8 @@
   /* Light text for colored/dark backgrounds */
   [class*="bg-primary-7"] p,
   [class*="bg-primary-7"] li,
-  [class*="bg-primary-7"] span:not(.text-gray-600):not(.text-gray-700):not(.text-gray-800),
+  [class*="bg-primary-7"]
+    span:not(.text-gray-600):not(.text-gray-700):not(.text-gray-800),
   [class*="bg-primary-7"] div,
   [class*="bg-primary-7"] h1,
   [class*="bg-primary-7"] h2,
@@ -244,7 +318,7 @@
     -webkit-text-stroke: 0 !important;
     text-shadow: none !important;
   }
-  
+
   /* Text over dark image overlays (carousel, hero sections, card hovers) */
   /* This applies to any gradient overlay with from-black, from-gray-9, or from-primary-9 */
   [class*="from-black"] *:not([class*="bg-white"]),
@@ -264,7 +338,7 @@
     -webkit-text-stroke: 0 !important;
     text-shadow: none !important;
   }
-  
+
   /* Explicit override for text-white and its opacity variants */
   .text-white,
   .text-white\/90,
@@ -274,7 +348,7 @@
   .text-white\/50 {
     color: white !important;
   }
-  
+
   /* Exception: Text inside white boxes over gradients should remain dark */
   [class*="from-black"] [class*="bg-white"] *,
   [class*="from-gray-9"] [class*="bg-white"] *,
@@ -284,7 +358,7 @@
     -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.3) !important;
     text-shadow: 0 0 0.5px rgba(0, 0, 0, 0.3) !important;
   }
-  
+
   [class*="from-black"] [class*="bg-white"] .text-gray-600,
   [class*="from-gray-9"] [class*="bg-white"] .text-gray-600,
   [class*="from-primary-9"] [class*="bg-white"] .text-gray-600,
@@ -298,7 +372,7 @@
     -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.3);
     text-shadow: 0 0 0.5px rgba(0, 0, 0, 0.3);
   }
-  
+
   /* Header text - keep it visible and slightly bolder */
   header * {
     -webkit-text-stroke: 0.3px rgba(0, 0, 0, 0.2) !important;
@@ -306,22 +380,42 @@
   }
 
   /* Better contrast for text elements on LIGHT backgrounds only */
-  :not([class*="bg-primary-7"]):not([class*="bg-primary-8"]):not([class*="bg-primary-9"]):not([class*="bg-secondary-6"]):not([class*="bg-secondary-7"]):not([class*="bg-secondary-8"]):not([class*="bg-secondary-9"]):not(footer):not(header) .text-gray-600 {
+  :not([class*="bg-primary-7"]):not([class*="bg-primary-8"]):not(
+      [class*="bg-primary-9"]
+    ):not([class*="bg-secondary-6"]):not([class*="bg-secondary-7"]):not(
+      [class*="bg-secondary-8"]
+    ):not([class*="bg-secondary-9"]):not(footer):not(header)
+    .text-gray-600 {
     color: #3a3a3a !important;
   }
 
-  :not([class*="bg-primary-7"]):not([class*="bg-primary-8"]):not([class*="bg-primary-9"]):not([class*="bg-secondary-6"]):not([class*="bg-secondary-7"]):not([class*="bg-secondary-8"]):not([class*="bg-secondary-9"]):not(footer):not(header) .text-gray-700 {
+  :not([class*="bg-primary-7"]):not([class*="bg-primary-8"]):not(
+      [class*="bg-primary-9"]
+    ):not([class*="bg-secondary-6"]):not([class*="bg-secondary-7"]):not(
+      [class*="bg-secondary-8"]
+    ):not([class*="bg-secondary-9"]):not(footer):not(header)
+    .text-gray-700 {
     color: #1f1f1f !important;
   }
 
-  :not([class*="bg-primary-7"]):not([class*="bg-primary-8"]):not([class*="bg-primary-9"]):not([class*="bg-secondary-6"]):not([class*="bg-secondary-7"]):not([class*="bg-secondary-8"]):not([class*="bg-secondary-9"]):not(footer):not(header) .text-gray-800 {
+  :not([class*="bg-primary-7"]):not([class*="bg-primary-8"]):not(
+      [class*="bg-primary-9"]
+    ):not([class*="bg-secondary-6"]):not([class*="bg-secondary-7"]):not(
+      [class*="bg-secondary-8"]
+    ):not([class*="bg-secondary-9"]):not(footer):not(header)
+    .text-gray-800 {
     color: #0a0a0a !important;
   }
 
-  :not([class*="bg-primary-7"]):not([class*="bg-primary-8"]):not([class*="bg-primary-9"]):not([class*="bg-secondary-6"]):not([class*="bg-secondary-7"]):not([class*="bg-secondary-8"]):not([class*="bg-secondary-9"]):not(footer):not(header) .text-gray-900 {
+  :not([class*="bg-primary-7"]):not([class*="bg-primary-8"]):not(
+      [class*="bg-primary-9"]
+    ):not([class*="bg-secondary-6"]):not([class*="bg-secondary-7"]):not(
+      [class*="bg-secondary-8"]
+    ):not([class*="bg-secondary-9"]):not(footer):not(header)
+    .text-gray-900 {
     color: #000000 !important;
   }
-  
+
   /* Force white text for gray classes on colored backgrounds */
   [class*="bg-primary-7"] .text-gray-600,
   [class*="bg-primary-7"] .text-gray-700,
@@ -379,6 +473,10 @@
 
   /* Utility class for Poiret One */
   .font-poiret {
-    font-family: var(--font-poiret-one), system-ui, -apple-system, sans-serif;
+    font-family:
+      var(--font-poiret-one),
+      system-ui,
+      -apple-system,
+      sans-serif;
   }
 }

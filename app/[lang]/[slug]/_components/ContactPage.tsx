@@ -1,5 +1,6 @@
 import { Container } from "@/components/ui/Container";
 import { type Locale } from "@/i18n";
+import { ContactForm } from "./ContactForm";
 
 export function ContactPage({ locale }: { locale: Locale }) {
   return (
@@ -9,14 +10,14 @@ export function ContactPage({ locale }: { locale: Locale }) {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 grid-cols-1 items-stretch">
             <div className="lg:mb-0 mb-10">
-              <div className="group w-full h-full max-h-[700px]">
-                <div className="relative h-full min-h-[500px]">
+              <div className="group w-full h-full max-h-175">
+                <div className="relative h-full min-h-125">
                   <img
                     src="/assets/bike-back.jpg"
                     alt="Bamboo bicycle"
                     className="absolute inset-0 w-full h-full lg:rounded-l-2xl rounded-2xl bg-blend-multiply bg-primary-700 object-cover"
                   />
-                  <h1 className="font-semibold text-white text-4xl font-bold leading-10 absolute top-11 left-11">
+                  <h1 className="absolute left-11 top-11 text-4xl font-bold leading-10 text-white">
                     {locale === "es" && "Contacta con nosotros"}
                     {locale === "en" && "Contact us"}
                     {locale === "ca" && "Contacta amb nosaltres"}
@@ -108,94 +109,7 @@ export function ContactPage({ locale }: { locale: Locale }) {
               </div>
             </div>
 
-            <div className="bg-gray-50 p-5 lg:p-8 lg:rounded-r-2xl rounded-2xl flex flex-col justify-center">
-              <h2 className="text-primary-600 text-3xl font-semibold leading-10 mb-6">
-                {locale === "es" && "Envíanos un Mensaje"}
-                {locale === "en" && "Send Us A Message"}
-                {locale === "ca" && "Envia'ns un Missatge"}
-              </h2>
-              <input
-                type="text"
-                className="w-full h-12 text-gray-600 placeholder-gray-400 shadow-sm bg-transparent text-lg font-normal leading-7 rounded-full border border-gray-200 focus:outline-none focus:border-primary-500 pl-4 mb-6"
-                placeholder={
-                  locale === "es" ? "Nombre" : locale === "ca" ? "Nom" : "Name"
-                }
-              />
-              <input
-                type="email"
-                className="w-full h-12 text-gray-600 placeholder-gray-400 shadow-sm bg-transparent text-lg font-normal leading-7 rounded-full border border-gray-200 focus:outline-none focus:border-primary-500 pl-4 mb-6"
-                placeholder="Email"
-              />
-              <input
-                type="tel"
-                className="w-full h-12 text-gray-600 placeholder-gray-400 shadow-sm bg-transparent text-lg font-normal leading-7 rounded-full border border-gray-200 focus:outline-none focus:border-primary-500 pl-4 mb-6"
-                placeholder={
-                  locale === "es"
-                    ? "Teléfono"
-                    : locale === "ca"
-                      ? "Telèfon"
-                      : "Phone"
-                }
-              />
-              <div className="mb-6">
-                <h4 className="text-gray-500 text-base font-normal leading-7 mb-3">
-                  {locale === "es" && "Método preferido de comunicación"}
-                  {locale === "en" && "Preferred method of communication"}
-                  {locale === "ca" && "Mètode preferit de comunicació"}
-                </h4>
-                <div className="flex">
-                  <div className="flex items-center mr-11">
-                    <input
-                      id="radio-group-1"
-                      type="radio"
-                      name="radio-group"
-                      className="hidden"
-                    />
-                    <label
-                      htmlFor="radio-group-1"
-                      className="flex items-center cursor-pointer text-gray-500 text-base font-normal leading-6"
-                    >
-                      <span className="border border-gray-300 rounded-full mr-2 w-4 h-4 ml-2"></span>
-                      Email
-                    </label>
-                  </div>
-                  <div className="flex items-center">
-                    <input
-                      id="radio-group-2"
-                      type="radio"
-                      name="radio-group"
-                      className="hidden"
-                    />
-                    <label
-                      htmlFor="radio-group-2"
-                      className="flex items-center cursor-pointer text-gray-500 text-base font-normal leading-6"
-                    >
-                      <span className="border border-gray-300 rounded-full mr-2 w-4 h-4 ml-2"></span>
-                      {locale === "es"
-                        ? "Teléfono"
-                        : locale === "ca"
-                          ? "Telèfon"
-                          : "Phone"}
-                    </label>
-                  </div>
-                </div>
-              </div>
-              <textarea
-                className="w-full h-24 text-gray-600 placeholder-gray-400 bg-transparent text-lg shadow-sm font-normal leading-7 rounded-2xl border border-gray-200 focus:outline-none focus:border-primary-500 p-4 mb-6 resize-none"
-                placeholder={
-                  locale === "es"
-                    ? "Mensaje"
-                    : locale === "ca"
-                      ? "Missatge"
-                      : "Message"
-                }
-              ></textarea>
-              <button className="w-full h-12 text-white text-base font-semibold leading-6 rounded-full transition-all duration-700 hover:bg-primary-800 bg-primary-600 shadow-sm">
-                {locale === "es" && "Enviar"}
-                {locale === "en" && "Send"}
-                {locale === "ca" && "Enviar"}
-              </button>
-            </div>
+            <ContactForm locale={locale} />
           </div>
         </div>
       </section>
@@ -439,9 +353,9 @@ export function ContactPage({ locale }: { locale: Locale }) {
                 {locale === "es" &&
                   "Te esperamos en nuestro taller o tienda para que conozcas de cerca nuestras bicicletas artesanales de bambú."}
                 {locale === "en" &&
-                  "We're waiting for you at our workshop or store to discover our handmade bamboo bicycles up close."}
+                  "We&apos;re waiting for you at our workshop or store to discover our handmade bamboo bicycles up close."}
                 {locale === "ca" &&
-                  "T'esperem al nostre taller o botiga perquè coneguis de prop les nostres bicicletes artesanals de bambú."}
+                  "T&apos;esperem al nostre taller o botiga perquè coneguis de prop les nostres bicicletes artesanals de bambú."}
               </p>
               <p className="text-xl font-semibold text-white">
                 {locale === "es" && "¡Ven y prueba la diferencia del bambú!"}
