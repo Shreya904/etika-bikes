@@ -96,91 +96,46 @@ export function MobileMenu() {
   };
 
   return (
-    <>
+    <Fragment>
       {/* Hamburger Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="inline-flex items-center justify-center rounded-lg p-2 text-primary-700 transition-colors hover:bg-bamboo-50 focus:outline-none focus:ring-2 focus:ring-primary-700 focus:ring-offset-2 lg:hidden"
+        className="lg:hidden"
         aria-label={tCommon("menu")}
       >
-        {isOpen ? (
-          <svg
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        ) : (
-          <svg
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        )}
+        <svg
+          className="h-8 w-8 text-secondary-500"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M4 6h16M4 12h16m-7 6h7"
+          />
+        </svg>
       </button>
 
       {/* Mobile Menu */}
-      {isOpen && (
-        <div className="lg:hidden">
-          <div className="fixed inset-0 z-50 bg-white">
-            <div className="flex h-20 items-center justify-between border-b border-bamboo-200/40 bg-bamboo-50/30 px-5">
-              <Link
-                href={getFullPath("home", locale)}
-                className="flex items-center transition-opacity hover:opacity-80"
-              >
-                <Image
-                  src="/logos/etika_main_logo.png"
-                  alt="Etika Bikes"
-                  width={140}
-                  height={40}
-                  className="h-10 w-auto object-contain"
-                  priority
-                />
-              </Link>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="rounded-lg p-2 text-primary-700 transition-colors hover:bg-bamboo-100"
-                aria-label={tCommon("close")}
-              >
-                <svg
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-            </div>
-            <div
-              className="overflow-y-auto"
-              style={{ height: "calc(100vh - 5rem)" }}
-            >
+      <div
+        className={cn(
+          "absolute inset-x-0 top-full mt-2 lg:hidden",
+          !isOpen && "hidden",
+        )}
+      >
+        <div className="bg-white shadow-lg">
+          <div
+            className="overflow-y-auto"
+            style={{ maxHeight: "calc(100vh - 10rem)" }}
+          >
+            <div className="flex flex-col items-start p-4">
               {mainNavigation.map((item) => renderNavItem(item))}
             </div>
           </div>
         </div>
-      )}
-    </>
+      </div>
+    </Fragment>
   );
 }

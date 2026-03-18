@@ -6,19 +6,19 @@ export function CustomBikesPage({ locale }: { locale: Locale }) {
   return (
     <div>
       {/* Hero Section */}
-      <section className="min-h-[80vh]">
-        <div className="grid lg:grid-cols-2 h-[80vh]">
+      <section className="min-h-[60vh] flex flex-col">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 lg:min-h-[80vh]">
           {/* Content Side */}
-          <div className="bg-primary-800 flex items-center justify-center py-20 lg:py-32 px-8 lg:px-16">
+          <div className="bg-primary-800 flex items-center justify-center py-12 sm:py-16 md:py-20 lg:py-32 px-4 sm:px-6 md:px-8 lg:px-16">
             <div className="max-w-xl text-white">
-              <h1 className="text-4xl font-bold lg:text-5xl xl:text-6xl mb-6">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold lg:text-5xl xl:text-6xl mb-4 sm:mb-6">
                 {locale === "es" &&
                   "Bicicletas de Bambú Hechas a Medida en Barcelona"}
                 {locale === "en" && "Custom Made Bamboo Bicycles in Barcelona"}
                 {locale === "ca" &&
                   "Bicicletes de Bambú Fetes a Mida a Barcelona"}
               </h1>
-              <p className="text-xl text-primary-200 leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl text-primary-200 leading-relaxed">
                 {locale === "es" &&
                   "Diseñamos y construimos bicicletas de bambú personalizadas en Barcelona, combinando ergonomía, artesanía y sostenibilidad."}
                 {locale === "en" &&
@@ -30,11 +30,12 @@ export function CustomBikesPage({ locale }: { locale: Locale }) {
           </div>
 
           {/* Image Side */}
-          <div className="relative h-[80vh] lg:h-auto">
+          <div className="relative w-full min-h-[220px] h-56 sm:h-72 md:h-80 lg:h-auto">
             <img
               src="/assets/BMX.jpg"
               alt="Custom bamboo bicycle design"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover rounded-none"
+              style={{ minHeight: '220px' }}
             />
           </div>
         </div>

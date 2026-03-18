@@ -17,13 +17,18 @@ import { CustomBikesPage } from "./_components/CustomBikesPage";
 import { CarbonRepairPage } from "./_components/CarbonRepairPage";
 import { FAQPage } from "./_components/FAQPage";
 import { ContactPage } from "./_components/ContactPage";
-import { BicyclesPage } from "./_components/BicyclesPage";
-import { EbikeUrbanPage } from "./_components/EbikeUrbanPage";
-import { EbikeMtbPage } from "./_components/EbikeMtbPage";
 import { PushBikePage } from "./_components/PushBikePage";
 import { BmxPage } from "./_components/BmxPage";
 import { TricyclePage } from "./_components/TricyclePage";
 import { CmsBikeDetailPage } from "./_components/CmsBikeDetailPage";
+import { BicyclesPageCms } from "./_components/BicyclesPageCms";
+import { CmsBikeDetailPageCms } from "./_components/CmsBikeDetailPageCms";
+import {
+  fetchBikeBySlug,
+  fetchAllBikes,
+  getAllCmsBikeSlugsForStaticParams,
+  resolveCmsString,
+} from "@/lib/cms/bikes-api";
 
 // Ensure unrecognised slugs are handled at runtime, not just at build time
 export const dynamicParams = true;
@@ -65,17 +70,21 @@ const ROUTE_COMPONENTS: Partial<
   carbonRepair: CarbonRepairPage,
   faq: FAQPage,
   contact: ContactPage,
-  bicycles: BicyclesPage,
-  ebikeUrban: EbikeUrbanPage,
-  ebikeMtb: EbikeMtbPage,
   pushBike: PushBikePage,
   bmx: BmxPage,
   tricycle: TricyclePage,
 };
 
 // ─── Static params: pre-render every locale × slug combination ────────────────
-export function generateStaticParams() {
-  return [...getAllSlugParams(), ...getAllBikeSlugParams()];
+export async function generateStaticParams() {
+  const base = [...getAllSlugParams(), ...getAllBikeSlugParams()];
+  try {
+    const cmsParams = await getAllCmsBikeSlugsForStaticParams();
+    return [...base, ...cmsParams];
+  } catch {
+    // CMS unreachable at build time — dynamicParams=true handles runtime rendering
+    return base;
+  }
 }
 
 // ─── Metadata ─────────────────────────────────────────────────────────────────
@@ -87,6 +96,19 @@ export async function generateMetadata({
   const { lang, slug } = await params;
   const locale = lang as Locale;
   const routeKey = resolveSlug(slug, locale);
+  if (routeKey !== "bicycles") {
+    const cmsBikeDoc = await fetchBikeBySlug(slug, locale);
+    if (cmsBikeDoc) {
+      return {
+        title: `${resolveCmsString(cmsBikeDoc.title, locale)} | Etika Bikes`,
+        description:
+          resolveCmsString(cmsBikeDoc.seo?.metaDescription, locale) ||
+          resolveCmsString(cmsBikeDoc.modelName, locale) ||
+          "",
+      };
+    }
+  }
+
   const cmsBike = getBikeBySlug(slug, locale);
 
   if (!routeKey && cmsBike) {
@@ -97,7 +119,9 @@ export async function generateMetadata({
     };
   }
 
-  if (!routeKey) return {};
+  if (!routeKey) {
+    return {};
+  }
 
   // Philosophy page metadata
   if (routeKey === "philosophy") {
@@ -269,15 +293,32 @@ export default async function SlugPage({
 
   const locale = lang as Locale;
   const routeKey = resolveSlug(slug, locale);
+
+  // ── Live CMS listing page ────────────────────────────────────────────────
+  if (routeKey === "bicycles") {
+    const liveBikes = await fetchAllBikes(locale);
+    return <BicyclesPageCms locale={locale} bikes={liveBikes} />;
+  }
+
+  // ── Live CMS detail pages take priority over hardcoded route matches ─────
+  const cmsBikeDoc = await fetchBikeBySlug(slug, locale);
+  if (cmsBikeDoc) {
+    return <CmsBikeDetailPageCms locale={locale} bike={cmsBikeDoc} />;
+  }
+
   const cmsBike = getBikeBySlug(slug, locale);
 
-  // CMS bike pages use a shared template and take priority if the slug matches CMS content.
+  // Legacy hardcoded CMS bike pages remain as fallback content.
+  /*
   if (cmsBike) {
     return <CmsBikeDetailPage locale={locale} bike={cmsBike} />;
   }
+  */
 
-  // Unknown slug → hard 404
-  if (!routeKey) notFound();
+  // ── Unknown route: try fetching from live CMS by slug ────────────────────
+  if (!routeKey) {
+    notFound();
+  }
 
   // Under-construction routes
   if (UNDER_CONSTRUCTION.has(routeKey)) {

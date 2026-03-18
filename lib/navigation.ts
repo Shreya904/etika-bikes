@@ -21,47 +21,6 @@ export const mainNavigation: NavItem[] = [
       {
         labelKey: "bicycles",
         route: "bicycles",
-        children: [
-          {
-            labelKey: "ebikes",
-            route: "ebikes",
-            children: [
-              { labelKey: "ebikesMtb", route: "ebikeMtb" },
-              { labelKey: "ebikesUrban", route: "ebikeUrban" },
-              {
-                labelKey: "ebikesGravel",
-                route: "ebikes",
-                underConstruction: true,
-              },
-            ],
-          },
-          {
-            labelKey: "classic",
-            route: "classic",
-            children: [
-              { labelKey: "classicPushBike", route: "pushBike" },
-              {
-                labelKey: "classicUrban",
-                route: "classic",
-                underConstruction: true,
-              },
-              {
-                labelKey: "classicGravel",
-                route: "classic",
-                underConstruction: true,
-              },
-            ],
-          },
-          {
-            labelKey: "prototypes",
-            route: "prototypes",
-            children: [
-              { labelKey: "prototypesBmx", route: "bmx" },
-              { labelKey: "prototypesTricycle", route: "tricycle" },
-              { labelKey: "prototypesCargoBike", route: "cargoBike" },
-            ],
-          },
-        ],
       },
       { labelKey: "frames", route: "frames", underConstruction: true },
       {

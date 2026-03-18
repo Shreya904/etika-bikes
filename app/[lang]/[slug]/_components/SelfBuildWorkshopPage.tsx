@@ -6,12 +6,12 @@ export function SelfBuildWorkshopPage({ locale }: { locale: Locale }) {
   return (
     <div>
       {/* Hero Section */}
-      <section className="min-h-[80vh]">
-        <div className="grid lg:grid-cols-2 h-[80vh]">
+      <section className="min-h-[60vh] flex flex-col">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 lg:min-h-[80vh]">
           {/* Content Side */}
-          <div className="bg-primary-800 flex items-center justify-center py-20 lg:py-32 px-8 lg:px-16">
+          <div className="bg-primary-800 flex items-center justify-center py-12 sm:py-16 md:py-20 lg:py-32 px-4 sm:px-6 md:px-8 lg:px-16">
             <div className="max-w-xl text-white">
-              <h1 className="text-4xl font-bold lg:text-5xl xl:text-6xl mb-6">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold lg:text-5xl xl:text-6xl mb-4 sm:mb-6">
                 {locale === "es" &&
                   "Taller de Autoconstrucción de Bicicletas de Bambú en Barcelona"}
                 {locale === "en" &&
@@ -19,7 +19,7 @@ export function SelfBuildWorkshopPage({ locale }: { locale: Locale }) {
                 {locale === "ca" &&
                   "Taller d'Autoconstrucció de Bicicletes de Bambú a Barcelona"}
               </h1>
-              <p className="text-xl text-primary-200 leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl text-primary-200 leading-relaxed">
                 {locale === "es" &&
                   "Construye tu propia bicicleta artesanal de bambú en Barcelona. Taller práctico con materiales naturales y guía experta."}
                 {locale === "en" &&
@@ -31,11 +31,12 @@ export function SelfBuildWorkshopPage({ locale }: { locale: Locale }) {
           </div>
 
           {/* Image Side */}
-          <div className="relative h-[80vh] lg:h-auto">
+          <div className="relative w-full min-h-[220px] h-56 sm:h-72 md:h-80 lg:h-auto">
             <img
               src="/assets/Workshop1.jpeg"
               alt="Bamboo bicycle workshop"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover rounded-none"
+              style={{ minHeight: '220px' }}
             />
           </div>
         </div>
