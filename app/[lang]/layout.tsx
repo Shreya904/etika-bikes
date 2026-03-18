@@ -36,7 +36,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={lang} className={poiretOne.variable}>
-      <body className="font-poiret antialiased flex min-h-screen flex-col overflow-x-hidden">
+      <body className="font-poiret antialiased">
         <NextIntlClientProvider messages={messages}>
           <Header />
           <main className="flex-1">{children}</main>
