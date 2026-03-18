@@ -2,8 +2,17 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { locales } from "@/i18n";
+
+import { Poiret_One } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+
+const poiretOne = Poiret_One({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-poiret-one",
+  display: "swap",
+});
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ lang: locale }));
