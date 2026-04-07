@@ -201,10 +201,11 @@ export function extractRichTextParagraphs(
  * components.
  */
 export function getPublicMediaUrl(input: unknown): string {
-  const cmsOrigin = (process.env.NEXT_PUBLIC_CMS_API_BASE_URL ?? "").replace(
-    /\/api\/?$/,
-    "",
-  );
+  const cmsBaseUrl =
+    process.env.CMS_API_BASE_URL ??
+    process.env.NEXT_PUBLIC_CMS_API_BASE_URL ??
+    "";
+  const cmsOrigin = cmsBaseUrl.replace(/\/api\/?$/, "");
 
   function resolveMediaUrl(value: unknown): string {
     if (typeof value === "string") {
