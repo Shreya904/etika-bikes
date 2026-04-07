@@ -88,6 +88,30 @@ function BikeCardCms({
   const imgSrc = getPublicMediaUrl(bike.heroImage?.url);
   const title = resolveCmsString(bike.title, locale);
   const modelName = resolveCmsString(bike.modelName, locale);
+  const rawPriceAmount = bike.priceInfo?.amount;
+  const priceAmount =
+    typeof rawPriceAmount === "number" &&
+    Number.isFinite(rawPriceAmount) &&
+    rawPriceAmount > 0
+      ? rawPriceAmount
+      : null;
+  const rawPriceLabel = resolveCmsString(bike.priceInfo?.label, locale).trim();
+  const priceLabel =
+    rawPriceLabel && rawPriceLabel.toLowerCase() !== "n/a"
+      ? rawPriceLabel
+      : locale === "es"
+        ? "Desde"
+        : locale === "ca"
+          ? "Des de"
+          : "From";
+  const formattedPrice =
+    priceAmount !== null
+      ? new Intl.NumberFormat(locale === "ca" ? "es-ES" : locale, {
+          style: "currency",
+          currency: bike.priceInfo?.currency ?? "EUR",
+          maximumFractionDigits: 0,
+        }).format(priceAmount)
+      : "";
   const heroAlt =
     resolveCmsString(bike.heroImage?.alt, locale) ||
     title ||
@@ -182,6 +206,37 @@ function BikeCardCms({
           {CATEGORY_LABELS[safeCategory][locale]}
         </span>
       </div>
+
+      {formattedPrice && (
+        <div className="absolute bottom-5 right-5 z-20 overflow-hidden rounded-xl border border-bamboo-200/70 bg-white/92 text-primary-900 shadow-lg backdrop-blur-sm">
+          <div className="h-px w-full bg-linear-to-r from-transparent via-bamboo-300/80 to-transparent" />
+          <div className="flex items-center gap-2 px-3 py-2.5">
+            <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-bamboo-100 text-bamboo-700">
+              <svg
+                className="h-3.5 w-3.5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={1.8}
+                  d="M7 14c2.5 0 4.5-2 4.5-4.5V8m0 1.5c0 2.5 2 4.5 4.5 4.5M12 8V5m0 14v-5"
+                />
+              </svg>
+            </span>
+            <div className="text-right leading-tight">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-primary-600">
+                {priceLabel}
+              </p>
+              <p className="text-sm font-bold text-primary-900">
+                {formattedPrice}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Hover label */}
       <div className="absolute inset-x-0 bottom-0 translate-y-2 p-6 transition-transform duration-300 group-hover:translate-y-0">

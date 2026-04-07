@@ -7,6 +7,7 @@
  */
 import { Container } from "@/components/ui/Container";
 import { type Locale } from "@/i18n";
+import { getLocalizedPath } from "@/lib/routes";
 import {
   type CmsBikeDocument,
   type NormalizedCmsGalleryItem,
@@ -16,6 +17,7 @@ import {
   resolveCmsString,
 } from "@/lib/cms/bikes-api";
 import { BikeSharedCta } from "./BikeSharedCta";
+import { HeroImageLightbox } from "./HeroImageLightbox";
 import { PrototypeStatusCard } from "./PrototypeStatusCard";
 
 interface CmsBikeDetailPageCmsProps {
@@ -30,15 +32,6 @@ const CATEGORY_BADGE: Record<
   ebike: { es: "E-Bike", en: "E-Bike", ca: "E-Bike" },
   classic: { es: "Clásica", en: "Classic", ca: "Clàssica" },
   prototype: { es: "Prototipo", en: "Prototype", ca: "Prototip" },
-};
-
-const CRAFT_BADGE: Record<
-  CmsBikeDocument["category"],
-  Record<Locale, string>
-> = {
-  ebike: { es: "Artesanal", en: "Handcrafted", ca: "Artesanal" },
-  classic: { es: "Artesanal", en: "Handcrafted", ca: "Artesanal" },
-  prototype: { es: "Experimental", en: "Experimental", ca: "Experimental" },
 };
 
 function getSafeCategory(category: unknown): CmsBikeDocument["category"] {
@@ -66,7 +59,30 @@ export async function CmsBikeDetailPageCms({
     resolveCmsString(bike.heroImage?.alt, locale) ||
     title ||
     "Etika Bikes bicycle";
+  const rawPriceAmount = bike.priceInfo?.amount;
+  const heroPriceAmount =
+    typeof rawPriceAmount === "number" &&
+    Number.isFinite(rawPriceAmount) &&
+    rawPriceAmount > 0
+      ? rawPriceAmount
+      : null;
   const priceLabel = resolveCmsString(bike.priceInfo?.label, locale);
+  const heroPriceLabel =
+    priceLabel.trim() !== "" && priceLabel.trim().toLowerCase() !== "n/a"
+      ? priceLabel
+      : locale === "es"
+        ? "Desde"
+        : locale === "ca"
+          ? "Des de"
+          : "From";
+  const heroFormattedPrice =
+    heroPriceAmount !== null
+      ? new Intl.NumberFormat(locale === "ca" ? "es-ES" : locale, {
+          style: "currency",
+          currency: bike.priceInfo?.currency ?? "EUR",
+          maximumFractionDigits: 0,
+        }).format(heroPriceAmount)
+      : "";
 
   // Project rich text to paragraphs (handles localized LexicalDoc objects)
   const allParagraphs = extractRichTextParagraphs(bike.description, locale);
@@ -104,12 +120,6 @@ export async function CmsBikeDetailPageCms({
                 </p>
               )}
               <div className="flex flex-wrap gap-3 text-sm font-medium">
-                <span className="rounded-full border border-primary-500/30 bg-primary-700/50 px-4 py-2">
-                  {CRAFT_BADGE[safeCategory][locale]}
-                </span>
-                <span className="rounded-full border border-primary-500/30 bg-primary-700/50 px-4 py-2">
-                  Bamboo
-                </span>
                 {bike.isAvailable === false && (
                   <span className="rounded-full border border-amber-500/40 bg-amber-600/30 px-4 py-2 text-amber-200">
                     {locale === "es"
@@ -120,35 +130,66 @@ export async function CmsBikeDetailPageCms({
                   </span>
                 )}
               </div>
+
+              {heroFormattedPrice && (
+                <div className="mt-6 inline-flex flex-col gap-4 rounded-xl border border-bamboo-200/70 bg-white/92 px-4 py-4 text-primary-900 shadow-lg backdrop-blur-sm sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex items-center gap-3">
+                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-bamboo-100 text-bamboo-700 shadow-sm">
+                      <svg
+                        className="h-4.5 w-4.5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={1.8}
+                          d="M5 7.5A2.5 2.5 0 017.5 5h9A2.5 2.5 0 0119 7.5V12l-4 4H7.5A2.5 2.5 0 015 13.5v-6z"
+                        />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={1.8}
+                          d="M14.5 5L19 9.5"
+                        />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={1.8}
+                          d="M9 9h4"
+                        />
+                      </svg>
+                    </span>
+                    <div className="leading-tight">
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-primary-600">
+                        {heroPriceLabel}
+                      </p>
+                      <p className="text-lg font-bold text-primary-900">
+                        {heroFormattedPrice}
+                      </p>
+                    </div>
+                  </div>
+
+                  <a
+                    href={getLocalizedPath("contact", locale)}
+                    className="inline-flex items-center justify-center rounded-full bg-primary-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-primary-500"
+                  >
+                    {locale === "es"
+                      ? "Contactar"
+                      : locale === "ca"
+                        ? "Contactar"
+                        : "Contact us"}
+                  </a>
+                </div>
+              )}
             </div>
           </div>
 
           {/* Hero image */}
           <div className="relative h-[80vh] overflow-hidden">
-            {heroSrc ? (
-              <img
-                src={heroSrc}
-                alt={heroAlt}
-                className="absolute inset-0 h-full w-full object-cover"
-              />
-            ) : (
-              <div className="flex h-full items-center justify-center bg-primary-100 text-primary-300">
-                <svg
-                  className="h-24 w-24 opacity-30"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1}
-                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14"
-                  />
-                </svg>
-              </div>
-            )}
-            <div className="absolute inset-0 bg-linear-to-t from-black/30 via-transparent to-transparent" />
+            <HeroImageLightbox src={heroSrc} alt={heroAlt} locale={locale} />
+            <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/30 via-transparent to-transparent" />
           </div>
         </div>
       </section>
@@ -173,43 +214,14 @@ export async function CmsBikeDetailPageCms({
                 )}
               </div>
 
-              {/* Price info or gallery preview */}
-              {bike.priceInfo?.amount ? (
-                <div className="rounded-2xl bg-primary-50 p-8 shadow-inner">
-                  <p className="mb-1 text-sm uppercase tracking-widest text-primary-600">
-                    {priceLabel !== ""
-                      ? priceLabel
-                      : locale === "es"
-                        ? "Desde"
-                        : locale === "ca"
-                          ? "Des de"
-                          : "From"}
-                  </p>
-                  <p className="text-5xl font-bold text-primary-900">
-                    {new Intl.NumberFormat(locale === "ca" ? "es-ES" : locale, {
-                      style: "currency",
-                      currency: bike.priceInfo.currency ?? "EUR",
-                      maximumFractionDigits: 0,
-                    }).format(bike.priceInfo.amount)}
-                  </p>
-                  <p className="mt-4 text-sm text-primary-700">
-                    {locale === "es"
-                      ? "Precio orientativo. Cada bici se fabrica a medida."
-                      : locale === "ca"
-                        ? "Preu orientatiu. Cada bici es fabrica a mida."
-                        : "Guide price. Every bike is custom-built."}
-                  </p>
-                </div>
-              ) : (
-                // Fallback: generic artisan note card
-                <div className="aspect-4/3 overflow-hidden rounded-2xl shadow-xl">
-                  <img
-                    src="/assets/etikabikes.jpg"
-                    alt="Etika Bikes"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-              )}
+              {/* Hardcoded image preview */}
+              <div className="aspect-4/3 overflow-hidden rounded-2xl shadow-xl">
+                <img
+                  src="/assets/etikabikes.jpg"
+                  alt="Etika Bikes"
+                  className="h-full w-full object-cover"
+                />
+              </div>
             </div>
           </Container>
         </section>
